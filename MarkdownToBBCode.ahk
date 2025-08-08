@@ -1,0 +1,288 @@
+#Requires AutoHotKey v2.0.19
+#Warn
+#SingleInstance force
+
+KeyHistory(0)
+Listlines(false)
+
+SetKeyDelay(-1, -1)
+SetWinDelay(-1)
+SetWorkingDir(A_ScriptDir)
+try TraySetIcon('MarkdownToBBCode.ico')
+
+
+ui := Gui('-DpiScale')
+
+ui.SetFont('q5 s13', 'Maple mono')
+cPost := ui.Add('Edit', '+WantTab w1290 h900 vPost')
+
+ui.Add('Button', '+Default', 'Convert').OnEvent('Click',     (*) => (cPost.value := Convert()))
+ui.Add('Button', 'yp x+5', 'Restore').OnEvent('Click',       (*) => (cPost.value := ui.LastPost))
+ui.Add('Button', 'yp x+5', 'Copy').OnEvent('Click',          (*) => (A_Clipboard := ui.Submit(0).Post))
+ui.Add('Button', 'yp x+5 Section', 'Clear').OnEvent('Click', (*) => (cPost.value := ''))
+
+ui.Add("Text", "ys+11 x+20", "Repository")
+ui.Add("Edit", "ys+6  x+5 vRepository", "https://github.com/JoyHak/QuickSwitch")
+
+ui.OnEvent('Escape', (*) => ui.Destroy())
+ui.Show()
+
+
+Convert() {
+    global ui
+    u     := ui.Submit(0)
+    post  := u.Post
+    repo  := Trim(u.Repository, ' `t\/')
+
+    ui.LastPost := post
+    SplitPath repo,,,,, &domain
+
+    ; Replace unicode line breaks with ahk line breaks
+	post := RegExReplace(post, '`a)\R', '`r`n')
+
+    ; Hide individual blocks from the text and process them separately
+    blocks := MarkdownBlocks()
+    blocks.Add(&post, 'alternate',  's)<!-- alternate -->(.+?)<!-- /alternate -->',                         '{1}')
+    blocks.Add(&post, 'code',       's)[ \t]*``````.*?\s(.+?)\s[ \t]*``````',                               '[code]{1}`n[/code]')
+    blocks.Add(&post, 'image',      'sx) ! \[.*?\]  \( [ \t]* (.+?) [ \t]* \)',                             '[url]{1}[/url]')
+    blocks.Add(&post, 'link',       'sx) \[  ( [^\[\]]{2,}? )  \]  \( [ \t]* (.+?) [ \t]* \)',              '[url={2}]{1}[/url]')
+    blocks.Add(&post, 'pathIssue',  'x) (\S+ [\w\d]\/\S+ [\w\d]) \# (\d+) (?=[^\]])',                       '[url=' domain '/{1}/issues/{2}]{1}#{2}[/url]')
+    blocks.Add(&post, 'GHissue',    'x) [ \t] \b GH- (\d+) (?=[^\]])',                                      '[url=' repo '/issues/{1}]GH-{1}[/url]')
+    blocks.Add(&post, 'issue',      'x) (?<!^|\#) \# (\d+) (?=[^\]])',                                      '[url=' repo '/issues/{1}]#{1}[/url]')
+    blocks.Add(&post, 'pathCommit', 'x) (\S+ [\w\d] (\/ \S+ [\w\d])?) @ ( ([a-f0-9]{7}) [a-f0-9]{33} ) \b', '[url=' domain '/{1}/commit/{3}]{1}@{4}[/url]')
+    blocks.Add(&post, 'mention',    'x)            @ (\S+  [\w\d])',                                        '[url=' domain '/{1}]@{1}[/url]')
+    blocks.Add(&post, 'commit',     '(([a-f0-9]{7})[a-f0-9]{33})\b',                                        '[url=' repo '/commit/{1}]{2}[/url]')
+
+    ; Parse each block
+    post := ParseHtml(post)
+    post := ParseLists(post)
+    post := ParseQuotes(post)
+    post := ParseMarkdown(post)
+    
+    blocks.RestoreAll(&post)
+
+    return Trim(post, '`r`n `t')
+}
+
+ParseHtml(block) {
+    ; Tags and line breaks
+    static htmlTags := [
+        ['(?<!\\)<sub>',                    '[size=85]'],
+		['(?<!\\)</sub>',                   '[/size]'],
+		['(?<!\\)<ins>',                    '[u]'],
+		['(?<!\\)</ins>',                   '[/u]'],
+		['(?<!\\)\s*<details>\s*',          '`n[spoiler]`n'],
+		['(?<!\\)\s*<\/details>\s*',        '`n[/spoiler]`n'],
+        ['(?<!\\)<summary>(.+)</summary>',  '[size=110]$1[/size]'],
+        ['(?<!\\)<\/\w+>',                  ''],
+        ['(?<!\\)<(\w+)>',                  '[size=110]$1[/size]'],
+		['\s*<!-- spoiler -->\s*',          '`n[spoiler]`n'],
+		['\s*<!-- /spoiler -->\s*',         '`n[/spoiler]`n'],
+		['s)<!--(.+)-->',                   ''],
+        ['<\/?br[ \t]*\/?>',                '`n'],
+        ['m)(\\| {2})$',                    '`n']
+    ]
+    for tag in htmlTags
+		block := RegexReplace(block, tag[1], tag[2])
+
+    return block    
+}
+
+ParseMarkdown(block) {
+    ; Simple markdown to BBcode syntax
+	static replacements := [
+        ; BBcode
+		['\*\*(.+?)\*\*',               '[b]$1[/b]'],
+		['__(.+?)__',                   '[b]$1[/b]'],
+		['``(.+?)``',                   '[c]$1[/c]'],
+		['~+(.+?)~+',                   '[strike]$1[/strike]'],
+		['m)(?<![\[\\])\_(.+?)\_',      '[i]$1[/i]'],
+		['m)(?<![\[*\\])\*(.+?)\*',     '[i]$1[/i]'],
+		['m)^\s*####\s*(.+)',           '[size=125]$1[/size]'],
+		['m)^\s*###\s*(.+)',            '[size=150]$1[/size]'],
+		['m)^\s*##\s*(.+)',             '[size=200]$1[/size]'],
+		['m)^\s*#\s*(.+)',              '[size=220]$1[/size]'],
+        
+		; Characters
+		['&#9888;',                     ' :!: '],
+        ['&sup1;',                      Chr(0xB9)],
+		['&sup2;',                      Chr(0xB2)],
+		['&sup3;',                      Chr(0xB3)]
+	]
+    
+    for code in replacements
+		block := RegExReplace(block, code[1], code[2])
+        
+    return block    
+}
+
+ParseLists(block) {
+	context  := unset
+	static lists := 'mx`n) ( ^ [ \t]* ([-+*] | \d \.) [ \t]+ .+  (?: \R [ \t]+ .+)* \R?  )+'
+    
+    ; Enclose each list with [list]...[/list]
+    for list, ctx in RegExMatchAll(&block, lists) {
+		ctx.Replacement := ''
+		context   := ctx
+        maxLevel  := -1
+        openLists := 0
+        isPrevOrdered := false
+
+        ; Get all items and their indentation level
+        loop parse, list[0], '`n', '`r' { 
+            if A_LoopField ~= '^\s*(>|$)' {
+                ; Quote or empty line
+                ctx.Replacement .= A_LoopField '`n'
+                continue
+            }
+            
+            ; 1 tab will be 8 spaces, so tabs and spaces will be treated as different levels of indentation.
+            line     := StrReplace(A_LoopField, '`t', '        ')  
+            item     := LTrim(line)                  ; Prefix + item
+            minLevel := StrLen(line) - StrLen(item)  ; Indentation level           
+            isCurOrdered := (item ~= '^\d+')         ; Starts with digit?
+            
+            ; Enclose sub-list depending on item indentaion
+            if (minLevel > maxLevel) {
+                ; Open new list
+                ctx.Replacement .= '[list' (isCurOrdered ? '=1' : '') ']`n'
+                maxLevel := minLevel
+                openLists++
+            } else if (minLevel < maxLevel) {
+                ; Close previous list
+                ctx.Replacement .= '[/list]`n'
+                maxLevel := minLevel
+                openLists--
+            } else if (isCurOrdered != isPrevOrdered) {
+                ; Close previous list and start s new one
+                ctx.Replacement .= '[/list]`n[list' (isCurOrdered ? '=1' : '') ']`n'
+            }
+            isPrevOrdered := isCurOrdered
+            
+            ; Replace item prefix with [*]
+            ctx.Replacement .= RegExReplace(item, '^([-+*]|\d+\.)', '[*]') . '`n'
+        }
+        
+        ; Close all opened lists
+        ctx.Replacement := Trim(ctx.Replacement, ' `r`n')
+        loop openLists
+            ctx.Replacement .= '`n[/list]`n'
+	}
+    
+    if IsSet(context)
+        block := context.Haystack
+
+    return block
+}
+
+ParseQuotes(block) {
+    context  := unset
+    static quotes := 'xm) ^ [ \t]* > .* (?: \r? \n (?= [ \t]* > ) .* )*'
+
+    ; Enclose each blockquote with [quote]...[/quote]
+    for quote, ctx in RegExMatchAll(&block, quotes) {
+		ctx.Replacement := ''
+		context    := ctx
+        maxLevel   := -1
+        openQuotes := 0
+        
+        ; Get all items prefixed by >
+        loop parse, quote[0], '`n', '`r' {
+            ; 1 tab will be 8 spaces, so tabs and spaces will be treated as different levels of indentation.
+            line     := StrReplace(A_LoopField, '`t', '        ') 
+            item     := RegExReplace(line, '^( *>)+')
+            minLevel := StrLen(line) - StrLen(item)
+
+            ; Enclose sub-quote depending on item indentaion
+            if (minLevel > maxLevel) {
+                ; Open new quote
+                ctx.Replacement .= '[quote]`n'
+                maxLevel := minLevel
+                openQuotes++
+            } else if (minLevel < maxLevel) {
+                ; Close previous quote
+                ctx.Replacement .= '[/quote]`n'
+                maxLevel := minLevel
+                openQuotes--
+            }            
+            ctx.Replacement .= item '`n'
+        }
+        
+        ; Close all opened quotes
+        ctx.Replacement := Trim(ctx.Replacement, ' `r`n')
+        loop openQuotes
+            ctx.Replacement .= '`n[/quote]`n'
+        
+        ctx.Replacement := ParseLists(ctx.Replacement)
+	}
+    
+    if IsSet(context) {
+        ; Replace quote blocks like [!NOTE] or [!WARNING] with bold text
+        block := RegexReplace(context.Haystack, '\[!(\w+)\]', '[b]$1[/b]')
+    }
+
+    return block
+}
+
+
+class RegExMatchAll {
+	__New(&haystack, needle) {
+		this.Haystack := haystack
+		this.Needle   := needle
+	}
+
+	__Enum(n) {
+		this.Pos := 0
+        return Next
+
+        Next(&match, &context) {
+            if this.HasProp('Replacement') {
+                this.Haystack := SubStr(this.Haystack, 1, this.Pos - 1)
+                               . this.Replacement
+                               . SubStr(this.Haystack, this.Pos + this.match.Len)
+
+                this.DeleteProp('Replacement')
+            }
+
+            context    := this
+            this.Pos   := RegExmatch(this.Haystack, this.Needle, &match, this.Pos + 1)
+            this.match := match
+
+            return this.Pos != 0
+        }
+	}
+}
+
+class MarkdownBlocks {
+    Blocks := []
+
+    Add(&haystack, blockName, needleRegex, restoreFormat) {
+        context := unset
+        for match, ctx in RegExMatchAll(&haystack, needleRegex) {
+            ; Save block that was found by needleRegex
+            this.Blocks.Push(Array(
+                ctx.Replacement := '&&' . blockName . A_Index . '&&',
+                restoreFormat,
+                match*
+            ))
+
+            context := ctx
+        }
+
+        ; At least one block was found, replace whole block with special mark
+        if IsSet(context)
+            haystack := context.Haystack
+    }
+
+    RestoreAll(&haystack) {
+        for block in this.Blocks {
+            block.removeAt(3)  ; Remove overall match
+        
+            haystack := StrReplace(
+                haystack,
+                block.removeAt(1),
+                Format(block.removeAt(1), block*)
+            )
+        }
+    }
+}
