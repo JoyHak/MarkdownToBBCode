@@ -103,7 +103,7 @@ without spaces between prefix and word
 [tr][td] > Many
  > > many
  > > > nested
- > quotes       [/td][td] [­quote]
+ > quotes [/td][td] [­quote]
  Many
 [­quote]
  many
@@ -114,7 +114,7 @@ without spaces between prefix and word
 [­/quote]
 [­/quote] [/td][/tr]
 [tr][td] > As well as:
->  1. Ordered lists 
+> 1. Ordered lists 
 > 1. item1
 > 2. item2
 > <sub>tags</sub>, 
@@ -137,7 +137,7 @@ and many more…
 >    3. item3
 > - And unordered lists can be nested too!   
 >  - Item
- >               - deep item [/td][td] [­quote]
+>   - deep item [/td][td] [­quote]
 [­list=1]
 [­*] Lists can have an infinite level of nesting 
 [­list=1][­*] item1
@@ -157,10 +157,10 @@ Lists can be mixed
 [­list=1][­*] item3
 [­/list][­/list][­/list]
 [­/quote] [/td][/tr]
-[tr][td] >  Lists can be mixed 
->  1. item1
->     - item2
->          3. item3
+[tr][td] > Lists can be mixed 
+> 1. item1
+> - item2
+> 3. item3
  [/td][td] [­quote]
   Lists can be mixed
 [­list=1][­*] item1
@@ -170,10 +170,10 @@ Lists can be mixed
 [­/quote] [/td][/tr]
 [tr][td] > - As you might guess,
 > - all of this applies to:
->     1. lists in quotes.
->     2. lists outside quotes.
->     3. lists with different levels of nesting.
-> - As well as applied to ordered/unordered lists mixing. [/td][td] [­quote]
+>  11. lists in quotes.
+>  12. lists outside quotes.
+>  13. lists with different levels of nesting.
+> - As well as applied to ordered / unordered lists mixing. [/td][td] [­quote]
 [­list]
 [­*] As you might guess,
 [­*] all of this applies to:
@@ -182,7 +182,7 @@ Lists can be mixed
 [­*] lists outside quotes.
 [­*] lists with different levels of nesting.
 [­/list]
-[­*] As well as applied to ordered/unordered lists mixing.
+[­*] As well as applied to ordered / unordered lists mixing.
 [­/list]
 [­/quote] [/td][/tr]
 [/table]
@@ -190,8 +190,8 @@ Lists can be mixed
 [table]
 [tr][th] Lists                                                        [/th][th]                                                              [/th][/tr]
 [tr][td] - The list can start with any number of tabs and spaces
-     - Each subsequent item in the list must start with the same number of tabs and spaces!
-			- Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). [/td][td] [­list]
+  - Each subsequent item in the list must start with the same number of tabs and spaces!
+   - Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). [/td][td] [­list]
 [­*] The list can start with any number of tabs and spaces
 [­list]
 [­*] Each subsequent item in the list must start with the same number of tabs and spaces!
@@ -199,9 +199,9 @@ Lists can be mixed
 [­*] Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces).
 [­/list][­/list][­/list] [/td][/tr]
 [tr][td] 1. Lists can have an infinite level of nesting
-      1. item1
-        2. item2
-           3. item3
+  1. item1
+   2. item2
+    3. item3
  [/td][td] [­list=1]
 [­*] Lists can have an infinite level of nesting
 [­list=1]
@@ -223,13 +223,13 @@ Lists can be mixed
 [­/list][­/list][­/list] [/td][/tr]
 [tr][td] - Lists can be mixed 
 1. item describes:
-     1. item2
-     2. item3
+ - item1
+ - item2
 2. This item continues previous list started at 1. [/td][td] [­list][­*] Lists can be mixed[­/list]
 [­list=1][­*] item describes:
-[­list=1]
+[­list]
+[­*] item1
 [­*] item2
-[­*] item3
 [­/list]
 [­*] This item continues previous list started at 1.
 [­/list] [/td][/tr]
@@ -237,7 +237,7 @@ Lists can be mixed
 2. This element is part of the list started in point 1. 
 - To start a new list at the same nesting level, 
 - start a list of a different type.
-      - Or increase the nesting level. [/td][td] [­list=1]
+ - Or increase the nesting level. [/td][td] [­list=1]
 [­*] The lists go on and on.
 [­*] This element is part of the list started in point 1. 
 [­/list][­list]
@@ -248,28 +248,20 @@ Lists can be mixed
 [­/list][­/list] [/td][/tr]
 [tr][td] - List can capture additional text elements, as well as quotes, spoilers, **all supported syntax**.
 - Add a tab or space before the item to add it to the list.
- <details>
-    *This spoiler belongs to the 1st item.*
-     > This quote belongs to the 1st item.
- </details>
+ > This quote belongs to the 1st item.
 > This quote does not belong to the list. [/td][td] [­list]
 [­*] List can capture additional text elements, as well as quotes, spoilers, [­b]all supported syntax[­/b]
 [­*] Add a tab or space before the item to add it to the list.
-[­*]This spoiler belongs to the 1st item.*
-[­quote]
- This quote belongs to the 1st item
-[­/quote]
+[­quote] This quote belongs to the 1st item [­/quote]
 [­/list]
-[­quote]
- This quote does not belong to the list.
-[­/quote] [/td][/tr]
+[­quote] This quote does not belong to the list. [­/quote] [/td][/tr]
 [tr][td] - Quotes and other elements are belongs to previous item regardless of its nesting level.
  1. Item1
-	2. Item2 
-        > This quote belongs to item2. 
-	        3. Item3
-                > This quote belongs to item3
-                4. Item4
+ 2. Item2 
+ > This quote belongs to item2. 
+  3. Item3
+  > This quote belongs to item3
+  4. Item4
  [/td][td] [­list]
 [­*] Quotes and other elements are belongs to previous item regardless of its nesting level.
 [­/list]
