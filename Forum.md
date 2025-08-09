@@ -81,29 +81,29 @@ MsgBox("hello!")
 
 [table]
 [tr][th] Block quotes                                                 [/th][th]                                                              [/th][/tr]
-[tr][td] > A quote looks like a block
-> of text                   [/td][td] [color=#48a5d7][­quote][/color]
+[tr][td][color=#48a5d7] > [/color]A quote looks like a block
+[color=#48a5d7]> [/color]of text                   [/td][td] [color=#48a5d7][­quote][/color]
  A quote looks like a block
  of text
 [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td] > [­!NOTE]  [­!Tip] [­!warning] [­!cAuTiOn] 
-> But this is alert [/td][td] [color=#48a5d7][­quote][/color]
+[tr][td][color=#48a5d7] > [/color][­!NOTE]  [­!Tip] [­!warning] [­!cAuTiOn] 
+[color=#48a5d7]> [/color]But this is alert [/td][td] [color=#48a5d7][­quote][/color]
  [­b]NOTE[­/b]  [­b]Tip[­/b] [­b]warning[­/b] [­b]cAuTiOn[­/b]
  But this is alert
 [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td] > Quotes can contain
- > > nested quotes
->>without spaces between prefix and word [/td][td] [color=#48a5d7][­quote][/color]
+[tr][td][color=#48a5d7] > [/color]Quotes can contain
+[color=#48a5d7]> > [/color]nested quotes
+[color=#48a5d7]>>[/color]without spaces between prefix and word [/td][td] [color=#48a5d7][­quote][/color]
  Quotes can contain
 [color=#48a5d7][­quote][/color]
  nested quotes
 [color=#48a5d7][­/quote][/color]
 without spaces between prefix and word
 [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td] > Many
- > > many
- > > > nested
- > quotes [/td][td] [color=#48a5d7][­quote][/color]
+[tr][td][color=#48a5d7] > [/color]Many
+[color=#48a5d7] > > [/color]many
+[color=#48a5d7] > > > [/color]nested
+[color=#48a5d7] > [/color]quotes [/td][td] [color=#48a5d7][­quote][/color]
  Many
 [color=#48a5d7][­quote][/color]
  many
@@ -113,14 +113,14 @@ without spaces between prefix and word
  quotes
 [color=#48a5d7][­/quote][/color]
 [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td] > As well as:
-> [color=#006868]1. [/color]Ordered lists 
-> [color=#006868]1. [/color]item1
-> [color=#006868]2. [/color]item2
-> <sub>tags</sub>, 
-> <!-- comments -->, 
-> *basic syntax* 
-> and many more… [/td][td] [color=#48a5d7][­quote][/color]
+[tr][td][color=#48a5d7] > [/color]As well as:
+[color=#48a5d7]> [/color][color=#006868]1. [/color]Ordered lists 
+[color=#48a5d7]> [/color][color=#006868]1. [/color]item1
+[color=#48a5d7]> [/color][color=#006868]2. [/color]item2
+[color=#48a5d7]> [/color]<sub>tags</sub>, 
+[color=#48a5d7]> [/color]<!-- comments -->, 
+[color=#48a5d7]> [/color]*basic syntax* 
+[color=#48a5d7]> [/color]and many more… [/td][td] [color=#48a5d7][­quote][/color]
  As well as:
 [color=#11975a][­list=1][/color][color=#006868][­*][/color] Ordered lists 
 [color=#11975a][­list=1][/color]
@@ -131,13 +131,13 @@ without spaces between prefix and word
 [­i]basic syntax[­/i]
 and many more…
 [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td] > [color=#006868]1.[/color] Lists can have an infinite level of nesting 
->  [color=#006868]1. [/color]item1
->   [color=#006868]2. [/color]item2
->    [color=#006868]3. [/color]item3
-> [color=#006868]- [/color]And unordered lists can be nested too!   
->  [color=#006868]- [/color]Item
->   [color=#006868]- [/color]deep item [/td][td] [color=#48a5d7][­quote][/color]
+[tr][td][color=#48a5d7] > [/color][color=#006868]1.[/color] Lists can have an infinite level of nesting 
+[color=#48a5d7]>  [/color][color=#006868]1. [/color]item1
+[color=#48a5d7]>   [/color][color=#006868]2. [/color]item2
+[color=#48a5d7]>    [/color][color=#006868]3. [/color]item3
+[color=#48a5d7]> [/color][color=#006868]- [/color]And unordered lists can be nested too!   
+[color=#48a5d7]>  [/color][color=#006868]- [/color]Item
+[color=#48a5d7]>   [/color][color=#006868]- [/color]deep item [/td][td] [color=#48a5d7][­quote][/color]
 [color=#11975a][­list=1][/color]
 [color=#006868][­*][/color] Lists can have an infinite level of nesting 
 [color=#11975a][­list=1][/color][color=#006868][­*][/color] item1
@@ -157,10 +157,10 @@ Lists can be mixed
 [color=#11975a][­list=1][/color][color=#006868][­*][/color] item3
 [color=#11975a][­/list][/color][color=#11975a][­/list][/color][color=#11975a][­/list][/color]
 [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td] > Lists can be mixed 
-> [color=#006868]1. [/color]item1
-> [color=#006868]- [/color]item2
-> [color=#006868]3. [/color]item3
+[tr][td][color=#48a5d7] > [/color]Lists can be mixed 
+[color=#48a5d7]> [/color][color=#006868]1. [/color]item1
+[color=#48a5d7]> [/color][color=#006868]- [/color]item2
+[color=#48a5d7]> [/color][color=#006868]3. [/color]item3
  [/td][td] [color=#48a5d7][­quote][/color]
   Lists can be mixed
 [color=#11975a][­list=1][/color][color=#006868][­*][/color] item1
@@ -168,12 +168,12 @@ Lists can be mixed
 [color=#11975a][­list=1][/color][color=#006868][­*][/color] item3
 [color=#11975a][­/list][/color][color=#11975a][­/list][/color][color=#11975a][­/list][/color]
 [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td] > [color=#006868]-[/color] As you might guess,
-> [color=#006868]- [/color]all of this applies to:
->  11. lists in quotes.
->  12. lists outside quotes.
->  13. lists with different levels of nesting.
-> [color=#006868]- [/color]As well as applied to ordered / unordered lists mixing. [/td][td] [color=#48a5d7][­quote][/color]
+[tr][td][color=#48a5d7] > [/color][color=#006868]-[/color] As you might guess,
+[color=#48a5d7]> [/color][color=#006868]- [/color]all of this applies to:
+[color=#48a5d7]>  [/color]1. lists in quotes.
+[color=#48a5d7]>  [/color]2. lists outside quotes.
+[color=#48a5d7]>  [/color]3. lists with different levels of nesting.
+[color=#48a5d7]> [/color][color=#006868]- [/color]As well as applied to ordered / unordered lists mixing. [/td][td] [color=#48a5d7][­quote][/color]
 [color=#11975a][­list][/color]
 [color=#006868][­*][/color] As you might guess,
 [color=#006868][­*][/color] all of this applies to:
@@ -248,8 +248,8 @@ Lists can be mixed
 [color=#11975a][­/list][/color][color=#11975a][­/list][/color] [/td][/tr]
 [tr][td] [color=#006868]-[/color] List can capture additional text elements, as well as quotes, spoilers, **all supported syntax**.
 [color=#006868]-[/color] Add a tab or space before the item to add it to the list.
- > This quote belongs to the 1st item.
-> This quote does not belong to the list. [/td][td] [color=#11975a][­list][/color]
+[color=#48a5d7] > [/color]This quote belongs to the 1st item.
+[color=#48a5d7]> [/color]This quote does not belong to the list. [/td][td] [color=#11975a][­list][/color]
 [color=#006868][­*][/color] List can capture additional text elements, as well as quotes, spoilers, [­b]all supported syntax[­/b]
 [color=#006868][­*][/color] Add a tab or space before the item to add it to the list.
 [color=#48a5d7][­quote][/color] This quote belongs to the 1st item [color=#48a5d7][­/quote][/color]
@@ -258,9 +258,9 @@ Lists can be mixed
 [tr][td] [color=#006868]-[/color] Quotes and other elements are belongs to previous item regardless of its nesting level.
  [color=#006868]1. [/color]Item1
  [color=#006868]2. [/color]Item2 
- > This quote belongs to item2. 
+[color=#48a5d7] > [/color]This quote belongs to item2. 
   [color=#006868]3. [/color]Item3
-  > This quote belongs to item3
+[color=#48a5d7]  > [/color]This quote belongs to item3
   [color=#006868]4. [/color]Item4
  [/td][td] [color=#11975a][­list][/color]
 [color=#006868][­*][/color] Quotes and other elements are belongs to previous item regardless of its nesting level.
@@ -277,9 +277,9 @@ Lists can be mixed
 [tr][td] [color=#006868]-[/color] To separate any item / quote / other from the list (or start a new list), 
 dont' add space before the item / quote;
 [color=#006868]-[/color] or leave one or more blank lines between the item and the list.
-> No spaces: this quote does not belong to the list.
+[color=#48a5d7]> [/color]No spaces: this quote does not belong to the list.
 
-> Another line: this quote does not belong to the list. [/td][td] [color=#11975a][­list][/color]
+[color=#48a5d7]> [/color]Another line: this quote does not belong to the list. [/td][td] [color=#11975a][­list][/color]
 [color=#006868][­*][/color] To separate any item / quote / other from the list (or start a new list), dont' add space before the item / quote;
 [color=#006868][­*][/color] or leave one or more blank lines between the item and the list.
 [color=#11975a][­/list][/color]
@@ -287,7 +287,7 @@ dont' add space before the item / quote;
 
 [color=#48a5d7][­quote][/color] Another line: this quote does not belong to the list. [color=#48a5d7][­/quote][/color] [/td][/tr]
 [tr][td] [color=#006868]-[/color] Use line break characters\ <br>  </br>  <br/>
-> This quote does not belong to the list. [/td][td] [color=#11975a][­list][/color][color=#006868][­*][/color] Use line break characters [color=#11975a][­/list][/color]
+[color=#48a5d7]> [/color]This quote does not belong to the list. [/td][td] [color=#11975a][­list][/color][color=#006868][­*][/color] Use line break characters [color=#11975a][­/list][/color]
 
 [color=#48a5d7][­quote][/color] This quote does not belong to the list. [color=#48a5d7][­/quote][/color] [/td][/tr]
 [/table]
