@@ -115,8 +115,8 @@ without spaces between prefix and word
 [­/quote] [/td][/tr]
 [tr][td] > As well as:
 >  1. Ordered lists 
->     1. item1
->     2. item2
+> 1. item1
+> 2. item2
 > <sub>tags</sub>, 
 > <!-- comments -->, 
 > *basic syntax* 
@@ -131,12 +131,12 @@ without spaces between prefix and word
 [­i]basic syntax[­/i]
 and many more…
 [­/quote] [/td][/tr]
-[tr][td] >  1. Lists can have an infinite level of nesting 
->     1. item1
->          2. item2
->               3. item3
->  - And unordered lists can be nested too!   
->       - Item
+[tr][td] > 1. Lists can have an infinite level of nesting 
+>  1. item1
+>   2. item2
+>    3. item3
+> - And unordered lists can be nested too!   
+>  - Item
  >               - deep item [/td][td] [­quote]
 [­list=1]
 [­*] Lists can have an infinite level of nesting 
@@ -212,12 +212,15 @@ Lists can be mixed
 [­*] item3
 [­/list]
 [­/list][­/list][­/list] [/td][/tr]
-[tr][td] - And unordered lists can be nested too!
-        - deep item [/td][td] [­list]
-[­*] And unordered lists can be nested too!
+[tr][td] * List items can have any prefix
+  + item 
+   - item [/td][td] [­list]
+[­*] List items can have any prefix
 [­list]
-[­*] deep item
-[­/list][­/list] [/td][/tr]
+[­*] item
+[­list]
+[­*] item
+[­/list][­/list][­/list] [/td][/tr]
 [tr][td] - Lists can be mixed 
 1. item describes:
      1. item2
