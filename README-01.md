@@ -1,42 +1,42 @@
 ## Markdown
 
-| Basic syntax                                           |                                 |
-| :----------------------------------------------------- | :------------------------------ |
-| \*\*Bold\*\* \_\_Bold\_\_                              | $\texttt{\color{#fb7237}[b]\color{White}Bold\color{#fb7237}[/b]}$ |
-| \*Italic\* \_Italic\_                                  | $\texttt{\color{#fb7237}[i]\color{White}Italic\color{#fb7237}[/i]}$ |
-| \~Strike\~ \~\~Strike\~\~                              | $\texttt{\color{#fb7237}[strike]\color{White}Strike\color{#fb7237}[/strike]}$ |
-| \*\*\*Bold and italic\*\*\* \_\__Bold and italic\_\_\_ | $\texttt{\color{#fb7237}\[b]\color{White}[i]Bold and italic\[/b]\color{#fb7237}[/i]}$ |
-| \`Inline\`                                             | $\texttt{\color{#fb7237}[c]\color{White}Inline\color{#fb7237}[/c]}$ |
-| \# h1                                                  | $\texttt{\color{#fb7237}[size=220]\color{White}h1\color{#fb7237}[/size]}$ |
-| \## h2                                                 | $\texttt{\color{#fb7237}[size=200]\color{White}h2\color{#fb7237}[/size]}$ |
-| \#\## h3                                               | $\texttt{\color{#fb7237}[size=150]\color{White}h3\color{#fb7237}[/size]}$ |
-| \#\#\## h4                                             | $\texttt{\color{#fb7237}[size=125]\color{White}h4\color{#fb7237}[/size]}$ |
+| Basic syntax                                                 |                                                              |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| $\texttt{\color{#fb7237}\*\*\color{White}Bold\color{#fb7237}**\hspace{3mm}\\_\\\_\color{White}Bold\color{#fb7237}\\\_\\\_}$ | $\texttt{\color{#fb7237}[b]\color{White}Bold\color{#fb7237}[/b]}$ |
+| $\texttt{\color{#fb7237}\*\color{White}Italic\color{#fb7237}\*\hspace{3mm}\\_\color{White}Italic\color{#fb7237}\\\_}$ | $\texttt{\color{#fb7237}[i]\color{White}Italic\color{#fb7237}[/i]}$ |
+| $\color{#fb7237}\sim\texttt{\color{White}Strike}\color{#fb7237}\sim\hspace{3mm}\sim\sim\texttt{\color{White}Strike}\color{#fb7237 }\color{#fb7237}\sim\sim$ | $\texttt{\color{#fb7237}[strike]\color{White}Strike\color{#fb7237}[/strike]}$ |
+| $\texttt{\color{#fb7237}\*\*\*\color{White}Bold and italic\color{#fb7237}\*\*\*\hspace{3mm}\\_\\\_\\\_\color{White}Bold and italic\color{#fb7237}\\\_\\\_\\\_}$ | $\texttt{\color{#fb7237}\[b]\color{#48a5d7}[i]\color{White}Bold and italic\color{#48a5d7}\[/i]\color{#fb7237}[/b]}$ |
+| $\large\color{#fb7237}\textasciiacute$ $\texttt{\color{White}Inline}\color{#fb7237}$ $\large\color{#fb7237}\textasciiacute$ | $\texttt{\color{#fb7237}[c]\color{White}Inline\color{#fb7237}[/c]}$ |
+| $\large\texttt{\color{#fb7237}\\#}$ h1                               | $\texttt{\color{#fb7237}[size=220]\color{White}h1\color{#fb7237}[/size]}$ |
+| $\large\texttt{\color{#fb7237}\\#\\#}$ h2                              | $\texttt{\color{#fb7237}[size=200]\color{White}h2\color{#fb7237}[/size]}$ |
+| $\texttt{\color{#fb7237}\\#\\#\\#}$ h3                             | $\texttt{\color{#fb7237}[size=150]\color{White}h3\color{#fb7237}[/size]}$ |
+| $\tiny\texttt{\color{#fb7237}\\#\\#\\#\\#}$ h4                            | $\texttt{\color{#fb7237}[size=125]\color{White}h4\color{#fb7237}[/size]}$ |
 
-| Links <br>(relative links is not supported) |                             |
-| :-------------------------------------------- | :-------------------------- |
-| [Short name]\(link)                           | $\texttt{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
-| ![Image name]\(link)                          | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
+| Links <br>(relative links is not supported) |                                                              |
+| :------------------------------------------ | :----------------------------------------------------------- |
+| [Short name]\(link)                         | $\texttt{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
+| ![Image name]\(link)                        | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
 
-| Html tags                                              |                                                          |
-| :----------------------------------------------------- | :------------------------------------------------------- |
-| \<sub\>Subscript\</sub\>                               | $\texttt{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
-| \<ins\>Underlined\</ins\>                              | $\texttt{\color{#fb7237}[u]\color{White}Underlined\color{#fb7237}[/u]}$ |
-| \<details\>\<summary\>Examples\</summary\>\</details\> | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{#fb7237}[size=110]Examples[/size]}$<br>$\texttt{\color{White}[/spoiler]}$ |
-| \<details\> … </details\>                              | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}…}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
-| \<unknown\> … </unknown\>                              | $\texttt{\color{#fb7237}[size=110]\color{White}unknown\color{#fb7237}[/size]}$ |
+| Html tags                                                    |                                                              |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| $\texttt{\color{#0d529d}\<sub>\color{White}Subscript\color{#0d529d}\</sub>}$ | $\texttt{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
+| $\texttt{\color{#0d529d}\<ins>\color{White}Underlined\color{#0d529d}\</ins>}$ | $\texttt{\color{#fb7237}[u]\color{White}Underlined\color{#fb7237}[/u]}$ |
+| $\texttt{\color{#0d529d}\<details>\color{#0d539d}\<summary>\color{White}Examples\color{#0d539d}\</summary>\color{#0d529d}\</details>}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{#fb7237}[size=110]Examples[/size]}$<br>$\texttt{\color{White}[/spoiler]}$ |
+| $\texttt{\color{#0d529d}<details>\color{White} … \color{#0d529d}</details>}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}…}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
+| $\texttt{\color{#0d529d}<unknown>\color{White} … \color{#0d529d}</unknown>}$ | $\texttt{\color{#fb7237}[size=110]\color{White}unknown\color{#fb7237}[/size]}$ |
 
-| Spoilers and comments                                        |                                                         |
-| :----------------------------------------------------------- | :------------------------------------------------------ |
-| \<!-- spoiler --> Text that should be hidden \<!-- /spoiler --> | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
-| \<!-- alternate --> Text that mustn't be converted  \<!-- /alternate --> | Text that mustn't be converted                          |
-| \<!-- Text that should be removed -->                        |                                                         |
-| \<details\> Text that should be hidden </details\>           | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
+| Spoilers and comments                                        |                                                              |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| $\texttt{\color{#5e5e5e}<!-- spoiler -->\color{White} Text that should be hidden \color{#5e5e5e}<!-- /spoiler -->}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
+| $\texttt{\color{#5e5e5e}<!-- alternate -->\color{White} Text that mustn't be converted  \color{#5e5e5e}<!-- /alternate -->}$ | Text that mustn't be converted                               |
+| $\texttt{\color{#5e5e5e}<!--\color{White} Text that should be removed \color{#5e5e5e}-->}$ |                                                              |
+| <details\> Text that should be hidden </details>             | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
 
-| Line breaks                                |                                              |
-| :----------------------------------------- | :------------------------------------------- |
-| \<br\>  </br\>  <br/\>                     | <br>                                       |
-| Line with trailing slash\ <br>New line   | Line with trailing slash<br><br>New line   |
-| Line with 2 trailing spaces  <br>NewLine | Line with 2 trailing spaces<br><br>NewLine |
+| Line breaks                                    |                                            |
+| :--------------------------------------------- | :----------------------------------------- |
+| $\texttt{\color{#0d529d}<br>  </br>  <br/>  }$ | <br>                                       |
+| Line with trailing slash\ <br>New line         | Line with trailing slash<br><br>New line   |
+| Line with 2 trailing spaces  <br>NewLine       | Line with 2 trailing spaces<br><br>NewLine |
 
 ## Blocks
 
@@ -44,8 +44,8 @@ The blocks below are converted into opening and closing BBcode tags, broken into
 
 To reduce the demonsration, some tags are on the same line as the text.
 
-| Code                                 |                                         |
-| :----------------------------------- | :-------------------------------------- |
+| Code                             |                                                              |
+| :------------------------------- | :----------------------------------------------------------- |
 | \```py<br>print("hello!")<br>``` | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}print("hello!")}$<br>$\texttt{\color{#fb7237}[/code]}$ |
 | \```<br>MsgBox("hello!")<br>```  | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}MsgBox("hello!")}$<br>$\texttt{\color{#fb7237}[/code]}$ |
 
@@ -64,7 +64,7 @@ To reduce the demonsration, some tags are on the same line as the text.
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#006868} -}$ The list can start with any number of tabs and spaces<br> $\texttt{\hspace{1cm}\color{#006868} -}$ Each subsequent item in the list must start with the same number of tabs and spaces!<br> $\texttt{\hspace{2cm}\color{#006868} -}$ Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). | $\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#006868}[\*] }$ The list can start with any number of tabs and spaces<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#006868}[\*] }$ Each subsequent item in the list must start with the same number of tabs and spaces! $\texttt{}$<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\color{#11975a}[/list]}$ |
 | $\texttt{\color{#006868} 1.}$ Lists can have an infinite level of nesting<br> $\texttt{\hspace{1cm}\color{#006868}1.}$ item1<br> $\texttt{\hspace{2cm}\color{#006868}2.}$ item2<br> $\texttt{\hspace{3cm}\color{#006868}3.}$ item3<br> | $\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Lists can have an infinite level of nesting <br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item1 <br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item2 <br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item3 <br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\color{#11975a}[/list]}$ |
-| $\huge{\textsf{\color{#006868} *}}$ List items can have any prefix<br/> $\textsf{\hspace{1cm}\color{#006868}+}$ item <br/> $\huge{\textsf{\hspace{2cm}\color{#006868}-}}$ item |  $\texttt{\color{#11975a}[list]}$<br/>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ List items can have any prefix <br/>$\texttt{\color{#11975a}[list]}$<br/> $\texttt{\color{#006868}[\*] }$ item  <br/> $\texttt{\color{#11975a}[list]}$<br/> $\texttt{\color{#006868}[\*] }$ item <br/>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$ |
+| $\huge{\textsf{\color{#006868} *}}$ List items can have any prefix<br/> $\textsf{\hspace{1cm}\color{#006868}+}$ item <br/> $\huge{\textsf{\hspace{2cm}\color{#006868}-}}$ item | $\texttt{\color{#11975a}[list]}$<br/>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ List items can have any prefix <br/>$\texttt{\color{#11975a}[list]}$<br/> $\texttt{\color{#006868}[\*] }$ item  <br/> $\texttt{\color{#11975a}[list]}$<br/> $\texttt{\color{#006868}[\*] }$ item <br/>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$ |
 | $\texttt{\color{#006868} -}$ Lists can be mixed <br> $\texttt{\color{#006868}1.}$ item describes:<br> $\texttt{\hspace{1cm}\color{#006868}1.}$ item2<br> $\texttt{\hspace{1cm}\color{#006868}2.}$ item3<br> $\texttt{\color{#006868}2.}$ This item continues previous list started at 1. | $\texttt{\color{#11975a}\[list]\color{White}\color{#006868}[\*] }$ Lists can be mixed[/list] <br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item describes: <br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item2 <br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item3 <br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ This item continues previous list started at 1. <br>$\texttt{\color{#11975a}[/list]}$ |
 | $\texttt{\color{#006868} 1.}$ The lists go on and on.<br>$\texttt{\color{#006868}2.}$ This element is part of the list started in point 1. <br> $\texttt{\color{#006868}-}$ To start a new list at the same nesting level, <br> $\texttt{\color{#006868}-}$ start a list of a different type.<br> $\texttt{\hspace{1cm}\color{#006868}-}$ Or increase the nesting level. | $\texttt{\color{#11975a}\[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ The lists go on and on. <br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ This element is part of the list started in point 1.  <br>$\texttt{\color{#11975a}\[/list]\[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ To start a new list at the same nesting level, <br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ start a list of a different type. <br>$\texttt{\color{#11975a}\[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Or increase the nesting level. <br>$\texttt{\color{#11975a}\[/list]\color{#11975a}[/list]}$ |
 | $\texttt{\color{#006868} -}$ List can capture additional text elements, as well as quotes, spoilers, $\texttt{\color{#fb7237}\*\*\color{White}all supported syntax\color{#fb7237}\*\*}$ .<br> $\texttt{\color{#006868}-}$ Add a tab or space before the item to add it to the list.<br> $\texttt{\hspace{3mm}\color{#48a5d7}>}$ This quote belongs to the 1st item.<br> $\texttt{\color{#48a5d7}>}$ This quote does not belong to the list. | $\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ List can capture additional text elements, as well as quotes, spoilers,  $\texttt{\color{#fb7237}\[b]\color{White}all supported syntax\color{#fb7237}\[/b]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Add a tab or space before the item to add it to the list. <br> $\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{White} This quote belongs to the 1st item}$<br>$\texttt{\color{#48a5d7}[/quote]}$<br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{White} This quote does not belong to the list.}$<br>$\texttt{\color{#48a5d7}[/quote]}$ |
@@ -78,17 +78,17 @@ You can specify the repository in the converter settings. All issues and commits
 
 | Mentions and images <br />(relative links is not supported)  |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| $\texttt{\color{#7ab3dc}@\color{White}JoyHak}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
+| $\texttt{\color{#7ab3dc}@\color{White}JoyHak}$               | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
 | $\texttt{\color{#7ab3dc}![\color{White}Image name\color{#7ab3dc}]\(}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#7ab3dc}\)}$ | $\texttt{\color{#fb7237}[url]}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#fb7237}[/url]}$ |
 
-| Issues (PRs is not supported) |                                                              |
-| :---------------------------- | :----------------------------------------------------------- |
-| $\texttt{\color{#7ab3dc}\\#\color{#7a80dc}64}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
-| $\texttt{\color{White}GH-\color{#7a80dc}64}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}GH-\color{#7a80dc}64\color{#fb7237}[/url]}$ |
+| Issues (PRs is not supported)                                |                                                              |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| $\texttt{\color{#7ab3dc}\\#\color{#7a80dc}64}$               | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
+| $\texttt{\color{White}GH-\color{#7a80dc}64}$                 | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}GH-\color{#7a80dc}64\color{#fb7237}[/url]}$ |
 | $\texttt{\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}\\#\color{#7a80dc}64}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
 | $\texttt{\color{White}AutoHotkey\color{#7ab3dc}/\color{White}AutoHotkeyDocs\color{#7ab3dc}\\#\color{#7a80dc}744}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/AutoHotkey/AutoHotkeyDocs/issues/744 $\texttt{\color{#fb7237}]\color{White}AutoHotkey\color{#7ab3dc}/\color{White}AutoHotkeyDocs\color{#7ab3dc}\\#\color{#7a80dc}744\color{#fb7237}[/url]}$ |
 
-| Commits                                                     |                                                              |
-| :---------------------------------------------------------- | :----------------------------------------------------------- |
-| 896111015666c8fa7a8b390232a52e79356319c4                    | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4 $\texttt{\color{#fb7237}]\color{#7a80dc}8961110\color{#fb7237}[/url]}$ |
+| Commits                                                      |                                                              |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 896111015666c8fa7a8b390232a52e79356319c4                     | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4 $\texttt{\color{#fb7237}]\color{#7a80dc}8961110\color{#fb7237}[/url]}$ |
 | $\texttt{\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}@}$ 896111015666c8fa7a8b390232a52e79356319c4 | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4 $\texttt{\color{#fb7237}]\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}@\color{#7a80dc}8961110\color{#fb7237}[/url]}$ |
