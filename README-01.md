@@ -19,22 +19,22 @@ Spaces are optional.
 | Links <br>(relative links is not supported) |                             |
 | :-------------------------------------------- | :-------------------------- |
 | [Short name]\(link)                           | $\textsf{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
-| ![Image name]\(link)                          | $\textsf{\color{#fb7237}![url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
+| ![Image name]\(link)                          | $\textsf{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
 
 | Html tags                                              |                                                          |
 | :----------------------------------------------------- | :------------------------------------------------------- |
-| \<sub\>Subscript\</sub\>                               | [size=85]Subscript[/size]                                |
-| \<ins\>Underlined\</ins\>                              | [u]Underlined[/u]                                        |
-| \<details\>\<summary\>Examples\</summary\>\</details\> | [spoiler]<br>[size=110]Examples[/size]<br>[/spoiler] |
-| \<details\> … </details\>                              | [spoiler]<br>…<br>[/spoiler]                         |
-| \<unknown\> … </unknown\>                              | [size=110]unknown[/size]                                 |
+| \<sub\>Subscript\</sub\>                               | $\textsf{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
+| \<ins\>Underlined\</ins\>                              | $\textsf{\color{#fb7237}[u]\color{White}Underlined\color{#fb7237}[/u]}$ |
+| \<details\>\<summary\>Examples\</summary\>\</details\> | $\textsf{\color{#fb7237}[spoiler]\color{White}<br>[size=110]Examples[/size]<br>\color{#fb7237}[/spoiler]}$ |
+| \<details\> … </details\>                              | $\textsf{\color{#fb7237}[spoiler]\color{White}<br>…<br>\color{#fb7237}[/spoiler]}$ |
+| \<unknown\> … </unknown\>                              | $\textsf{\color{#fb7237}[size=110]\color{White}unknown\color{#fb7237}[/size]}$ |
 
 | Spoilers and comments                                        |                                                         |
 | :----------------------------------------------------------- | :------------------------------------------------------ |
-| \<!-- spoiler --> Text that should be hidden \<!-- /spoiler --> | [spoiler]<br>Text that should be hidden<br>[/spoiler] |
+| \<!-- spoiler --> Text that should be hidden \<!-- /spoiler --> | $\textsf{\color{#fb7237}[spoiler]\color{White}<br>Text that should be hidden<br>\color{#fb7237}[/spoiler]}$ |
 | \<!-- alternate --> Text that mustn't be converted  \<!-- /alternate --> | Text that mustn't be converted                          |
 | \<!-- Text that should be removed -->                        |                                                         |
-| \<details\> Text that should be hidden </details\>           | [spoiler]<br>Text that should be hidden<br>[/spoiler] |
+| \<details\> Text that should be hidden </details\>           | $\textsf{\color{#fb7237}[spoiler]\color{White}<br>Text that should be hidden<br>\color{#fb7237}[/spoiler]}$ |
 
 | Line breaks                                |                                              |
 | :----------------------------------------- | :------------------------------------------- |
