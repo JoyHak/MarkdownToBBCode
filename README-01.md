@@ -27,7 +27,7 @@
 
 | Spoilers and comments                                        |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| $\texttt{\color{#5e5e5e}\<!-- spoiler -->\color{White} Text that should be hidden \color{#5e5e5e}\<!-- /spoiler -->}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
+| $\texttt{\color{#5e5e5e}\<!-- spoiler -->\color{White} Text that should be hidden \color{#5e5e5e}\<!-- /spoiler -->}$ | $\texttt{\color{#0d529d}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#0d529d}[/spoiler]}$ |
 | $\texttt{\color{#5e5e5e}\<!-- alternate -->\color{White} Text that mustn't be converted  \color{#5e5e5e}\<!-- /alternate -->}$ | Text that mustn't be converted                               |
 | $\texttt{\color{#5e5e5e}\<!--\color{White} Text that should be removed \color{#5e5e5e}\-->}$ |                                                              |
 
@@ -45,8 +45,8 @@ To reduce the demonsration, some tags are on the same line as the text.
 
 | Code                             |                                                              |
 | :------------------------------- | :----------------------------------------------------------- |
-| \```py<br>print("hello!")<br>``` | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}print("hello!")}$<br>$\texttt{\color{#fb7237}[/code]}$ |
-| \```<br>MsgBox("hello!")<br>```  | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}MsgBox("hello!")}$<br>$\texttt{\color{#fb7237}[/code]}$ |
+| $\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute\color{#fa4738}py$<br>$\texttt{print(\color{#48ee44}"hello!"}$)<br>$\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$ | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}print(\color{#48ee44}"hello!"}$)<br>$\texttt{\color{#fb7237}[/code]}$ |
+| $\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$<br>$\texttt{MsgBox(\color{#48ee44}"hello!"}$)<br>$\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$ | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}MsgBox(\color{#48ee44}"hello!"}$)<br>$\texttt{\color{#fb7237}[/code]}$ |
 
 | Block quotes                                                 |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
