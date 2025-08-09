@@ -2,46 +2,46 @@
 
 [table]
 [tr][th] Basic syntax                                           [/th][th]                                 [/th][/tr]
-[tr][td] [color=#fca336]**[/color]Bold[color=#fca336]**[/color] [color=#fca336]__[/color]Bold[color=#fca336]__[/color]                              [/td][td] [­b]Bold[­/b]                     [/td][/tr]
-[tr][td] [color=#fca336]*[/color]Italic[color=#fca336]*[/color] [color=#fca336]_[/color]Italic[color=#fca336]_[/color]                                  [/td][td] [­i]Italic[­/i]                   [/td][/tr]
-[tr][td] [color=#fca336]~[/color]Strike[color=#fca336]~[/color] [color=#fca336]~~[/color]Strike[color=#fca336]~~[/color]                              [/td][td] [­strike]Strike[­/strike]         [/td][/tr]
-[tr][td] [color=#fca336]***[/color]Bold and italic[color=#fca336]***[/color] [color=#fca336]___[/color]Bold and italic[color=#fca336]___[/color] [/td][td] [­b][­i]Bold and italic[­/b][­/i]   [/td][/tr]
-[tr][td] [b][color=#fca336]`[/color][/b]Inline[b][color=#fca336]`[/color][/b]                                             [/td][td] [­c]Inline[­/c]                   [/td][/tr]
-[tr][td] [color=#fca336]#[/color] h1                                                  [/td][td] [­size=200]h1[­/size]             [/td][/tr]
-[tr][td] [color=#fca336]##[/color] h2                                                 [/td][td] [­size=180]h2[­/size]             [/td][/tr]
-[tr][td] [color=#fca336]###[/color] h3                                               [/td][td] [­size=150]h3[­/size]             [/td][/tr]
-[tr][td] [color=#fca336]####[/color] h4                                             [/td][td] [­size=125]h4[­/size]             [/td][/tr]
+[tr][td] [color=#fca336]**[/color]Bold[color=#fca336]**[/color] [color=#fca336]__[/color]Bold[color=#fca336]__[/color]                              [/td][td] [color=#fca336][­b][/color]Bold[color=#fca336][­/b][/color]                     [/td][/tr]
+[tr][td] [color=#fca336]*[/color]Italic[color=#fca336]*[/color] [color=#fca336]_[/color]Italic[color=#fca336]_[/color]                                  [/td][td] [color=#fca336][­i][/color]Italic[color=#fca336][­/i][/color]                   [/td][/tr]
+[tr][td] [color=#fca336]~[/color]Strike[color=#fca336]~[/color] [color=#fca336]~~[/color]Strike[color=#fca336]~~[/color]                              [/td][td] [color=#fca336][­strike][/color]Strike[color=#fca336][­/strike][/color]         [/td][/tr]
+[tr][td] [color=#fca336]***[/color]Bold and italic[color=#fca336]***[/color] [color=#fca336]___[/color]Bold and italic[color=#fca336]___[/color] [/td][td] [color=#fca336][­b][/color][color=#fca336][­i][/color]Bold and italic[color=#fca336][­/b][/color][color=#fca336][­/i][/color]   [/td][/tr]
+[tr][td] [b][color=#fca336]`[/color][/b]Inline[b][color=#fca336]`[/color][/b]                                             [/td][td] [color=#fca336][­c][/color]Inline[color=#fca336][­/c][/color]                   [/td][/tr]
+[tr][td] [color=#fca336]#[/color] h1                                                  [/td][td] [color=#fca336][­size=200][/color]h1[color=#fca336][­/size][/color]             [/td][/tr]
+[tr][td] [color=#fca336]##[/color] h2                                                 [/td][td] [color=#fca336][­size=180][/color]h2[color=#fca336][­/size][/color]             [/td][/tr]
+[tr][td] [color=#fca336]###[/color] h3                                               [/td][td] [color=#fca336][­size=150][/color]h3[color=#fca336][­/size][/color]             [/td][/tr]
+[tr][td] [color=#fca336]####[/color] h4                                             [/td][td] [color=#fca336][­size=125][/color]h4[color=#fca336][­/size][/color]             [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Links 
 (relative links is not supported)                       [/th][th]                             [/th][/tr]
-[tr][td] [­Short name](link)                           [/td][td] [­url=link]Short name[­/url]  [/td][/tr]
-[tr][td] ![­Image name](link)                          [/td][td] ![­url=link]Image name[­/url] [/td][/tr]
+[tr][td] [­Short name](link)                           [/td][td] [color=#fca336][­url=link][/color]Short name[color=#fca336][­/url][/color]  [/td][/tr]
+[tr][td] ![­Image name](link)                          [/td][td] [color=#fca336][­url=link][/color]Image name[color=#fca336][­/url][/color] [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Html tags                                              [/th][th]                                                          [/th][/tr]
-[tr][td] [color=#0d529d]<sub>[/color]Subscript[color=#0d529d]</sub>[/color]                               [/td][td] [­size=85]Subscript[­/size]                                [/td][/tr]
-[tr][td] [color=#0d529d]<ins>[/color]Underlined[color=#0d529d]</ins>[/color]                              [/td][td] [­u]Underlined[­/u]                                        [/td][/tr]
-[tr][td] [color=#0d529d]<details>[/color] Text that should be hidden [color=#0d529d]</details>[/color]                              [/td][td] [­spoiler]
+[tr][td] [color=#0d529d]<sub>[/color]Subscript[color=#0d529d]</sub>[/color]                               [/td][td] [color=#fca336][­size=85][/color]Subscript[color=#fca336][­/size][/color]                                [/td][/tr]
+[tr][td] [color=#0d529d]<ins>[/color]Underlined[color=#0d529d]</ins>[/color]                              [/td][td] [color=#fca336][­u][/color]Underlined[color=#fca336][­/u][/color]                                        [/td][/tr]
+[tr][td] [color=#0d529d]<details>[/color] Text that should be hidden [color=#0d529d]</details>[/color]                              [/td][td] [color=#fca336][­spoiler][/color]
 Text that should be hidden
-[­/spoiler]                         [/td][/tr]
+[color=#fca336][­/spoiler][/color]                         [/td][/tr]
 [tr][td] [color=#0d529d]<details>[/color]
 [color=#0d889d]<summary>[/color]Examples[color=#0d889d]</summary>[/color]
 Hidden example
-[color=#0d529d]</details>[/color] [/td][td] [­spoiler2=Examples]
+[color=#0d529d]</details>[/color] [/td][td] [color=#fca336][­spoiler2=Examples][/color]
 Hidden example
-[­/spoiler] [/td][/tr]
-[tr][td] [color=#0d529d]<unknown>[/color] Simple text [color=#0d529d]</unknown>[/color]                              [/td][td] [­size=110]unknown[­/size]
+[color=#fca336][­/spoiler][/color] [/td][/tr]
+[tr][td] [color=#0d529d]<unknown>[/color] Simple text [color=#0d529d]</unknown>[/color]                              [/td][td] [color=#fca336][­size=110][/color]unknown[color=#fca336][­/size][/color]
 Simple text                                 [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Spoilers and comments                                                  [/th][th]                                                         [/th][/tr]
-[tr][td] [color=#5e5e5e]<!-- spoiler -->[/color] Text that should be hidden [color=#5e5e5e]<!-- /spoiler -->[/color]        [/td][td] [­spoiler]
+[tr][td] [color=#5e5e5e]<!-- spoiler -->[/color] Text that should be hidden [color=#5e5e5e]<!-- /spoiler -->[/color]        [/td][td] [color=#fca336][­spoiler][/color]
 Text that should be hidden
-[­/spoiler] [/td][/tr]
+[color=#fca336][­/spoiler][/color] [/td][/tr]
 [tr][td] [color=#5e5e5e]<!-- alternate -->[/color] Text that mustn't be converted  [color=#5e5e5e]<!-- /alternate -->[/color] [/td][td] Text that mustn't be converted                          [/td][/tr]
 [tr][td] [color=#5e5e5e]<!--[color=#5e5e5e] Text that should be removed [color=#5e5e5e]-->[/color]                                  [/td][td]                                                         [/td][/tr]
 [/table]
@@ -70,14 +70,14 @@ To reduce the demonsration, some tags are on the same line as the text.
 [tr][th] Code                                 [/th][th]                                         [/th][/tr]
 [tr][td] [color=#fca336]```py[/color]
 print([color=#5bca53]"hello!"[/color])
-[color=#fca336]```[/color] [/td][td] [­code]
+[color=#fca336]```[/color] [/td][td] [color=#fca336][­code][/color]
 print([color=#5bca53]"hello!"[/color])
-[­/code]  [/td][/tr]
+[color=#fca336][­/code][/color]  [/td][/tr]
 [tr][td] [color=#fca336]```[/color]
 MsgBox([color=#5bca53]"hello!"[/color])
-[color=#fca336]```[/color]  [/td][td] [­code]
+[color=#fca336]```[/color]  [/td][td] [color=#fca336][­code][/color]
 MsgBox([color=#5bca53]"hello!"[/color])
-[­/code] [/td][/tr]
+[color=#fca336][­/code][/color] [/td][/tr]
 [/table]
 
 [table]
@@ -89,7 +89,7 @@ MsgBox([color=#5bca53]"hello!"[/color])
 [color=#48a5d7][­/quote][/color] [/td][/tr]
 [tr][td][color=#48a5d7] > [/color][color=#fca336][­!NOTE]  [­!Tip] [­!warning] [­!cAuTiOn][/color] 
 [color=#48a5d7]> [/color]But this is alert [/td][td] [color=#48a5d7][­quote][/color]
- [­b]NOTE[­/b]  [­b]Tip[­/b] [­b]warning[­/b] [­b]cAuTiOn[­/b]
+ [color=#fca336][­b]NOTE[­/b]  [­b]Tip[­/b] [­b]warning[­/b] [­b]cAuTiOn[­/b][/color]
  But this is alert
 [color=#48a5d7][­/quote][/color] [/td][/tr]
 [tr][td][color=#48a5d7] > [/color]Quotes can contain
@@ -128,8 +128,8 @@ without spaces between prefix and word
 [color=#006868][­*][/color] item1
 [color=#006868][­*][/color] item2
 [color=#11975a][­/list][/color][color=#11975a][­/list][/color]
-[­size=85]tags[­/size],
-[­i]basic syntax[­/i]
+[color=#fca336][­size=110][/color]tags[color=#fca336][­/size][/color],
+[color=#fca336][­i][/color]basic syntax[color=#fca336][­/i][/color]
 and many more…
 [color=#48a5d7][­/quote][/color] [/td][/tr]
 [tr][td][color=#48a5d7] > [/color][color=#006868]1.[/color] Lists can have an infinite level of nesting 
@@ -247,11 +247,11 @@ Lists can be mixed
 [color=#11975a][­list][/color]
 [color=#006868][­*][/color] Or increase the nesting level.
 [color=#11975a][­/list][/color][color=#11975a][­/list][/color] [/td][/tr]
-[tr][td] [color=#006868]-[/color] List can capture additional text elements, as well as quotes, spoilers, **all supported syntax**.
+[tr][td] [color=#006868]-[/color] List can capture additional text elements, as well as quotes, spoilers, [color=#fca336]**[/color]all supported syntax[color=#fca336]**[/color].
 [color=#006868]-[/color] Add a tab or space before the item to add it to the list.
 [color=#48a5d7] > [/color]This quote belongs to the 1st item.
 [color=#48a5d7]> [/color]This quote does not belong to the list. [/td][td] [color=#11975a][­list][/color]
-[color=#006868][­*][/color] List can capture additional text elements, as well as quotes, spoilers, [­b]all supported syntax[­/b]
+[color=#006868][­*][/color] List can capture additional text elements, as well as quotes, spoilers, [color=#fca336][­b][/color]all supported syntax[color=#fca336][­/b][/color]
 [color=#006868][­*][/color] Add a tab or space before the item to add it to the list.
 [color=#48a5d7][­quote][/color] This quote belongs to the 1st item [color=#48a5d7][­/quote][/color]
 [color=#11975a][­/list][/color]
@@ -300,20 +300,20 @@ You can specify the repository in the converter settings. All issues and commits
 [table]
 [tr][th] Mentions and images 
 (relative links is not supported)  [/th][th]                                                              [/th][/tr]
-[tr][td] [color=#86acf4]@[/color]JoyHak                                                      [/td][td] [­url=https://github.com/JoyHak][color=#86acf4]@[/color]JoyHak[­/url]                 [/td][/tr]
-[tr][td] [color=#86acf4]![[/color]­Image name[color=#86acf4]]([/color]https://myoctocat.com/assets/images/base-octocat.svg[color=#86acf4])[/color] [/td][td] [­url]https://myoctocat.com/assets/images/base-octocat.svg[­/url] [/td][/tr]
+[tr][td] [color=#86acf4]@[/color]JoyHak                                                      [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak[color=#fca336]][/color][color=#86acf4]@[/color]JoyHak[color=#fca336][­/url][/color]                 [/td][/tr]
+[tr][td] [color=#86acf4]![[/color]­Image name[color=#86acf4]]([/color]https://myoctocat.com/assets/images/base-octocat.svg[color=#86acf4])[/color] [/td][td] [color=#fca336][­url][/color]https://myoctocat.com/assets/images/base-octocat.svg[color=#fca336][­/url][/color] [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Issues (PRs is not supported) [/th][th]                                                              [/th][/tr]
-[tr][td] [color=#86acf4]#[/color][color=#5961e6]64[/color]                           [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64][color=#86acf4]#[/color][color=#5961e6]64[/color][­/url] [/td][/tr]
-[tr][td] GH-64                         [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64]GH[color=#86acf4]-[/color][color=#5961e6]64[/color][­/url] [/td][/tr]
-[tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch#64         [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64]JoyHak/QuickSwitch[color=#86acf4]#[/color][color=#5961e6]64[/color][­/url] [/td][/tr]
-[tr][td] AutoHotkey[color=#86acf4]/[/color]AutoHotkeyDocs#744 [/td][td] [­url=https://github.com/AutoHotkey/AutoHotkeyDocs/issues/744]AutoHotkey/AutoHotkeyDocs[color=#86acf4]#[/color][color=#5961e6]744[/color][­/url] [/td][/tr]
+[tr][td] [color=#86acf4]#[/color][color=#5961e6]64[/color]                           [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/issues/64[color=#fca336]][/color][color=#86acf4]#[/color][color=#5961e6]64[/color][color=#fca336][­/url][/color] [/td][/tr]
+[tr][td] GH-64                         [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/issues/64[color=#fca336]][/color]GH[color=#86acf4]-[/color][color=#5961e6]64[/color][color=#fca336][­/url][/color] [/td][/tr]
+[tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch#64         [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/issues/64[color=#fca336]][/color]JoyHak/QuickSwitch[color=#86acf4]#[/color][color=#5961e6]64[/color][color=#fca336][­/url][/color] [/td][/tr]
+[tr][td] AutoHotkey[color=#86acf4]/[/color]AutoHotkeyDocs#744 [/td][td] [color=#fca336][­url=[/color]https://github.com/AutoHotkey/AutoHotkeyDocs/issues/744[color=#fca336]][/color]AutoHotkey/AutoHotkeyDocs[color=#86acf4]#[/color][color=#5961e6]744[/color][color=#fca336][­/url][/color] [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Commits                                                      [/th][th]      [/th][/tr]
-[tr][td] 896111015666c8fa7a8b390232a52e79356319c4                     [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4][color=#5961e6]8961110[/color][­/url]     [/td][/tr]
-[tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch[color=#86acf4]@[/color]896111015666c8fa7a8b390232a52e79356319c4  [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4]JoyHak/QuickSwitch[color=#86acf4]@[/color][color=#5961e6]8961110[/color][­/url]     [/td][/tr]
+[tr][td] 896111015666c8fa7a8b390232a52e79356319c4                     [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4[color=#fca336]][/color][color=#5961e6]8961110[/color][color=#fca336][­/url][/color]     [/td][/tr]
+[tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch[color=#86acf4]@[/color]896111015666c8fa7a8b390232a52e79356319c4  [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4[color=#fca336]][/color]JoyHak/QuickSwitch[color=#86acf4]@[/color][color=#5961e6]8961110[/color][color=#fca336][­/url][/color]     [/td][/tr]
 [/table]
