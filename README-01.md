@@ -78,17 +78,17 @@ You can specify the repository in the converter settings. All issues and commits
 
 | Mentions and images <br />(relative links is not supported)  |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| @JoyHak                                                      | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
-| ![Image name]\(https://myoctocat.com/assets/images/base-octocat.svg) | $\texttt{\color{#fb7237}[url]}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#fb7237}[/url]}$ |
+| $\texttt{\color{#7ab3dc}@\color{White}JoyHak}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
+| $\texttt{\color{#7ab3dc}![\color{White}Image name\color{#7ab3dc}]\(}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#7ab3dc}\)}$ | $\texttt{\color{#fb7237}[url]}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#fb7237}[/url]}$ |
 
 | Issues (PRs is not supported) |                                                              |
 | :---------------------------- | :----------------------------------------------------------- |
-| #64                           | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
-| GH-64                         | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}GH-\color{#7a80dc}64\color{#fb7237}[/url]}$ |
-| JoyHak/QuickSwitch#64         | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
-| AutoHotkey/AutoHotkeyDocs#744 | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/AutoHotkey/AutoHotkeyDocs/issues/744 $\texttt{\color{#fb7237}]\color{White}AutoHotkey\color{#7ab3dc}/\color{White}AutoHotkeyDocs\color{#7ab3dc}\\#\color{#7a80dc}744\color{#fb7237}[/url]}$ |
+| $\texttt{\color{#7ab3dc}\\#\color{#7a80dc}64}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
+| $\texttt{\color{White}GH-\color{#7a80dc}64}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}GH-\color{#7a80dc}64\color{#fb7237}[/url]}$ |
+| $\texttt{\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}\\#\color{#7a80dc}64}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
+| $\texttt{\color{White}AutoHotkey\color{#7ab3dc}/\color{White}AutoHotkeyDocs\color{#7ab3dc}\\#\color{#7a80dc}744}$ | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/AutoHotkey/AutoHotkeyDocs/issues/744 $\texttt{\color{#fb7237}]\color{White}AutoHotkey\color{#7ab3dc}/\color{White}AutoHotkeyDocs\color{#7ab3dc}\\#\color{#7a80dc}744\color{#fb7237}[/url]}$ |
 
 | Commits                                                     |                                                              |
 | :---------------------------------------------------------- | :----------------------------------------------------------- |
 | 896111015666c8fa7a8b390232a52e79356319c4                    | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4 $\texttt{\color{#fb7237}]\color{#7a80dc}8961110\color{#fb7237}[/url]}$ |
-| JoyHak/QuickSwitch@896111015666c8fa7a8b390232a52e79356319c4 | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4 $\texttt{\color{#fb7237}]\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}@\color{#7a80dc}8961110\color{#fb7237}[/url]}$ |
+| $\texttt{\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}@}$ 896111015666c8fa7a8b390232a52e79356319c4 | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4 $\texttt{\color{#fb7237}]\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}@\color{#7a80dc}8961110\color{#fb7237}[/url]}$ |
