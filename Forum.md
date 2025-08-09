@@ -2,15 +2,15 @@
 
 [table]
 [tr][th] Basic syntax                                           [/th][th]                                 [/th][/tr]
-[tr][td] **Bold** __Bold__                              [/td][td] [­b]Bold[­/b]                     [/td][/tr]
-[tr][td] *Italic* _Italic_                                  [/td][td] [­i]Italic[­/i]                   [/td][/tr]
-[tr][td] ~Strike~ ~~Strike~~                              [/td][td] [­strike]Strike[­/strike]         [/td][/tr]
-[tr][td] ***Bold and italic*** ___Bold and italic___ [/td][td] [­b][­i]Bold and italic[­/b][­/i]   [/td][/tr]
-[tr][td] `Inline`                                             [/td][td] [­c]Inline[­/c]                   [/td][/tr]
-[tr][td] # h1                                                  [/td][td] [­size=200]h1[­/size]             [/td][/tr]
-[tr][td] ## h2                                                 [/td][td] [­size=180]h2[­/size]             [/td][/tr]
-[tr][td] ### h3                                               [/td][td] [­size=150]h3[­/size]             [/td][/tr]
-[tr][td] #### h4                                             [/td][td] [­size=125]h4[­/size]             [/td][/tr]
+[tr][td] [color=#fca336]**[/color]Bold[color=#fca336]**[/color] [color=#fca336]__[/color]Bold[color=#fca336]__[/color]                              [/td][td] [­b]Bold[­/b]                     [/td][/tr]
+[tr][td] [color=#fca336]*[/color]Italic[color=#fca336]*[/color] [color=#fca336]_[/color]Italic[color=#fca336]_[/color]                                  [/td][td] [­i]Italic[­/i]                   [/td][/tr]
+[tr][td] [color=#fca336]~[/color]Strike[color=#fca336]~[/color] [color=#fca336]~~[/color]Strike[color=#fca336]~~[/color]                              [/td][td] [­strike]Strike[­/strike]         [/td][/tr]
+[tr][td] [color=#fca336]***[/color]Bold and italic[color=#fca336]***[/color] [color=#fca336]___[/color]Bold and italic[color=#fca336]___[/color] [/td][td] [­b][­i]Bold and italic[­/b][­/i]   [/td][/tr]
+[tr][td] [b][color=#fca336]`[/color][/b]Inline[b][color=#fca336]`[/color][/b]                                             [/td][td] [­c]Inline[­/c]                   [/td][/tr]
+[tr][td] [color=#fca336]#[/color] h1                                                  [/td][td] [­size=200]h1[­/size]             [/td][/tr]
+[tr][td] [color=#fca336]##[/color] h2                                                 [/td][td] [­size=180]h2[­/size]             [/td][/tr]
+[tr][td] [color=#fca336]###[/color] h3                                               [/td][td] [­size=150]h3[­/size]             [/td][/tr]
+[tr][td] [color=#fca336]####[/color] h4                                             [/td][td] [­size=125]h4[­/size]             [/td][/tr]
 [/table]
 
 [table]
@@ -24,8 +24,11 @@
 [tr][th] Html tags                                              [/th][th]                                                          [/th][/tr]
 [tr][td] <sub>Subscript</sub>                               [/td][td] [­size=85]Subscript[­/size]                                [/td][/tr]
 [tr][td] <ins>Underlined</ins>                              [/td][td] [­u]Underlined[­/u]                                        [/td][/tr]
-[tr][td] <details><summary>Examples</summary></details> [/td][td] [­spoiler]
-[­size=110]Examples[­/size]
+[tr][td] <details>
+<summary>Examples</summary>
+Hidden example
+</details> [/td][td] [­spoiler2=Examples]
+Hidden example
 [­/spoiler] [/td][/tr]
 [tr][td] <details> … </details>                              [/td][td] [­spoiler]
 …
