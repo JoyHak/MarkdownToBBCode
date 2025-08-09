@@ -22,42 +22,40 @@
 
 [table]
 [tr][th] Html tags                                              [/th][th]                                                          [/th][/tr]
-[tr][td] <sub>Subscript</sub>                               [/td][td] [­size=85]Subscript[­/size]                                [/td][/tr]
-[tr][td] <ins>Underlined</ins>                              [/td][td] [­u]Underlined[­/u]                                        [/td][/tr]
-[tr][td] <details>
-<summary>Examples</summary>
+[tr][td] [color=#0d529d]<sub>[/color]Subscript[color=#0d529d]</sub>[/color]                               [/td][td] [­size=85]Subscript[­/size]                                [/td][/tr]
+[tr][td] [color=#0d529d]<ins>[/color]Underlined[color=#0d529d]</ins>[/color]                              [/td][td] [­u]Underlined[­/u]                                        [/td][/tr]
+[tr][td] [color=#0d529d]<details>[/color] Text that should be hidden [color=#0d529d]</details>[/color]                              [/td][td] [­spoiler]
+Text that should be hidden
+[­/spoiler]                         [/td][/tr]
+[tr][td] [color=#0d529d]<details>[/color]
+[color=#0d889d]<summary>[/color]Examples[color=#0d889d]</summary>[/color]
 Hidden example
-</details> [/td][td] [­spoiler2=Examples]
+[color=#0d529d]</details>[/color] [/td][td] [­spoiler2=Examples]
 Hidden example
 [­/spoiler] [/td][/tr]
-[tr][td] <details> … </details>                              [/td][td] [­spoiler]
-…
-[­/spoiler]                         [/td][/tr]
-[tr][td] <unknown> … </unknown>                              [/td][td] [­size=110]unknown[­/size]                                 [/td][/tr]
+[tr][td] [color=#0d529d]<unknown>[/color] Simple text [color=#0d529d]</unknown>[/color]                              [/td][td] [­size=110]unknown[­/size]
+Simple text                                 [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Spoilers and comments                                                  [/th][th]                                                         [/th][/tr]
-[tr][td] <!-- spoiler --> Text that should be hidden <!-- /spoiler -->        [/td][td] [­spoiler]
+[tr][td] [color=#5e5e5e]<!-- spoiler -->[/color] Text that should be hidden [color=#5e5e5e]<!-- /spoiler -->[/color]        [/td][td] [­spoiler]
 Text that should be hidden
 [­/spoiler] [/td][/tr]
-[tr][td] <!-- alternate --> Text that mustn't be converted  <!-- /alternate --> [/td][td] Text that mustn't be converted                          [/td][/tr]
-[tr][td] <!-- Text that should be removed -->                                  [/td][td]                                                         [/td][/tr]
-[tr][td] <details> Text that should be hidden </details>                     [/td][td] [­spoiler]
-Text that should be hidden
-[­/spoiler] [/td][/tr]
+[tr][td] [color=#5e5e5e]<!-- alternate -->[/color] Text that mustn't be converted  [color=#5e5e5e]<!-- /alternate -->[/color] [/td][td] Text that mustn't be converted                          [/td][/tr]
+[tr][td] [color=#5e5e5e]<!--[color=#5e5e5e] Text that should be removed [color=#5e5e5e]-->[/color]                                  [/td][td]                                                         [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Line breaks                                [/th][th]                                              [/th][/tr]
-[tr][td] <br>  </br>  <br/> [/td][td] 
+[tr][td] [color=#0d529d]<br>  </br>  <br/>[/color] [/td][td] 
 
 [/td][/tr]
-[tr][td] Line with trailing slash\
+[tr][td] Line with trailing slash[color=#0d529d]\[/color]
 New line   [/td][td] Line with trailing slash
 
 New line   [/td][/tr]
-[tr][td] Line with 2 trailing spaces    
+[tr][td] Line with 2 trailing spaces  
 NewLine [/td][td] Line with 2 trailing spaces
 
 NewLine [/td][/tr]
@@ -120,9 +118,9 @@ without spaces between prefix and word
 [color=#48a5d7]> [/color][color=#006868]1. [/color]Ordered lists 
 [color=#48a5d7]> [/color][color=#006868]1. [/color]item1
 [color=#48a5d7]> [/color][color=#006868]2. [/color]item2
-[color=#48a5d7]> [/color]<sub>tags</sub>, 
-[color=#48a5d7]> [/color]<!-- comments -->, 
-[color=#48a5d7]> [/color]*basic syntax* 
+[color=#48a5d7]> [/color][color=#0d529d]<sub>[/color]tags[color=#0d529d]</sub>[/color], 
+[color=#48a5d7]> [/color][color=#5e5e5e]<!--[/color] comments [color=#5e5e5e]-->[/color], 
+[color=#48a5d7]> [/color][color=#fca336]*[/color]basic syntax[color=#fca336]*[/color] 
 [color=#48a5d7]> [/color]and many more… [/td][td] [color=#48a5d7][­quote][/color]
  As well as:
 [color=#11975a][­list=1][/color][color=#006868][­*][/color] Ordered lists 
