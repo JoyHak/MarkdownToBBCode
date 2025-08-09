@@ -68,15 +68,15 @@ To reduce the demonsration, some tags are on the same line as the text.
 
 [table]
 [tr][th] Code                                 [/th][th]                                         [/th][/tr]
-[tr][td] ```py
-print("hello!")
-``` [/td][td] [­code]
-print("hello!")
+[tr][td] [color=#fca336]```py[/color]
+print([color=#5bca53]"hello!"[/color])
+[color=#fca336]```[/color] [/td][td] [­code]
+print([color=#5bca53]"hello!"[/color])
 [­/code]  [/td][/tr]
-[tr][td] ```
-MsgBox("hello!")
-```  [/td][td] [­code]
-MsgBox("hello!")
+[tr][td] [color=#fca336]```[/color]
+MsgBox([color=#5bca53]"hello!"[/color])
+[color=#fca336]```[/color]  [/td][td] [­code]
+MsgBox([color=#5bca53]"hello!"[/color])
 [­/code] [/td][/tr]
 [/table]
 
@@ -87,7 +87,7 @@ MsgBox("hello!")
  A quote looks like a block
  of text
 [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td][color=#48a5d7] > [/color][­!NOTE]  [­!Tip] [­!warning] [­!cAuTiOn] 
+[tr][td][color=#48a5d7] > [/color][color=#fca336][­!NOTE]  [­!Tip] [­!warning] [­!cAuTiOn][/color] 
 [color=#48a5d7]> [/color]But this is alert [/td][td] [color=#48a5d7][­quote][/color]
  [­b]NOTE[­/b]  [­b]Tip[­/b] [­b]warning[­/b] [­b]cAuTiOn[­/b]
  But this is alert
@@ -287,7 +287,7 @@ dont' add space before the item / quote;
 [color=#48a5d7][­quote][/color] No spaces: this quote does not belong to the list. [color=#48a5d7][­/quote][/color]
 
 [color=#48a5d7][­quote][/color] Another line: this quote does not belong to the list. [color=#48a5d7][­/quote][/color] [/td][/tr]
-[tr][td] [color=#006868]-[/color] Use line break characters\ <br>  </br>  <br/>
+[tr][td] [color=#006868]-[/color] Use line break characters[color=#0d529d]\  <br>  </br>  <br/>[/color]>
 [color=#48a5d7]> [/color]This quote does not belong to the list. [/td][td] [color=#11975a][­list][/color][color=#006868][­*][/color] Use line break characters [color=#11975a][­/list][/color]
 
 [color=#48a5d7][­quote][/color] This quote does not belong to the list. [color=#48a5d7][­/quote][/color] [/td][/tr]
@@ -300,20 +300,20 @@ You can specify the repository in the converter settings. All issues and commits
 [table]
 [tr][th] Mentions and images 
 (relative links is not supported)  [/th][th]                                                              [/th][/tr]
-[tr][td] @JoyHak                                                      [/td][td] [­url=https://github.com/JoyHak]@JoyHak[­/url]                 [/td][/tr]
-[tr][td] ![­Image name](https://myoctocat.com/assets/images/base-octocat.svg) [/td][td] [­url]https://myoctocat.com/assets/images/base-octocat.svg[­/url] [/td][/tr]
+[tr][td] [color=#86acf4]@[/color]JoyHak                                                      [/td][td] [­url=https://github.com/JoyHak][color=#86acf4]@[/color]JoyHak[­/url]                 [/td][/tr]
+[tr][td] [color=#86acf4]![[/color]­Image name[color=#86acf4]]([/color]https://myoctocat.com/assets/images/base-octocat.svg[color=#86acf4])[/color] [/td][td] [­url]https://myoctocat.com/assets/images/base-octocat.svg[­/url] [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Issues (PRs is not supported) [/th][th]                                                              [/th][/tr]
-[tr][td] #64                           [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64]#64[­/url] [/td][/tr]
-[tr][td] GH-64                         [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64]GH-64[­/url] [/td][/tr]
-[tr][td] JoyHak/QuickSwitch#64         [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64]JoyHak/QuickSwitch#64[­/url] [/td][/tr]
-[tr][td] AutoHotkey/AutoHotkeyDocs#744 [/td][td] [­url=https://github.com/AutoHotkey/AutoHotkeyDocs/issues/744]AutoHotkey/AutoHotkeyDocs#744[­/url] [/td][/tr]
+[tr][td] [color=#86acf4]#[/color][color=#5961e6]64[/color]                           [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64][color=#86acf4]#[/color][color=#5961e6]64[/color][­/url] [/td][/tr]
+[tr][td] GH-64                         [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64]GH[color=#86acf4]-[/color][color=#5961e6]64[/color][­/url] [/td][/tr]
+[tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch#64         [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/issues/64]JoyHak/QuickSwitch[color=#86acf4]#[/color][color=#5961e6]64[/color][­/url] [/td][/tr]
+[tr][td] AutoHotkey[color=#86acf4]/[/color]AutoHotkeyDocs#744 [/td][td] [­url=https://github.com/AutoHotkey/AutoHotkeyDocs/issues/744]AutoHotkey/AutoHotkeyDocs[color=#86acf4]#[/color][color=#5961e6]744[/color][­/url] [/td][/tr]
 [/table]
 
 [table]
 [tr][th] Commits                                                      [/th][th]      [/th][/tr]
-[tr][td] 896111015666c8fa7a8b390232a52e79356319c4                     [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4]8961110[­/url]     [/td][/tr]
-[tr][td] JoyHak/QuickSwitch@896111015666c8fa7a8b390232a52e79356319c4  [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4]JoyHak/QuickSwitch@8961110[­/url]     [/td][/tr]
+[tr][td] 896111015666c8fa7a8b390232a52e79356319c4                     [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4][color=#5961e6]8961110[/color][­/url]     [/td][/tr]
+[tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch[color=#86acf4]@[/color]896111015666c8fa7a8b390232a52e79356319c4  [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4]JoyHak/QuickSwitch[color=#86acf4]@[/color][color=#5961e6]8961110[/color][­/url]     [/td][/tr]
 [/table]
