@@ -50,11 +50,11 @@ Text that should be hidden
 [tr][td] <br>  </br>  <br/> [/td][td] 
 
 [/td][/tr]
-[tr][td] Line with trailing slash 
+[tr][td] Line with trailing slash\
 New line   [/td][td] Line with trailing slash
 
 New line   [/td][/tr]
-[tr][td] Line with 2 trailing spaces  
+[tr][td] Line with 2 trailing spaces    
 NewLine [/td][td] Line with 2 trailing spaces
 
 NewLine [/td][/tr]
@@ -279,7 +279,8 @@ Lists can be mixed
 
 [­*] Item4
 [­/list][­/list][­/list] [/td][/tr]
-[tr][td] - To separate any item / quote / other from the list (or start a new list), dont' add space before the item / quote;
+[tr][td] - To separate any item / quote / other from the list (or start a new list), 
+dont' add space before the item / quote;
 - or leave one or more blank lines between the item and the list.
 > No spaces: this quote does not belong to the list.
 
@@ -317,6 +318,6 @@ You can specify the repository in the converter settings. All issues and commits
 
 [table]
 [tr][th] Commits                                                      [/th][th]      [/th][/tr]
-[tr][td] 896111015666c8fa7a8b390232a52e79356319c4                     [/td][td] [url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4]8961110[/url]     [/td][/tr]
-[tr][td] JoyHak/QuickSwitch@896111015666c8fa7a8b390232a52e79356319c4  [/td][td] [url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4]JoyHak/QuickSwitch@8961110[/url]     [/td][/tr]
+[tr][td] 896111015666c8fa7a8b390232a52e79356319c4                     [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4]8961110[­/url]     [/td][/tr]
+[tr][td] JoyHak/QuickSwitch@896111015666c8fa7a8b390232a52e79356319c4  [/td][td] [­url=https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4]JoyHak/QuickSwitch@8961110[­/url]     [/td][/tr]
 [/table]
