@@ -11,8 +11,8 @@ Spaces are optional.
 | \~Strike\~ \~\~Strike\~\~                              | [strike]Strike[/strike]         |
 | \*\*\*Bold and italic\*\*\* \_\__Bold and italic\_\_\_ | \[b][i]Bold and italic\[/b][/i] |
 | \`Inline\`                                             | [c]Inline[/c]                   |
-| \# h1                                                  | [size=220]h1[/size]             |
-| \## h2                                                 | [size=200]h2[/size]             |
+| \# h1                                                  | [size=200]h1[/size]             |
+| \## h2                                                 | [size=180]h2[/size]             |
 | \#\## h3                                               | [size=150]h3[/size]             |
 | \#\#\## h4                                             | [size=125]h4[/size]             |
 
@@ -62,7 +62,7 @@ To reduce the demonsration, some tags are on the same line as the text.
 | > As well as:<br />>  1. Ordered lists <br/>>     1. item1<br />>     2. item2<br />> \<sub>tags\</sub>, <br />> \<!-- comments -->, <br />> \*basic syntax\* <br />> and many more… | [quote]<br/> As well as:<br/>\[list=1][\*] Ordered lists <br/>[list=1]<br/>[\*] item1<br/>[\*] item2<br/>\[/list]\[/list]<br/>[size=85]tags[/size],<br/>[i]basic syntax[/i]<br/>and many more…<br/>[/quote] |
 | >  1. Lists can have an infinite level of nesting <br/>>     1. item1<br />>          2. item2<br />>               3. item3<br />>  - And unordered lists can be nested too!   <br />>       - Item<br /> >               - deep item | \[quote]<br/>\[list=1]<br/>[*] Lists can have an infinite level of nesting <br/>\[list=1][\*] item1<br/>\[list=1][\*] item2<br/>\[list=1][\*] item3<br/>\[/list]\[/list]\[/list]\[/list]<br/><br/>[list]<br/>[\*] And unordered lists can be nested too!<br/>\[list][\*] Item<br/>\[list][\*] deep item<br/>\[/list]\[/list]\[/list]<br/><br/>Lists can be mixed<br/>\[list=1][\*] item1<br/>\[list][\*] item2<br/>\[list=1][\*] item3<br/>\[/list]\[/list]\[/list]<br/>\[/quote] |
 | >  Lists can be mixed <br />>  1. item1<br />>     - item2<br />>          3. item3<br /> | [quote]<br/>  Lists can be mixed<br/>\[list=1][\*] item1<br/>\[list][\*] item2<br/>\[list=1][\*] item3<br/>\[/list]\[/list]\[/list]<br/>[/quote] |
-| > - As you might guess,<br/>> - all of this applies to:<br/>>     1. lists in quotes.<br/>>     2. lists outside quotes.<br/>>     3. lists with different levels of nesting.<br/>> - As well as applied to ordered/unordered lists transitions. | [quote]<br/>[list]<br/>[\*] As you might guess,<br/>[\*] all of this applies to:<br/>[list=1]<br/>[\*] lists in quotes.<br/>[\*] lists outside quotes.<br/>[\*] lists with different levels of nesting.<br/>[/list]<br/>[\*] As well as applied to ordered/unordered lists transitions.<br/>[/list]<br/>[/quote] |
+| > - As you might guess,<br/>> - all of this applies to:<br/>>     1. lists in quotes.<br/>>     2. lists outside quotes.<br/>>     3. lists with different levels of nesting.<br/>> - As well as applied to ordered/unordered lists mixing. | [quote]<br/>[list]<br/>[\*] As you might guess,<br/>[\*] all of this applies to:<br/>[list=1]<br/>[\*] lists in quotes.<br/>[\*] lists outside quotes.<br/>[\*] lists with different levels of nesting.<br/>[/list]<br/>[\*] As well as applied to ordered/unordered lists mixing.<br/>[/list]<br/>[/quote] |
 
 | Lists                                                        |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
