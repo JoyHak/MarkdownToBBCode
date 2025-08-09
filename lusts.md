@@ -1,54 +1,3 @@
-## Markdown
-
-| Basic syntax                                           |                                 |
-| :----------------------------------------------------- | :------------------------------ |
-| \*\*Bold\*\* \_\_Bold\_\_                              | $\texttt{\color{#fb7237}[b]\color{White}Bold\color{#fb7237}[/b]}$ |
-| \*Italic\* \_Italic\_                                  | $\texttt{\color{#fb7237}[i]\color{White}Italic\color{#fb7237}[/i]}$ |
-| \~Strike\~ \~\~Strike\~\~                              | $\texttt{\color{#fb7237}[strike]\color{White}Strike\color{#fb7237}[/strike]}$ |
-| \*\*\*Bold and italic\*\*\* \_\__Bold and italic\_\_\_ | $\texttt{\color{#fb7237}\[b]\color{White}[i]Bold and italic\[/b]\color{#fb7237}[/i]}$ |
-| \`Inline\`                                             | $\texttt{\color{#fb7237}[c]\color{White}Inline\color{#fb7237}[/c]}$ |
-| \# h1                                                  | $\texttt{\color{#fb7237}[size=220]\color{White}h1\color{#fb7237}[/size]}$ |
-| \## h2                                                 | $\texttt{\color{#fb7237}[size=200]\color{White}h2\color{#fb7237}[/size]}$ |
-| \#\## h3                                               | $\texttt{\color{#fb7237}[size=150]\color{White}h3\color{#fb7237}[/size]}$ |
-| \#\#\## h4                                             | $\texttt{\color{#fb7237}[size=125]\color{White}h4\color{#fb7237}[/size]}$ |
-
-| Links <br>(relative links is not supported) |                             |
-| :-------------------------------------------- | :-------------------------- |
-| [Short name]\(link)                           | $\texttt{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
-| ![Image name]\(link)                          | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
-
-| Html tags                                              |                                                          |
-| :----------------------------------------------------- | :------------------------------------------------------- |
-| \<sub\>Subscript\</sub\>                               | $\texttt{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
-| \<ins\>Underlined\</ins\>                              | $\texttt{\color{#fb7237}[u]\color{White}Underlined\color{#fb7237}[/u]}$ |
-| \<details\>\<summary\>Examples\</summary\>\</details\> | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{#fb7237}[size=110]Examples[/size]}$<br>$\texttt{\color{White}[/spoiler]}$ |
-| \<details\> … </details\>                              | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}…}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
-| \<unknown\> … </unknown\>                              | $\texttt{\color{#fb7237}[size=110]\color{White}unknown\color{#fb7237}[/size]}$ |
-
-| Spoilers and comments                                        |                                                         |
-| :----------------------------------------------------------- | :------------------------------------------------------ |
-| \<!-- spoiler --> Text that should be hidden \<!-- /spoiler --> | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
-| \<!-- alternate --> Text that mustn't be converted  \<!-- /alternate --> | Text that mustn't be converted                          |
-| \<!-- Text that should be removed -->                        |                                                         |
-| \<details\> Text that should be hidden </details\>           | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
-
-| Line breaks                                |                                              |
-| :----------------------------------------- | :------------------------------------------- |
-| \<br\>  </br\>  <br/\>                     | <br>                                       |
-| Line with trailing slash\ <br>New line   | Line with trailing slash<br><br>New line   |
-| Line with 2 trailing spaces  <br>NewLine | Line with 2 trailing spaces<br><br>NewLine |
-
-## Blocks
-
-The blocks below are converted into opening and closing BBcode tags, broken into several lines for readability *(otherwise everything will turn into a horrible mess)*. However, lines, spaces, and tabs between tags do not affect the final result.
-
-To reduce the demonsration, some tags are on the same line as the text.
-
-| Code                                 |                                         |
-| :----------------------------------- | :-------------------------------------- |
-| \```py<br>print("hello!")<br>``` | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}print("hello!")}$<br>$\texttt{\color{#fb7237}[/code]}$ |
-| \```<br>MsgBox("hello!")<br>```  | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}MsgBox("hello!")}$<br>$\texttt{\color{#fb7237}[/code]}$ |
-
 | Block quotes                                                 |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#48a5d7}>}$ A quote looks like a block<br> $\texttt{\color{#48a5d7}>}$ of text | $\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{White}A quote looks like a block}$<br>$\texttt{\color{White}of text}$<br>$\texttt{\color{#48a5d7}[/quote]}$ |
@@ -71,24 +20,3 @@ To reduce the demonsration, some tags are on the same line as the text.
 | $\texttt{\color{#006868} -}$ Quotes and other elements are belongs to previous item regardless of its nesting level.<br> $\texttt{\color{#006868} 1.}$ Item1 <br>	$\texttt{\hspace{1cm}\color{#006868} 2.}$ Item2 <br> $\texttt{\hspace{1cm}\color{#48a5d7}>}$ This quote belongs to item2. <br> $\texttt{\hspace{2cm}\color{#006868} 3.}$ Item3<br> $\texttt{\hspace{2cm}\color{#48a5d7}>}$ This quote belongs to item3.<br> $\texttt{\hspace{2cm}\color{#006868}4.}$ Item4 | $\texttt{\color{#11975a}\[list]}$<br>$\texttt{\color{#006868}[\*] }$ Quotes and other elements are belongs to previous item regardless of its nesting level. <br>$\texttt{\color{#11975a}\[/list]}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ Item1 <br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ Item2 <br>$\texttt{\color{#48a5d7}[quote]\color{White}This quote belongs to item2.\color{#48a5d7}[/quote]}$<br><br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ Item3 <br>$\texttt{\color{#48a5d7}[quote]\color{White}This quote belongs to item3.\color{#48a5d7}[/quote]}$<br><br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Item4 <br>$\texttt{\color{#11975a}\[/list]\[/list]\color{#11975a}[/list]}$ |
 | $\texttt{\color{#006868} -}$ To separate any item / quote / other from the list (or start a new list), dont' add space before the item / quote;<br> $\texttt{\color{#006868}-}$ or leave one or more blank lines between the item and the list.<br> $\texttt{\color{#48a5d7}>}$ No spaces: this quote does not belong to the list.<br><br> $\texttt{\color{#48a5d7}>}$ Another line: this quote does not belong to the list. | $\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ To separate any item / quote / other from the list (or start a new list), dont' add space before the item / quote; <br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ or leave one or more blank lines between the item and the list. <br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#48a5d7}[quote]\color{White}No spaces: this quote does not belong to the list.\color{#48a5d7}[/quote]}$<br><br>$\texttt{\color{#48a5d7}[quote]\color{White}Another line: this quote does not belong to the list.\color{#48a5d7}[/quote]}$ |
 | $\texttt{\color{#006868} -}$ Use line break characters $\texttt{\color{#0d529d}\\\\  \<\/br>   \<br\>}$ <br> $\texttt{\color{#48a5d7}>}$ This quote does not belong to the list. | $\texttt{\color{#11975a}\[list]\color{White}\color{#006868}[\*]\color{White} Use line break characters\color{#11975a}[/list]}$ <br><br>$\texttt{\color{#48a5d7}[quote]\color{White}This quote does not belong to the list.\color{#48a5d7}[/quote]}$ |
-
-## GitHub links and references
-
-You can specify the repository in the converter settings. All issues and commits in short form will be appended into the repository URL.
-
-| Mentions and images <br />(relative links is not supported)  |                                                              |
-| :----------------------------------------------------------- | :----------------------------------------------------------- |
-| @JoyHak                                                      | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
-| ![Image name]\(https://myoctocat.com/assets/images/base-octocat.svg) | $\texttt{\color{#fb7237}[url]}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#fb7237}[/url]}$ |
-
-| Issues (PRs is not supported) |                                                              |
-| :---------------------------- | :----------------------------------------------------------- |
-| #64                           | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
-| GH-64                         | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}GH-\color{#7a80dc}64\color{#fb7237}[/url]}$ |
-| JoyHak/QuickSwitch#64         | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/issues/64 $\texttt{\color{#fb7237}]\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}\\#\color{#7a80dc}64\color{#fb7237}[/url]}$ |
-| AutoHotkey/AutoHotkeyDocs#744 | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/AutoHotkey/AutoHotkeyDocs/issues/744 $\texttt{\color{#fb7237}]\color{White}AutoHotkey\color{#7ab3dc}/\color{White}AutoHotkeyDocs\color{#7ab3dc}\\#\color{#7a80dc}744\color{#fb7237}[/url]}$ |
-
-| Commits                                                     |                                                              |
-| :---------------------------------------------------------- | :----------------------------------------------------------- |
-| 896111015666c8fa7a8b390232a52e79356319c4                    | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4 $\texttt{\color{#fb7237}]\color{#7a80dc}8961110\color{#fb7237}[/url]}$ |
-| JoyHak/QuickSwitch@896111015666c8fa7a8b390232a52e79356319c4 | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4 $\texttt{\color{#fb7237}]\color{White}JoyHak\color{#7ab3dc}/\color{White}QuickSwitch\color{#7ab3dc}@\color{#7a80dc}8961110\color{#fb7237}[/url]}$ |
