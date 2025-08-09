@@ -21,20 +21,19 @@
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#0d529d}\<sub>\color{White}Subscript\color{#0d529d}\</sub>}$ | $\texttt{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
 | $\texttt{\color{#0d529d}\<ins>\color{White}Underlined\color{#0d529d}\</ins>}$ | $\texttt{\color{#fb7237}[u]\color{White}Underlined\color{#fb7237}[/u]}$ |
-| $\texttt{\color{#0d529d}\<details>\color{#0d539d}\<summary>\color{White}Examples\color{#0d539d}\</summary>\color{#0d529d}\</details>}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{#fb7237}[size=110]Examples[/size]}$<br>$\texttt{\color{White}[/spoiler]}$ |
-| $\texttt{\color{#0d529d}<details>\color{White} … \color{#0d529d}</details>}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}…}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
-| $\texttt{\color{#0d529d}<unknown>\color{White} … \color{#0d529d}</unknown>}$ | $\texttt{\color{#fb7237}[size=110]\color{White}unknown\color{#fb7237}[/size]}$ |
+| $\texttt{\color{#0d529d}\<details>\color{White} Text that should be hidden \color{#0d529d}\</details>}$ | $\texttt{\color{#0d529d}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#0d529d}[/spoiler]}$ |
+| $\texttt{\color{#0d529d}\<details>\color{#108c9a}}$<br>$\texttt{\color{#108c9a}\<summary>\color{White}Examples\color{#108c9a}\</summary>}$<br>$\texttt{\color{White}Hidden example}$<br>$\texttt{\color{#0d529d}\</details>}$ | $\texttt{\color{#0d529d}[spoiler2=Examples]}$<br>$\texttt{\color{White}Hidden example}$<br>$\texttt{\color{#0d529d}[/spoiler]}$ |
+| $\texttt{\color{#0d529d}\<unknown>\color{White}Simple text\color{#0d529d}\</unknown>}$ | $\texttt{\color{#fb7237}[size=110]\color{White}unknown\color{#fb7237}[/size]}$<br>Simple text |
 
 | Spoilers and comments                                        |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| $\texttt{\color{#5e5e5e}<!-- spoiler -->\color{White} Text that should be hidden \color{#5e5e5e}<!-- /spoiler -->}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
-| $\texttt{\color{#5e5e5e}<!-- alternate -->\color{White} Text that mustn't be converted  \color{#5e5e5e}<!-- /alternate -->}$ | Text that mustn't be converted                               |
-| $\texttt{\color{#5e5e5e}<!--\color{White} Text that should be removed \color{#5e5e5e}-->}$ |                                                              |
-| <details\> Text that should be hidden </details>             | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
+| $\texttt{\color{#5e5e5e}\<!-- spoiler -->\color{White} Text that should be hidden \color{#5e5e5e}\<!-- /spoiler -->}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
+| $\texttt{\color{#5e5e5e}\<!-- alternate -->\color{White} Text that mustn't be converted  \color{#5e5e5e}\<!-- /alternate -->}$ | Text that mustn't be converted                               |
+| $\texttt{\color{#5e5e5e}\<!--\color{White} Text that should be removed \color{#5e5e5e}\-->}$ |                                                              |
 
 | Line breaks                                    |                                            |
 | :--------------------------------------------- | :----------------------------------------- |
-| $\texttt{\color{#0d529d}<br>  </br>  <br/>  }$ | <br>                                       |
+| $\texttt{\color{#0d529d}\<br>  \</br>  \<br/>  }$ | <br>                                       |
 | Line with trailing slash\ <br>New line         | Line with trailing slash<br><br>New line   |
 | Line with 2 trailing spaces  <br>NewLine       | Line with 2 trailing spaces<br><br>NewLine |
 
