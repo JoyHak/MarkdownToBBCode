@@ -28,7 +28,7 @@ ParsePost() {
     u := ui.Submit(0)
     ui.LastPost := u.Post
     SaveRepository(u.Repository)
-    
+
     return Convert(u.Post, u.Repository)
 }
 
@@ -37,6 +37,6 @@ ParseFile() {
     u := ui.Submit(0)
     ui.LastPost := u.Post
     SaveRepository(u.Repository)
-    
+
     return OpenFile(u.Repository)
 }

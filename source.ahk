@@ -28,7 +28,7 @@ Convert(post, repo) {
 	post := RegExReplace(post, '`a)\R', '`n')
 	post := RegExReplace(post, '<\/?br[ \t]*\/?>', '`n')
 	post := RegExReplace(post, 'm)(\\| {2})$', '`n')
-    
+
     post := ParseUrls(post, repo)
 
     ; Hide individual blocks from the text and process them separately
@@ -49,7 +49,7 @@ Convert(post, repo) {
     post := ParseLists(post)
     post := ParseQuotes(post)
     post := ParseMarkdown(post)
-    
+
     blocks.RestoreAll(&post)
     return Trim(post, '`r`n `t')
 }
@@ -70,11 +70,11 @@ ParseHtml(block) {
 		['\s*<!--\s*/spoiler\s*-->\s*',     '`n[/spoiler]`n'],
 		['s)<!--(.+)-->',                   '']
     ]
-    
+
     for tag in htmlTags
 		block := RegexReplace(block, tag[1], tag[2])
 
-    return block    
+    return block
 }
 
 ParseMarkdown(block) {
@@ -91,45 +91,45 @@ ParseMarkdown(block) {
 		['m)^\s*###\s*(.+)',            '[size=150]$1[/size]'],
 		['m)^\s*##\s*(.+)',             '[size=180]$1[/size]'],
 		['m)^\s*#\s*(.+)',              '[size=200]$1[/size]'],
-        
+
 		; Characters
 		['&#9888;',                     ' :!: '],
         ['&sup1;',                      Chr(0xB9)],
 		['&sup2;',                      Chr(0xB2)],
 		['&sup3;',                      Chr(0xB3)]
 	]
-    
+
     for code in replacements
 		block := RegExReplace(block, code[1], code[2])
-        
-    return block    
+
+    return block
 }
 
 ParseUrls(block, repository) {
     context := unset
     static isUrl := '(?:http[s]?:\/\/.)(?:www\.)?[-a-zA-Z0-9@%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)'
     static urls  := 'sx) \[  [^\[\]]{2,}?  \]  \( [ \t]* (.+?) [ \t]* \)'
-    
+
     ; Convert each relative url to absolute
     for url, ctx in RegExMatchAll(&block, urls) {
 		context := ctx
-        
+
         if (url[1] ~= isUrl)
             ctx.Replacement := url[0]
-        else 
-            ctx.Replacement := StrReplace(url[0], url[1], repository '/' url[1])         
+        else
+            ctx.Replacement := StrReplace(url[0], url[1], repository '/' url[1])
     }
-    
+
     if IsSet(context)
-        block := context.Haystack 
-    
+        block := context.Haystack
+
     return block
 }
 
 ParseLists(block) {
 	context  := unset
 	static lists := 'mx`n) ( ^ [ \t]* ([-+*] | \d \.) [ \t]+ .+  (?: \R [ \t]+ .+)* \R?  )+'
-    
+
     ; Enclose each list with [list]...[/list]
     for list, ctx in RegExMatchAll(&block, lists) {
 		ctx.Replacement := ''
@@ -139,19 +139,19 @@ ParseLists(block) {
         isPrevOrdered := false
 
         ; Get all items and their indentation level
-        loop parse, list[0], '`n', '`r' { 
+        loop parse, list[0], '`n', '`r' {
             if A_LoopField ~= '^\s*(>|$)' {
                 ; Quote or empty line
                 ctx.Replacement .= A_LoopField '`n'
                 continue
             }
-            
+
             ; 1 tab will be 8 spaces, so tabs and spaces will be treated as different levels of indentation.
-            line     := StrReplace(A_LoopField, '`t', '        ')  
+            line     := StrReplace(A_LoopField, '`t', '        ')
             item     := LTrim(line)                  ; Prefix + item
-            minLevel := StrLen(line) - StrLen(item)  ; Indentation level           
+            minLevel := StrLen(line) - StrLen(item)  ; Indentation level
             isCurOrdered := (item ~= '^\d+')         ; Starts with digit?
-            
+
             ; Enclose sub-list depending on item indentaion
             if (minLevel > maxLevel) {
                 ; Open new list
@@ -168,17 +168,17 @@ ParseLists(block) {
                 ctx.Replacement .= '[/list]`n[list' (isCurOrdered ? '=1' : '') ']`n'
             }
             isPrevOrdered := isCurOrdered
-            
+
             ; Replace item prefix with [*]
             ctx.Replacement .= RegExReplace(item, '^([-+*]|\d+\.)', '[*]') . '`n'
         }
-        
+
         ; Close all opened lists
         ctx.Replacement := Trim(ctx.Replacement, ' `r`n')
         loop openLists
             ctx.Replacement .= '`n[/list]`n'
 	}
-    
+
     if IsSet(context)
         block := context.Haystack
 
@@ -195,11 +195,11 @@ ParseQuotes(block) {
 		context    := ctx
         maxLevel   := -1
         openQuotes := 0
-        
+
         ; Get all items prefixed by >
         loop parse, quote[0], '`n', '`r' {
             ; 1 tab will be 8 spaces, so tabs and spaces will be treated as different levels of indentation.
-            line     := StrReplace(A_LoopField, '`t', '        ') 
+            line     := StrReplace(A_LoopField, '`t', '        ')
             item     := RegExReplace(line, '^( *>)+')
             minLevel := StrLen(line) - StrLen(item)
 
@@ -214,18 +214,18 @@ ParseQuotes(block) {
                 ctx.Replacement .= '[/quote]`n'
                 maxLevel := minLevel
                 openQuotes--
-            }            
+            }
             ctx.Replacement .= item '`n'
         }
-        
+
         ; Close all opened quotes
         ctx.Replacement := Trim(ctx.Replacement, ' `r`n')
         loop openQuotes
             ctx.Replacement .= '`n[/quote]`n'
-        
+
         ctx.Replacement := ParseLists(ctx.Replacement)
 	}
-    
+
     if IsSet(context) {
         ; Replace quote blocks like [!NOTE] or [!WARNING] with bold text
         block := RegexReplace(context.Haystack, '\[!(\w+)\]', '[b]$1[/b]')
@@ -287,7 +287,7 @@ class MarkdownBlocks {
     RestoreAll(&haystack) {
         for block in this.Blocks {
             block.removeAt(3)  ; Remove overall match
-        
+
             haystack := StrReplace(
                 haystack,
                 block.removeAt(1),
@@ -317,10 +317,10 @@ SaveFile(post, path?) {
 }
 
 SaveRepository(repo) {
-    try {        
+    try {
         if !(repo := Trim(repo, ' `t\/'))
             return false
-            
+
         IniWrite(repo, 'Config.ini', 'General', 'LastRepository')
         return true
     } catch {
