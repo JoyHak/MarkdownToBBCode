@@ -4,6 +4,24 @@
 #ErrorStdOut
 #Warn All, StdOut
 
+A_Args.Repo  := lastRepo
+A_Args.Sep   := '`n'
+A_Args.Post  := ''
+A_Args.Save  := ''
+ParseCommandLine()
+
+saved     := SaveRepository(A_Args.Repo)
+converted := ParsePost(A_Args.Post)
+
+if converted {
+    if A_Args.Save
+        SaveFile(converted, A_Args.Save)
+    else
+        StdOut(converted)
+} else if saved {
+    StdOut('Repository has been saved')
+}
+
 
 ParseCommandLine() {
     while A_Args.length {
@@ -41,13 +59,6 @@ ParseCommandLine() {
     A_Args.Post := LTrim(A_Args.Post, '|')
 }
 
-ParseFile(path) {
-    post := ''
-    loop read, path
-        post .= A_Args.Sep . ParsePost(A_LoopReadLine)
-        
-    return Trim(post, ' `r`n`t')
-}
 
 ParsePost(string) {
     post := ''
@@ -72,21 +83,10 @@ ParsePost(string) {
     return Trim(post, A_Args.Sep)
 }
 
-
-A_Args.Repo  := lastRepo
-A_Args.Sep   := '`n'
-A_Args.Post  := ''
-A_Args.Save  := ''
-ParseCommandLine()
-
-saved     := SaveRepository(A_Args.Repo)
-converted := ParsePost(A_Args.Post)
-
-if converted {
-    if A_Args.Save
-        SaveFile(converted, A_Args.Save)
-    else
-        StdOut(converted)
-} else if saved {
-    StdOut('Repository has been saved')
+ParseFile(path) {
+    post := ''
+    loop read, path
+        post .= A_Args.Sep . ParsePost(A_LoopReadLine)
+        
+    return Trim(post, ' `r`n`t')
 }
