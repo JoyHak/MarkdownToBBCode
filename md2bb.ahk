@@ -1,6 +1,6 @@
 ;@Ahk2Exe-ConsoleApp
 #Requires AutoHotKey v2.0.19
-#Include '%A_ScriptDir%\source.ahk'
+#Include <convert>
 #ErrorStdOut
 #Warn All, StdOut
 

@@ -1,7 +1,8 @@
 #Requires AutoHotKey v2.0.19
 #Warn
 #SingleInstance force
-#Include '%A_ScriptDir%\source.ahk'
+#Include <convert>
+
 
 ui := Gui('-DpiScale')
 ui.LastPost := ''
