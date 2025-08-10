@@ -74,23 +74,9 @@ A_Args.Sep   := '`n'
 A_Args.Post  := ''
 A_Args.Save  := ''
 A_Args.Overwrite := false
+
 ParseCommandLine()
-
-saved     := SaveRepository(A_Args.Repo)
-converted := ParsePost(A_Args.Post)
-
-if converted {
-    if A_Args.Save {
-        if (A_Args.Overwrite && FileExist(A_Args.Save))
-            try FileDelete A_Args.Save
-            
-        SaveFile(converted, A_Args.Save)
-    } else {
-        StdOut(converted)
-    }
-} else if saved {
-    StdOut('Repository has been saved')
-}
+Output(ParsePost(A_Args.Post))
 
 
 ParseCommandLine() {
@@ -162,4 +148,22 @@ ParseFile(path) {
         post .= A_Args.Sep . ParsePost(A_LoopReadLine)
         
     return Trim(post, ' `r`n`t')
+}
+
+Output(post) {
+    saved := SaveRepository(A_Args.Repo)
+    if (!post && saved)
+        return StdOut('Repository has been saved')
+    
+    if !A_Args.Save
+        return StdOut(post)
+        
+    if (A_Args.Overwrite && FileExist(A_Args.Save)) {
+        try
+            FileDelete(A_Args.Save)
+        catch
+            return FileErr('Unable to overwrite the file', A_Args.Save)
+    }
+        
+    return SaveFile(post, A_Args.Save)
 }
