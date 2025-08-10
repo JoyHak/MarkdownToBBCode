@@ -21,13 +21,16 @@ Convert(post, repo := 'https://github.com/JoyHak') {
     repo  := Trim(repo, ' `t\/')
     SplitPath repo,,,,, &domain
 
-    ; Replace unicode line breaks with ahk line breaks
-	post := RegExReplace(post, '`a)\R', '`r`n')
+    ; Replace unicode and markdown line breaks with ahk line breaks
+	post := RegExReplace(post, '`a)\R', '`n')
+	post := RegExReplace(post, '<\/?br[ \t]*\/?>', '`n')
+	post := RegExReplace(post, 'm)(\\| {2})$', '`n')
+    
     post := ParseUrls(post, repo)
 
     ; Hide individual blocks from the text and process them separately
     blocks := MarkdownBlocks()
-    blocks.Add(&post, 'alternate',  's)<!-- alternate -->(.+?)<!-- /alternate -->',                         '{1}')
+    blocks.Add(&post, 'alternate',  'sx)<!-- \s* alternate \s* -->(.+)<!-- \s* /alternate \s* -->',        '{1}')
     blocks.Add(&post, 'code',       's)[ \t]*``````.*?\s(.+?)\s[ \t]*``````',                               '[code]{1}`n[/code]')
     blocks.Add(&post, 'image',      'sx) ! \[.*?\]  \( [ \t]* (.+?) [ \t]* \)',                             '[url]{1}[/url]')
     blocks.Add(&post, 'link',       'sx) \[  ( [^\[\]]{2,}? )  \]  \( [ \t]* (.+?) [ \t]* \)',              '[url={2}]{1}[/url]')
@@ -62,11 +65,9 @@ ParseHtml(block) {
 		['(?<!\\)\s*<\/details>\s*',        '`n[/spoiler]`n'],
         ['(?<!\\)<\/\w+>',                  ''],
         ['(?<!\\)<(\w+)>',                  '[size=110]$1[/size]'],
-		['\s*<!-- spoiler -->\s*',          '`n[spoiler]`n'],
-		['\s*<!-- /spoiler -->\s*',         '`n[/spoiler]`n'],
-		['s)<!--(.+)-->',                   ''],
-        ['<\/?br[ \t]*\/?>',                '`n'],
-        ['m)(\\| {2})$',                    '`n']
+		['\s*<!--\s*spoiler\s*-->\s*',      '`n[spoiler]`n'],
+		['\s*<!--\s*/spoiler\s*-->\s*',     '`n[/spoiler]`n'],
+		['s)<!--(.+)-->',                   '']
     ]
     
     for tag in htmlTags
