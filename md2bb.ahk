@@ -11,19 +11,22 @@ StdOutHelp() {
         "Md2bb is a command line interface to convert text with Markdown markup language to BBcode markup language.
         Copyright (c) 2025 Rafaello
         
-        Usage: md2bb (<file_name> | <text> | @listfile) [<args>]
+        Usage: md2bb (<file_name> | <text> | @listfile) [<parameters> <switches>]
                 
         Parameters order doesn't matter:
             md2bb -save 'forum.md' 'readme.md'
             md2bb 'readme.md' -save 'forum.md'
         Text can be combined:
             md2bb 'readme.md' 'add text' 'another text' 'license.md' -sep ' '
-        
-        Parameters:
-            -h, -help                           Displays this help message.
-            -save, -write                       The name / path of the file where to write the result. The result will be appended to the file if it already exists.
+                    
+        Parameters:            
+            -save, -write                       The name / path of the file where to write the result. The result will be appended at the end of the file if it already exists.                                      
             -repo, -repository, -domain         Url to the repository for resolving relative links and references: #26 -> repo/issues/26, ![](relative path) -> ![](repo/relative path) .
             -sep, -separator, -delimiter        Separator for text parameters concatenation: 'Text' Sep 'Another Text' ...
+            
+        Switches:
+            -h, -help                           Displays this help message.
+            -overwrite                          Overwrite the file where to write the result.
         
         The value of '-repo' is stored on the disk, so it can be passed once. After that its value will be used for each md2bb usage:
             md2bb -repo 'https://github.com/JoyHak/MarkdownToBBCode' -> 'Repository has been saved'
@@ -70,16 +73,21 @@ A_Args.Repo  := lastRepo
 A_Args.Sep   := '`n'
 A_Args.Post  := ''
 A_Args.Save  := ''
+A_Args.Overwrite := false
 ParseCommandLine()
 
 saved     := SaveRepository(A_Args.Repo)
 converted := ParsePost(A_Args.Post)
 
 if converted {
-    if A_Args.Save
+    if A_Args.Save {
+        if (A_Args.Overwrite && FileExist(A_Args.Save))
+            try FileDelete A_Args.Save
+            
         SaveFile(converted, A_Args.Save)
-    else
+    } else {
         StdOut(converted)
+    }
 } else if saved {
     StdOut('Repository has been saved')
 }
@@ -107,6 +115,8 @@ ParseCommandLine() {
                 StdOutHelp()
             case 'save', 'write':
                 A_Args.Save := NextArgValue()
+            case 'overwrite':
+                A_Args.Overwrite := true
             case 'domain', 'repo', 'repository':
                 A_Args.Repo := NextArgValue()
             case 'sep', 'separator', 'delimiter':
@@ -134,8 +144,7 @@ ParsePost(string) {
             if FileExist(f) {
                 post .= A_Args.Sep . ParseFile(f)
                 continue
-            }
-        
+            }        
         }
 
         if FileExist(A_LoopField)
