@@ -1,4 +1,14 @@
+;@Ahk2Exe-ConsoleApp
+;@Ahk2Exe-SetDescription https://github.com/JoyHak/MarkdownToBBCode
+;@Ahk2Exe-SetProductName MarkdownToBBCode
+;@Ahk2Exe-SetMainIcon MarkdownToBBCode.ico
+;@Ahk2Exe-SetCopyright Rafaello
+;@Ahk2Exe-SetCompanyName ToYu studio
+;@Ahk2Exe-SetLegalTrademarks GPL-3.0 license
+;@Ahk2Exe-SetVersion %A_ScriptName~[^\d\.]+%
+
 #Requires AutoHotKey v2.0.19
+#ErrorStdOut
 #Warn
 #SingleInstance force
 
@@ -39,6 +49,7 @@ Convert() {
 
     ; Replace unicode line breaks with ahk line breaks
 	post := RegExReplace(post, '`a)\R', '`r`n')
+    post := ParseUrls(post, repo)
 
     ; Hide individual blocks from the text and process them separately
     blocks := MarkdownBlocks()
@@ -82,6 +93,7 @@ ParseHtml(block) {
         ['<\/?br[ \t]*\/?>',                '`n'],
         ['m)(\\| {2})$',                    '`n']
     ]
+    
     for tag in htmlTags
 		block := RegexReplace(block, tag[1], tag[2])
 
@@ -114,6 +126,27 @@ ParseMarkdown(block) {
 		block := RegExReplace(block, code[1], code[2])
         
     return block    
+}
+
+ParseUrls(block, repository) {
+    context := unset
+    static isUrl := '(?:http[s]?:\/\/.)(?:www\.)?[-a-zA-Z0-9@%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)'
+    static urls  := 'sx) \[  [^\[\]]{2,}?  \]  \( [ \t]* (.+?) [ \t]* \)'
+    
+    ; Convert each relative url to absolute
+    for url, ctx in RegExMatchAll(&block, urls) {
+		context := ctx
+        
+        if (url[1] ~= isUrl)
+            ctx.Replacement := url[0]
+        else 
+            ctx.Replacement := StrReplace(url[0], url[1], repository '/' url[1])         
+    }
+    
+    if IsSet(context)
+        block := context.Haystack 
+    
+    return block
 }
 
 ParseLists(block) {
