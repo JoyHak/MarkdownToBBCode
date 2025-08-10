@@ -76,16 +76,18 @@ A_Args.Save  := ''
 A_Args.Overwrite := false
 
 ParseCommandLine()
-Output(ParsePost(A_Args.Post))
+ExitApp Output(ParsePost(A_Args.Post))
 
 
 ParseCommandLine() {
+    if !A_Args.length
+        ExitApp StdErr('Parameter error: ' A_ScriptName ' requires at least one parameter')
+
     while A_Args.length {
         NextArgValue() {
-            if !A_Args.Length {
-                StdErr('Parameter error: Missing value for "' arg '".')
-                ExitApp 1
-            }
+            if !A_Args.Length
+                ExitApp StdErr('Parameter error: Missing value for "' arg '".')
+                
             return A_Args.RemoveAt(1)
         }
 
@@ -99,21 +101,18 @@ ParseCommandLine() {
         switch arg, false { ; case-insensitive comparison
             case 'h', 'help':
                 StdOutHelp()
-            case 'save', 'write':
-                A_Args.Save := NextArgValue()
-            case 'overwrite':
-                A_Args.Overwrite := true
             case 'domain', 'repo', 'repository':
                 A_Args.Repo := NextArgValue()
             case 'sep', 'separator', 'delimiter':
                 A_Args.Sep  := NextArgValue()
+            case 'save', 'write':
+                A_Args.Save := NextArgValue()
+            case 'overwrite':
+                A_Args.Overwrite := true
             default:
                 StdErr('Parameter error: Unknown parameter "' arg '".')
         }
 
-    } else {
-        StdErr('Parameter error: ' A_ScriptName ' requires at least one parameter')
-        ExitApp 1
     }
     
     A_Args.Post := LTrim(A_Args.Post, '|')
@@ -165,5 +164,5 @@ Output(post) {
             return FileErr('Unable to overwrite the file', A_Args.Save)
     }
         
-    return SaveFile(post, A_Args.Save)
+    return !SaveFile(post, A_Args.Save)
 }

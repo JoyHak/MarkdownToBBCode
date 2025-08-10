@@ -311,8 +311,10 @@ SaveFile(post, path?) {
     try {
         f := path ?? FileSelect('S16', 'Forum.md')
         FileAppend(post, f)
+        return true
     } catch {
         FileErr('Unable to save converted text', f)
+        return false
     }
 }
 
