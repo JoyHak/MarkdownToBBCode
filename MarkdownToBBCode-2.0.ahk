@@ -1,4 +1,3 @@
-;@Ahk2Exe-ConsoleApp
 ;@Ahk2Exe-SetDescription https://github.com/JoyHak/MarkdownToBBCode
 ;@Ahk2Exe-SetProductName MarkdownToBBCode
 ;@Ahk2Exe-SetMainIcon MarkdownToBBCode.ico
@@ -8,7 +7,6 @@
 ;@Ahk2Exe-SetVersion %A_ScriptName~[^\d\.]+%
 
 #Requires AutoHotKey v2.0.19
-#ErrorStdOut
 #Warn
 #SingleInstance force
 
@@ -20,23 +18,34 @@ SetWinDelay(-1)
 SetWorkingDir(A_ScriptDir)
 try TraySetIcon('MarkdownToBBCode.ico')
 
+if A_Args.length
+    InitCommandLine()
+else
+    InitGui()
 
-ui := Gui('-DpiScale')
 
-ui.SetFont('q5 s13', 'Maple mono')
-cPost := ui.Add('Edit', '+WantTab w1290 h900 vPost')
+InitGui() {
+    global ui := Gui('-DpiScale')
+    
+    ui.SetFont('q5 s13', 'Maple mono')
+    cPost := ui.Add('Edit', '+WantTab w1290 h900 vPost')
+    
+    ui.Add('Button', '+Default', 'Convert').OnEvent('Click',     (*) => (cPost.value := Convert()))
+    ui.Add('Button', 'yp x+5', 'Restore').OnEvent('Click',       (*) => (cPost.value := ui.LastPost))
+    ui.Add('Button', 'yp x+5', 'Copy').OnEvent('Click',          (*) => (A_Clipboard := ui.Submit(0).Post))
+    ui.Add('Button', 'yp x+5 Section', 'Clear').OnEvent('Click', (*) => (cPost.value := ''))
+    
+    ui.Add("Text", "ys+11 x+20", "Repository")
+    ui.Add("Edit", "ys+6  x+5 vRepository", "https://github.com/JoyHak/QuickSwitch")
+    
+    ui.OnEvent('Escape', (*) => ui.Destroy())
+    ui.Show()
+}
 
-ui.Add('Button', '+Default', 'Convert').OnEvent('Click',     (*) => (cPost.value := Convert()))
-ui.Add('Button', 'yp x+5', 'Restore').OnEvent('Click',       (*) => (cPost.value := ui.LastPost))
-ui.Add('Button', 'yp x+5', 'Copy').OnEvent('Click',          (*) => (A_Clipboard := ui.Submit(0).Post))
-ui.Add('Button', 'yp x+5 Section', 'Clear').OnEvent('Click', (*) => (cPost.value := ''))
 
-ui.Add("Text", "ys+11 x+20", "Repository")
-ui.Add("Edit", "ys+6  x+5 vRepository", "https://github.com/JoyHak/QuickSwitch")
-
-ui.OnEvent('Escape', (*) => ui.Destroy())
-ui.Show()
-
+InitCommandLine() {
+    return
+}
 
 Convert() {
     global ui
