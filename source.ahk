@@ -33,13 +33,13 @@ Convert(post, repo) {
 
     ; Hide individual blocks from the text and process them separately
     blocks := MarkdownBlocks()
-    blocks.Add(&post, 'alternate',  'sx)<!-- \s* alternate \s* -->(.+)<!-- \s* /alternate \s* -->',        '{1}')
+    blocks.Add(&post, 'alternate',  'sx)<!-- \s* alternate \s* -->(.+)<!-- \s* /alternate \s* -->',         '{1}')
     blocks.Add(&post, 'code',       's)[ \t]*``````.*?\s(.+?)\s[ \t]*``````',                               '[code]{1}`n[/code]')
     blocks.Add(&post, 'image',      'sx) ! \[.*?\]  \( [ \t]* (.+?) [ \t]* \)',                             '[url]{1}[/url]')
     blocks.Add(&post, 'link',       'sx) \[  ( [^\[\]]{2,}? )  \]  \( [ \t]* (.+?) [ \t]* \)',              '[url={2}]{1}[/url]')
-    blocks.Add(&post, 'pathIssue',  'x) (\S+ [\w\d]\/\S+ [\w\d]) \# (\d+) (?=[^\]])',                       '[url=' domain '/{1}/issues/{2}]{1}#{2}[/url]')
-    blocks.Add(&post, 'GHissue',    'x) [ \t] \b GH- (\d+) (?=[^\]])',                                      '[url=' repo '/issues/{1}]GH-{1}[/url]')
-    blocks.Add(&post, 'issue',      'x) (?<!^|\#) \# (\d+) (?=[^\]])',                                      '[url=' repo '/issues/{1}]#{1}[/url]')
+    blocks.Add(&post, 'pathIssue',  'x) (\S+ [\w\d]\/\S+ [\w\d]) \# (\d+)',                                 '[url=' domain '/{1}/issues/{2}]{1}#{2}[/url]')
+    blocks.Add(&post, 'GHissue',    'x) [ \t] \b GH- (\d+)',                                                '[url=' repo '/issues/{1}]GH-{1}[/url]')
+    blocks.Add(&post, 'issue',      'x) (?<!^|\#) \# (\d+)',                                                '[url=' repo '/issues/{1}]#{1}[/url]')
     blocks.Add(&post, 'pathCommit', 'x) (\S+ [\w\d] (\/ \S+ [\w\d])?) @ ( ([a-f0-9]{7}) [a-f0-9]{33} ) \b', '[url=' domain '/{1}/commit/{3}]{1}@{4}[/url]')
     blocks.Add(&post, 'mention',    'x)            @ (\S+  [\w\d])',                                        '[url=' domain '/{1}]@{1}[/url]')
     blocks.Add(&post, 'commit',     '(([a-f0-9]{7})[a-f0-9]{33})\b',                                        '[url=' repo '/commit/{1}]{2}[/url]')
