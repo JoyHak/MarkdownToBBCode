@@ -1,12 +1,12 @@
 ;@Ahk2Exe-SetDescription https://github.com/JoyHak/MarkdownToBBCode
 ;@Ahk2Exe-SetProductName MarkdownToBBCode
-;@Ahk2Exe-SetMainIcon MarkdownToBBCode.ico
+;@Ahk2Exe-SetMainIcon Icon.ico
 ;@Ahk2Exe-SetCopyright Rafaello
 ;@Ahk2Exe-SetCompanyName ToYu studio
 ;@Ahk2Exe-SetLegalTrademarks GPL-3.0 license
-;@Ahk2Exe-SetVersion %A_ScriptName~[^\d\.]+%
 
 #Requires AutoHotKey v2.0.19
+#Include '%A_ScriptDir%\output.ahk'
 KeyHistory(0)
 Listlines(false)
 
@@ -48,8 +48,6 @@ Convert(post, repo := 'https://github.com/JoyHak') {
     post := ParseMarkdown(post)
     
     blocks.RestoreAll(&post)
-    
-    IniWrite(repo, 'Config.ini', 'General', 'LastRepository')
     return Trim(post, '`r`n `t')
 }
 
@@ -302,7 +300,7 @@ OpenFile(repo, path?) {
         f := path ?? FileSelect(1 + 2, 'README.md')
         return Convert(FileRead(f), repo)
     } catch {
-        output('Unable to open the file:`n' OsError(A_LastError).Message '`n`n' f)
+        FileErr('Unable to open the file', f)
     }
 }
 
@@ -311,21 +309,16 @@ SaveFile(post, path?) {
         f := path ?? FileSelect('S16', 'Forum.md')
         FileAppend(post, f)
     } catch {
-        output('Unable to save converted text:`n' OsError(A_LastError).Message '`n`n' f)
+        FileErr('Unable to save converted text', f)
     }
 }
 
-
-output(msg, *) {
+SaveRepository(repo) {
     try {
-        FileAppend msg '`n', '*'
+        IniWrite(repo, 'Config.ini', 'General', 'LastRepository')
+        return true
     } catch {
-        MsgBox msg
+        FileErr('Unable to save repository url', 'Config.ini')
+        return false
     }
-}
-
-OnError exerror
-exerror(ex, *) {
-    output(ex.what ' error: ' ex.message '`n' ex.extra)
-    ExitApp 1
 }
