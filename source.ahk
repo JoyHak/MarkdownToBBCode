@@ -7,9 +7,6 @@
 ;@Ahk2Exe-SetVersion %A_ScriptName~[^\d\.]+%
 
 #Requires AutoHotKey v2.0.19
-#Warn
-#SingleInstance force
-
 KeyHistory(0)
 Listlines(false)
 
@@ -18,64 +15,6 @@ SetWinDelay(-1)
 SetWorkingDir(A_ScriptDir)
 try TraySetIcon('MarkdownToBBCode.ico')
 lastRepo := IniRead('Config.ini', 'General', 'LastRepository', 'https://github.com/JoyHak/QuickSwitch')
-
-if A_Args.length
-    InitCommandLine()
-else
-    InitGui()
-
-
-InitGui() {
-    global lastRepo
-    global ui := Gui('-DpiScale')
-    
-    ui.SetFont('q5 s13', 'Maple mono')
-    cPost := ui.Add('Edit', '+WantTab w1290 h900 vPost')
-    
-    ui.Add('Button', '+Default', 'Convert').OnEvent('Click',     (*) => (cPost.value := ParsePost()))
-    ui.Add('Button', 'yp x+5', 'Restore').OnEvent('Click',       (*) => (cPost.value := ui.LastPost))
-    ui.Add('Button', 'yp x+5', 'Copy').OnEvent('Click',          (*) => (A_Clipboard := ui.Submit(0).Post))
-    ui.Add('Button', 'yp x+5', 'Clear').OnEvent('Click',         (*) => (cPost.value := ''))
-    
-    ui.Add('Button', 'yp x+15', 'Open').OnEvent('Click',         (*) => (cPost.value := OpenFile(ui.Submit(0).Repository)))
-    ui.Add('Button', 'yp x+5 Section', 'Save').OnEvent('Click',  (*) => (SaveFile(ui.Submit(0).Post)))
-    
-    ui.Add('Text', 'ys+11 x+20', 'Repository')
-    ui.Add('Edit', 'ys+6  x+5 w540 vRepository', lastRepo)
-    
-    ui.OnEvent('Escape', (*) => ui.Destroy())
-    ui.Show()
-    
-    ParsePost() {
-        u := ui.Submit(0)
-        ui.LastPost := u.Post
-        
-        return Convert(u.Post, u.Repository)
-    }
-}
-
-
-InitCommandLine() {
-    return
-}
-
-OpenFile(repo) {
-    try {
-        f := FileSelect(1 + 2, 'README.md')
-        return Convert(FileRead(f), repo)
-    } catch {
-        MsgBox('Unable to open the file:`n' OsError(A_LastError).Message '`n`n' f)
-    }
-}
-
-SaveFile(post) {
-    try {
-        f := FileSelect('S16', 'Forum.md')
-        FileAppend(post, f)
-    } catch {
-        MsgBox('Unable to save converted text:`n' OsError(A_LastError).Message '`n`n' f)
-    }
-}
 
 
 Convert(post, repo := 'https://github.com/JoyHak') {
@@ -354,4 +293,38 @@ class MarkdownBlocks {
             )
         }
     }
+}
+
+
+OpenFile(repo, path?) {
+    try {
+        f := path ?? FileSelect(1 + 2, 'README.md')
+        return Convert(FileRead(f), repo)
+    } catch {
+        output('Unable to open the file:`n' OsError(A_LastError).Message '`n`n' f)
+    }
+}
+
+SaveFile(post, path?) {
+    try {
+        f := path ?? FileSelect('S16', 'Forum.md')
+        FileAppend(post, f)
+    } catch {
+        output('Unable to save converted text:`n' OsError(A_LastError).Message '`n`n' f)
+    }
+}
+
+
+output(msg, *) {
+    try {
+        FileAppend msg '`n', '*'
+    } catch {
+        MsgBox msg
+    }
+}
+
+OnError exerror
+exerror(ex, *) {
+    output(ex.what ' error: ' ex.message '`n' ex.extra)
+    ExitApp 1
 }
