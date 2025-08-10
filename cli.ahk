@@ -6,6 +6,7 @@
 
 A_Args.Repo  := lastRepo
 A_Args.Files := ''
+A_Args.Post  := ''
 A_Args.Save  := ''
 
 while A_Args.length {
@@ -19,38 +20,43 @@ while A_Args.length {
         
     arg := NextArgValue()
     if !(SubStr(arg,1,2) ~= '[\/-]\w') {
-        A_Args.Files .= arg . A_Space
+        if FileExist(arg)
+            A_Args.Files .= arg . A_Space
+        else
+            A_Args.Post .= arg . A_Space
+        
         continue
     }
 
-    arg := Trim(arg, '/-`t`'`' ')
+    arg := Trim(arg, '/-`t`'`" ')
     switch arg, false { ; case-insensitive comparison            
         case 'domain', 'repo', 'repository':
             A_Args.Repo := NextArgValue()
-        case 'open', 'file':
-            A_Args.Files .= NextArgValue() . A_Space
         case 'save', 'write':
             A_Args.Save := NextArgValue()
-            
+        case 'post', 'markdown', 'text':
+            A_Args.Post .= NextArgValue() . A_Space
+        
+        case 'open', 'file':
+            if FileExist(arg)
+                A_Args.Files .= NextArgValue() . A_Space
+            else
+                StdErr('Parameter error: File doesn`'t exist "' arg '".')
         default:                
-            StdErr('Parameter error: Unknown parameter `'' arg '`'.')
+            StdErr('Parameter error: Unknown parameter "' arg '".')
     }
     
 } else {
-    StdErr("Parameter error: " A_ScriptName " requires at least one parameter")
+    StdErr('Parameter error: ' A_ScriptName ' requires at least one parameter')
     ExitApp 1
 }
 
 
-saved := SaveRepository(A_Args.Repo)
-converted := ''
-
-loop parse, A_Args.Files, A_Space {
-    if FileExist(A_LoopField)       
-        converted .= OpenFile(A_Args.Repo, A_LoopField)
-    else
-        converted .= Convert(A_LoopField, A_Args.Repo)
-}
+saved     := SaveRepository(A_Args.Repo)
+converted := Convert(A_Args.Post, A_Args.Repo) 
+    
+loop parse, A_Args.Files, A_Space
+    converted .= '`n' OpenFile(A_Args.Repo, A_LoopField)
 
 if converted {
     if A_Args.Save

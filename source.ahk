@@ -17,8 +17,11 @@ try TraySetIcon('MarkdownToBBCode.ico')
 lastRepo := IniRead('Config.ini', 'General', 'LastRepository', 'https://github.com/JoyHak/QuickSwitch')
 
 
-Convert(post, repo := 'https://github.com/JoyHak') {
-    repo  := Trim(repo, ' `t\/')
+Convert(post, repo) {
+    post  := Trim(post, ' `r`n`t')
+    if !post
+        return ''
+
     SplitPath repo,,,,, &domain
 
     ; Replace unicode and markdown line breaks with ahk line breaks
@@ -314,7 +317,10 @@ SaveFile(post, path?) {
 }
 
 SaveRepository(repo) {
-    try {
+    try {        
+        if !(repo := Trim(repo, ' `t\/'))
+            return false
+            
         IniWrite(repo, 'Config.ini', 'General', 'LastRepository')
         return true
     } catch {
