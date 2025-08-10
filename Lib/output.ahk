@@ -11,7 +11,7 @@ StdOut(msg) {
     catch
         MsgBox(msg '`n')
         
-    return false
+    return 0
 }
 
 StdErr(msg) {
@@ -20,7 +20,7 @@ StdErr(msg) {
     catch
         MsgBox(msg '`n', A_ScriptName ' error', 'Iconx')
         
-    return false
+    return 1
 }
 
 FileErr(msg, fileName) => StdErr(msg ':`n' OsError(A_LastError).Message '`n`n' fileName)
