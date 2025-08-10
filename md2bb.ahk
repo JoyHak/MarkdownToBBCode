@@ -9,19 +9,15 @@ ParseCommandLine() {
     while A_Args.length {
         NextArgValue() {
             if !A_Args.Length {
-                StdErr('Parameter error: Missing value for `'' arg '`'.')
+                StdErr('Parameter error: Missing value for "' arg '".')
                 ExitApp 1
             }
             return A_Args.RemoveAt(1)
         }
 
         arg := NextArgValue()
-        if !(SubStr(arg,1,2) ~= '[\/-]\w') {
-            if FileExist(arg)
-                A_Args.Files .= arg . A_Space
-            else
-                A_Args.Post .= arg . A_Space
-
+        if !(SubStr(arg,1,2) ~= '[\/-]+\w') {
+            A_Args.Post .= '|' arg 
             continue
         }
 
@@ -31,15 +27,8 @@ ParseCommandLine() {
                 A_Args.Repo := NextArgValue()
             case 'save', 'write':
                 A_Args.Save := NextArgValue()
-            case 'post', 'markdown', 'text':
-                A_Args.Post .= NextArgValue() . A_Space
-
-            case 'open', 'file':
-                f := NextArgValue()
-                if FileExist(f)
-                    A_Args.Files .= '|' f
-                else
-                    StdErr('Parameter error: File doesn`'t exist "' f '".')
+            case 'sep', 'separator', 'delimiter':
+                A_Args.Sep  := NextArgValue()
             default:
                 StdErr('Parameter error: Unknown parameter "' arg '".')
         }
@@ -48,20 +37,50 @@ ParseCommandLine() {
         StdErr('Parameter error: ' A_ScriptName ' requires at least one parameter')
         ExitApp 1
     }
+    
+    A_Args.Post := LTrim(A_Args.Post, '|')
+}
+
+ParseFile(path) {
+    post := ''
+    loop read, path
+        post .= A_Args.Sep . ParsePost(A_LoopReadLine)
+        
+    return Trim(post, ' `r`n`t')
+}
+
+ParsePost(string) {
+    post := ''
+    
+    loop parse, string, '|' {
+        ; List file
+        if (SubStr(A_LoopField, 1, 1) = '@') {
+            f := SubStr(A_LoopField, 2)
+            if FileExist(f) {
+                post .= A_Args.Sep . ParseFile(f)
+                continue
+            }
+        
+        }
+
+        if FileExist(A_LoopField)
+            post .= A_Args.Sep . OpenFile(A_Args.Repo, A_LoopField)    
+        else
+            post .= A_Args.Sep . Convert(A_LoopField, A_Args.Repo)    
+    }
+    
+    return Trim(post, A_Args.Sep)
 }
 
 
 A_Args.Repo  := lastRepo
-A_Args.Files := ''
+A_Args.Sep   := '`n'
 A_Args.Post  := ''
 A_Args.Save  := ''
 ParseCommandLine()
 
 saved     := SaveRepository(A_Args.Repo)
-converted := Convert(A_Args.Post, A_Args.Repo)
-
-loop parse, LTrim(A_Args.Files, '|'), '|'
-    converted .= '`n' OpenFile(A_Args.Repo, A_LoopField)
+converted := ParsePost(A_Args.Post)
 
 if converted {
     if A_Args.Save
