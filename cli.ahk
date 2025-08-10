@@ -4,14 +4,14 @@
 #ErrorStdOut
 #Warn All, StdOut
 
-A_Args.Repository := lastRepo
+A_Args.Repo  := lastRepo
 A_Args.Files := ''
 A_Args.Save  := ''
 
 while A_Args.length {
     NextArgValue() {
         if !A_Args.Length {
-            MsgBox('Parameter error: Missing value for `'' arg '`'.')
+            StdErr('Parameter error: Missing value for `'' arg '`'.')
             ExitApp 1
         }
         return A_Args.RemoveAt(1)
@@ -26,28 +26,38 @@ while A_Args.length {
     arg := Trim(arg, '/-`t`'`' ')
     switch arg, false { ; case-insensitive comparison            
         case 'domain', 'repo', 'repository':
-            A_Args.Repository := NextArgValue()
+            A_Args.Repo := NextArgValue()
         case 'open', 'file':
             A_Args.Files .= NextArgValue() . A_Space
         case 'save', 'write':
             A_Args.Save := NextArgValue()
             
         default:                
-            MsgBox('Parameter error: Unknown parameter `'' arg '`'.')
+            StdErr('Parameter error: Unknown parameter `'' arg '`'.')
     }
     
 } else {
-    output("Parameter error: " A_ScriptName " requires at least one parameter")
+    StdErr("Parameter error: " A_ScriptName " requires at least one parameter")
     ExitApp 1
 }
 
+
+saved := SaveRepository(A_Args.Repo)
 converted := ''
+
 loop parse, A_Args.Files, A_Space {
     if FileExist(A_LoopField)       
-        converted .= OpenFile(A_Args.Repository, A_LoopField)
+        converted .= OpenFile(A_Args.Repo, A_LoopField)
     else
-        converted .= Convert(A_LoopField, A_Args.Repository)
+        converted .= Convert(A_LoopField, A_Args.Repo)
 }
 
-if A_Args.Save
-    SaveFile(converted, A_Args.Save)
+if converted {
+    if A_Args.Save
+        SaveFile(converted, A_Args.Save)
+    else
+        StdOut(converted)
+} else if saved {
+    StdOut('Repository has been saved')
+
+}
