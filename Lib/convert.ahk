@@ -1,19 +1,19 @@
 ;@Ahk2Exe-SetDescription https://github.com/JoyHak/MarkdownToBBCode
 ;@Ahk2Exe-SetProductName MarkdownToBBCode
-;@Ahk2Exe-SetMainIcon Icon.ico
+;@Ahk2Exe-SetMainIcon Lib\Icon.ico
 ;@Ahk2Exe-SetCopyright Rafaello
 ;@Ahk2Exe-SetCompanyName ToYu studio
 ;@Ahk2Exe-SetLegalTrademarks GPL-3.0 license
 
 #Requires AutoHotKey v2.0.19
-#Include '%A_ScriptDir%\output.ahk'
+#Include %A_LineFile%\..\output.ahk
 KeyHistory(0)
 Listlines(false)
 
 SetKeyDelay(-1, -1)
 SetWinDelay(-1)
 SetWorkingDir(A_ScriptDir)
-try TraySetIcon('MarkdownToBBCode.ico')
+try TraySetIcon('Lib\Icon.ico')
 lastRepo := IniRead('Config.ini', 'General', 'LastRepository', 'https://github.com/JoyHak/QuickSwitch')
 
 

@@ -12,7 +12,7 @@
 | $\texttt{\color{#fb7237}\\#\\#\\#}$ h3                             | $\texttt{\color{#fb7237}[size=150]\color{White}h3\color{#fb7237}[/size]}$ |
 | $\tiny\texttt{\color{#fb7237}\\#\\#\\#\\#}$ h4                            | $\texttt{\color{#fb7237}[size=125]\color{White}h4\color{#fb7237}[/size]}$ |
 
-| Links <br>(relative links is not supported) |                                                              |
+| Links                                       |                                                              |
 | :------------------------------------------ | :----------------------------------------------------------- |
 | [Short name]\(link)                         | $\texttt{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
 | ![Image name]\(link)                        | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |

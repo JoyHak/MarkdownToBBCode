@@ -14,8 +14,7 @@
 [/table]
 
 [table]
-[tr][th] Links 
-(relative links is not supported)                       [/th][th]                             [/th][/tr]
+[tr][th] Links                                        [/th][th]                             [/th][/tr]
 [tr][td] [­Short name](link)                           [/td][td] [color=#fca336][­url=link][/color]Short name[color=#fca336][­/url][/color]  [/td][/tr]
 [tr][td] ![­Image name](link)                          [/td][td] [color=#fca336][­url=link][/color]Image name[color=#fca336][­/url][/color] [/td][/tr]
 [/table]
