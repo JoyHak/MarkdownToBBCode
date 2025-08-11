@@ -72,27 +72,34 @@ A_Args.Sep   := '`n'
 A_Args.Post  := ''
 A_Args.Save  := ''
 A_Args.Overwrite := false
+ParseCommandLine(A_Args)
+ 
+ExitApp(
+    Output(
+        ParsePost(A_Args.Post, A_Args.Repo, A_Args.Sep), 
+        A_Args
+    )
+)
 
-ParseCommandLine()
-ExitApp Output(ParsePost(A_Args.Post))
 
-
-ParseCommandLine() {
-    if !A_Args.length
-        ExitApp StdErr('Parameter error: md2bb requires at least one parameter.')
+ParseCommandLine(args) {
+    ParamErr(msg) => ExitApp(StdErr('Parameter error: ' msg '.'))
+    
+    if !args.length
+        ParamErr('md2bb requires at least one parameter')
     
     unknownArgs := ''
-    while A_Args.length {
+    while args.length {
         NextArgValue() {
-            if !A_Args.Length
-                ExitApp StdErr('Parameter error: Missing value for "' arg '".')
+            if !args.Length                
+                ParamErr('Missing value for "' arg '"')
                 
-            return A_Args.RemoveAt(1)
+            return args.RemoveAt(1)
         }
 
         arg := NextArgValue()
         if !(SubStr(arg,1,2) ~= '[\/-]+\w') {
-            A_Args.Post .= '|' arg 
+            args.Post .= '|' arg 
             continue
         }
 
@@ -101,26 +108,26 @@ ParseCommandLine() {
             case 'h', 'help':
                 StdOutHelp()
             case 'domain', 'repo', 'repository':
-                A_Args.Repo := NextArgValue()
+                args.Repo := NextArgValue()
             case 'sep', 'separator', 'delimiter':
-                A_Args.Sep  := NextArgValue()
+                args.Sep  := NextArgValue()
             case 'save', 'write':
-                A_Args.Save := NextArgValue()
+                args.Save := NextArgValue()
             case 'overwrite':
-                A_Args.Overwrite := true
+                args.Overwrite := true
             default:
                 unknownArgs .= '"' arg '" '                
         }
     }
     
     if unknownArgs
-        ExitApp StdErr('Parameter error: Unknown parameters ' unknownArgs)
+        ParamErr('Unknown parameters ' unknownArgs)
     
-    A_Args.Post := LTrim(A_Args.Post, '|')
+    args.Post := LTrim(args.Post, '|')
 }
 
 
-ParsePost(string) {
+ParsePost(string, repo, sep := '`n') {
     post := ''
     
     loop parse, string, '|' {
@@ -128,42 +135,42 @@ ParsePost(string) {
         if (SubStr(A_LoopField, 1, 1) = '@') {
             f := SubStr(A_LoopField, 2)
             if FileExist(f) {
-                post .= A_Args.Sep . ParseFile(f)
+                post .= sep . ParseFile(f, repo, sep)
                 continue
             }        
         }
 
         if FileExist(A_LoopField)
-            post .= A_Args.Sep . OpenFile(A_Args.Repo, A_LoopField)    
+            post .= sep . OpenFile(repo, A_LoopField)    
         else
-            post .= A_Args.Sep . Convert(A_LoopField, A_Args.Repo)    
+            post .= sep . Convert(A_LoopField, repo)    
     }
     
-    return Trim(post, A_Args.Sep)
+    return Trim(post, sep)
 }
 
-ParseFile(path) {
+ParseFile(path, repo, sep := '`n') {
     post := ''
     loop read, path
-        post .= A_Args.Sep . ParsePost(A_LoopReadLine)
+        post .= sep . ParsePost(A_LoopReadLine, repo, sep)
         
     return Trim(post, ' `r`n`t')
 }
 
-Output(post) {
-    saved := SaveRepository(A_Args.Repo)
+Output(post, args) {
+    saved := SaveRepository(args.Repo)
     if (!post && saved)
         return StdOut('Repository has been saved')
     
-    if !A_Args.Save
+    if !args.Save
         return StdOut(post)
         
-    if (A_Args.Overwrite && FileExist(A_Args.Save)) {
+    if (args.Overwrite && FileExist(args.Save)) {
         try
-            FileDelete(A_Args.Save)
+            FileDelete(args.Save)
         catch
-            return FileErr('Unable to overwrite the file', A_Args.Save)
+            return FileErr('Unable to overwrite the file', args.Save)
     }
         
-    return !SaveFile(post, A_Args.Save)
+    return !SaveFile(post, args.Save)
 }
