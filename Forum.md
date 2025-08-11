@@ -1,7 +1,8 @@
 When I was writing changelogs for my [url=https://github.com/JoyHak/QuickSwitch]QuickSwitch[/url] project, I needed to convert them from [url=https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax]Markdown[/url] markup language to [url=https://osu.ppy.sh/wiki/en/BBCode]BBcode[/url] markup language for posting on forums. 
 
-That is how this converter was developed. It was successfully tested on the [url=https://github.com/JoyHak/QuickSwitch/releases/tag/1.8]latest complex changelog[/url].
+That is how this converter was developed: [size=150][url]https://github.com/JoyHak/MarkdownToBBCode/releases[/url][/size]
 
+It was successfully tested on the [url=https://github.com/JoyHak/QuickSwitch/releases/tag/1.8]latest complex changelog[/url].
 Here's the list of key features:
 [list]
 [*] Full support for GitHub syntax (basic and advanced).
@@ -18,7 +19,9 @@ Here's the list of key features:
 [*] Command line interface (CLI) for converting different files and combining their contents into a single file.
 [/list]
 
-The converter supports basic syntax, complex blocks, and tables. For example, the tables with examples below were converted from the [url=https://github.com/JoyHak/MarkdownToBBCode#markdown]readme file[/url].
+The converter uses the [url=https://github.com/subframe7536/maple-font]Maple Mono[/url] font for GUI elements. [b]If something is not working for you, please [url=https://github.com/JoyHak/MarkdownToBBCode/issues/new?template=bug-report.yaml]let me know[/url][/b]. If you think that app can be improved, [url=https://github.com/JoyHak/MarkdownToBBCode/issues/new?template=feature-request.yaml]write to me[/url].
+
+It supports basic syntax, complex blocks, and tables. For example, the tables with examples below were converted from the [url=https://github.com/JoyHak/MarkdownToBBCode#markdown]readme file[/url].
 
 [spoiler2=Detailed examples]
 [size=150]Markdown[/size]
@@ -28,7 +31,7 @@ The converter supports basic syntax, complex blocks, and tables. For example, th
 [tr][td] [color=#fca336]**[/color]Bold[color=#fca336]**[/color] [color=#fca336]__[/color]Bold[color=#fca336]__[/color]                              [/td][td] [color=#fca336][­b][/color]Bold[color=#fca336][­/b][/color]                     [/td][/tr]
 [tr][td] [color=#fca336]*[/color]Italic[color=#fca336]*[/color] [color=#fca336]_[/color]Italic[color=#fca336]_[/color]                                  [/td][td] [color=#fca336][­i][/color]Italic[color=#fca336][­/i][/color]                   [/td][/tr]
 [tr][td] [color=#fca336]~[/color]Strike[color=#fca336]~[/color] [color=#fca336]~~[/color]Strike[color=#fca336]~~[/color]                              [/td][td] [color=#fca336][­strike][/color]Strike[color=#fca336][­/strike][/color]         [/td][/tr]
-[tr][td] [color=#fca336]***[/color]Bold and italic[color=#fca336]***[/color] [color=#fca336]___[/color]Bold and italic[color=#fca336]___[/color] [/td][td] [color=#fca336][­b][/color][color=#48a5d7][i][/color]Bold and italic[color=#48a5d7][i][/color][color=#fca336][­/b][/color]   [/td][/tr]
+[tr][td] [color=#fca336]***[/color]Bold and italic[color=#fca336]***[/color] [color=#fca336]___[/color]Bold and italic[color=#fca336]___[/color] [/td][td] [color=#fca336][­b][/color][color=#48a5d7][­i][/color]Bold and italic[color=#48a5d7][­/i][/color][color=#fca336][­/b][/color]   [/td][/tr]
 [tr][td] [b][color=#fca336]`[/color][/b]Inline[b][color=#fca336]`[/color][/b]                                             [/td][td] [color=#fca336][­c][/color]Inline[color=#fca336][­/c][/color]                   [/td][/tr]
 [tr][td] [color=#fca336]#[/color] h1                                                  [/td][td] [color=#fca336][­size=200][/color]h1[color=#fca336][­/size][/color]             [/td][/tr]
 [tr][td] [color=#fca336]##[/color] h2                                                 [/td][td] [color=#fca336][­size=180][/color]h2[color=#fca336][­/size][/color]             [/td][/tr]
@@ -89,12 +92,13 @@ NewLine [/td][/tr]
 
 Line breaks affect the final appearance of BBcode lists and quotes, but do not affect the appearance of tables: a Markdown table can contain line breaks and they will be captured by the BBcode table. A Markdown list or quote can contain line breaks, but they may not be included in the BBcode list or quote (see detailed examples below).
 
-Spaces between markup and words are optional, as well as spaces inside and outside tags and comments. It means that [color=#fca336]**[/color] Bold   [color=#fca336]**[/color] and [color=#fca336]**[/color]Bold[color=#fca336]**[/color] or [color=#5e5e5e]<!--  alternate    -->[/color] and [color=#5e5e5e]<!--alternate-->[/color] are treated the same.
+Spaces between markup and words are optional, as well as spaces inside and outside tags and comments. It means that [color=#fca336]**[/color] Bold  [color=#fca336]**[/color] and [color=#fca336]**[/color]Bold[color=#fca336]**[/color] or [color=#5e5e5e]<!-- alternate  -->[/color] and [color=#5e5e5e]<!--alternate-->[/color] are treated the same.
 
 [size=150]Blocks[/size]
 
-The blocks below are converted into opening and closing BBcode tags, broken into several lines for readability *(otherwise everything will turn into a horrible mess)*. However, lines, spaces, and tabs between tags do not affect the final result.
-To reduce the demonsration, some tags are on the same line as the text.
+The blocks below are converted into opening and closing BBcode tags, split into several lines for readability [i](otherwise everything will turn into a horrible mess)[/i]. Empty lines, spaces, and tabs between tags do not affect the rendered BBcode.
+
+To reduce the demonsration, some tags are on the single line.
 
 [table]
 [tr][th] Code                                 [/th][th]                                         [/th][/tr]
@@ -262,15 +266,15 @@ Lists can be mixed
 [color=#006868][­*][/color] item1
 [color=#006868][­*][/color] item2
 [color=#11975a][­/list][/color]
-[color=#006868][­*][/color] This item continues previous list started at 1.
+[color=#006868][­*][/color] This item continues previous list started at [color=#006868]1.[/color]
 [color=#11975a][­/list][/color] [/td][/tr]
 [tr][td] [color=#006868]1.[/color] The lists go on and on. 
-[color=#006868]2. [/color]This element is part of the list started in point 1. 
+[color=#006868]2. [/color]This element is part of the list started at [color=#006868]1.[/color] 
 [color=#006868]- [/color]To start a new list at the same nesting level, 
 [color=#006868]- [/color]start a list of a different type.
  [color=#006868]- [/color]Or increase the nesting level. [/td][td] [color=#11975a][­list=1][/color]
 [color=#006868][­*][/color] The lists go on and on.
-[color=#006868][­*][/color] This element is part of the list started in point 1. 
+[color=#006868][­*][/color] This element is part of the list started at [color=#006868]1.[/color] 
 [color=#11975a][­/list][/color][color=#11975a][­list][/color]
 [color=#006868][­*][/color] To start a new list at the same nesting level,
 [color=#006868][­*][/color] start a list of a different type.
@@ -325,7 +329,7 @@ dont' add space before the item / quote;
 
 [size=150]GitHub links and references[/size]
 
-Links and images can be relative to the repository root (it usually starts with [c]/[/c]). You can specify the repository in the converter settings. All relative links will be appended into the repository URL. You can use all relative link operands, such as [c]./[/c] or [c]../[/c]. Relative link text must be on a single line.
+Links and images can be relative to the repository root (it usually starts with [c]/[/c]). You can specify the repository in the converter settings. All relative links will be appended into the repository URL. You can use all relative link operands, such as [c]./[/c] or [c]../[/c]. Relative link text should be on a single line.
 
 The correctness of the converted link is not checked for performance reasons. Make sure that after adding the repository into the relative link, it is correct.
 
@@ -341,9 +345,9 @@ All issues and commits in short form will be appended into the repository URL. T
 [table]
 [tr][th] Issues (PRs is not supported) [/th][th]                                                              [/th][/tr]
 [tr][td] [color=#86acf4]#[/color][color=#5961e6]64[/color]                           [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/issues/64[color=#fca336]][/color][color=#86acf4]#[/color][color=#5961e6]64[/color][color=#fca336][­/url][/color] [/td][/tr]
-[tr][td] GH-64                         [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/issues/64[color=#fca336]][/color]GH[color=#86acf4]-[/color][color=#5961e6]64[/color][color=#fca336][­/url][/color] [/td][/tr]
-[tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch#64         [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/issues/64[color=#fca336]][/color]JoyHak/QuickSwitch[color=#86acf4]#[/color][color=#5961e6]64[/color][color=#fca336][­/url][/color] [/td][/tr]
-[tr][td] AutoHotkey[color=#86acf4]/[/color]AutoHotkeyDocs#744 [/td][td] [color=#fca336][­url=[/color]https://github.com/AutoHotkey/AutoHotkeyDocs/issues/744[color=#fca336]][/color]AutoHotkey/AutoHotkeyDocs[color=#86acf4]#[/color][color=#5961e6]744[/color][color=#fca336][­/url][/color] [/td][/tr]
+[tr][td] GH-[color=#5961e6]64[/color]                         [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/issues/64[color=#fca336]][/color]GH[color=#86acf4]-[/color][color=#5961e6]64[/color][color=#fca336][­/url][/color] [/td][/tr]
+[tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch[color=#86acf4]#[/color][color=#5961e6]64[/color]         [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/issues/64[color=#fca336]][/color]JoyHak/QuickSwitch[color=#86acf4]#[/color][color=#5961e6]64[/color][color=#fca336][­/url][/color] [/td][/tr]
+[tr][td] AutoHotkey[color=#86acf4]/[/color]AutoHotkeyDocs[color=#86acf4]#[/color][color=#5961e6]744[/color] [/td][td] [color=#fca336][­url=[/color]https://github.com/AutoHotkey/AutoHotkeyDocs/issues/744[color=#fca336]][/color]AutoHotkey/AutoHotkeyDocs[color=#86acf4]#[/color][color=#5961e6]744[/color][color=#fca336][­/url][/color] [/td][/tr]
 [/table]
 
 [table]
@@ -352,9 +356,43 @@ All issues and commits in short form will be appended into the repository URL. T
 [tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch[color=#86acf4]@[/color]896111015666c8fa7a8b390232a52e79356319c4  [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4[color=#fca336]][/color]JoyHak/QuickSwitch[color=#86acf4]@[/color][color=#5961e6]8961110[/color][color=#fca336][­/url][/color]     [/td][/tr]
 [/table]
 
-[/spoiler]
+[/spoiler2]
 
-The command line interface allows you to convert files and any text directly from the terminal. The result can be saved to a file or printed to the terminal and passed to any command using the `|` pipe operator.
+
+The command line interface allows you to convert files and any text directly from the terminal. The result can be saved to a file or printed to the terminal and passed to any command using the [c]|[/c] pipe operator.
+
+You can use auto-completion for CLI directly in [url=https://github.com/PowerShell/powershell/releases]Powershell 5.1[/url] and above. This requires an auto-completion module, such as [url=https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline?view=powershell-7.5]PSReadLine[/url] and [url=https://github.com/marcio1002/AutocompleteCommand]Register-AutocompleteCommand[/url].
+
+[spoiler2=Auto-completion setup]
+
+Add the path to the directory containing [c]md2bb.exe[/c] to the path environment variable:
+[code]
+setx PATH "$env:path;\the\directory\to\add" -m
+[/code]
+Then open the profile:
+[code]
+notepad $PROFILE
+[/code]
+If you're using [url=https://github.com/cmderdev/cmder]Cmder[/url] or [url=https://github.com/ConEmu/ConEmu]Conemu[/url], open [c]%CMDER_ROOT%\config\user_profile.ps1[/c]. 
+Add the following command:
+[code]
+Register-AutocompleteCommand -Commands 'md2bb'
+
+# Set auto-complete list view
+$options = @{
+    PredictionSource    = 'HistoryAndPlugin'
+    PredictionViewStyle = 'ListView'
+}
+Set-PSReadLineOption @options
+
+# Assign an auto-complete key, such as `Tab`
+Set-PSReadLineKeyHandler -Chord 'Tab' -Function 'MenuComplete'
+[/code]
+Restart your PC.  Now, after entering md2bb and pressing [c]Tab[/c], you will see a list of available parameters and their descriptions. When entering arguments, such as [c]-repo[/c], you can press [c]Tab[/c] again to read its description. Press [c]Tab[/c] again to have autocomplete type the parameter for you.
+
+
+
+[/spoiler2]
 
 Usage: [c]md2bb (<file_name> | <text> | @listfile) [<parameters> <switches>][/c]
 
@@ -382,9 +420,12 @@ Parameter without prefix will be treated as file name / text / listfile to conve
     md2bb 'readme.md' 'add text' '@listfile.md'
     Reads and converts contents of 'readme.md', then converts 'add text', then reads and converts contents of 'listfile.md' line by line.
 [/code]
-[/spoiler]
 
-CLI md2bb allows you to convert text directly from the terminal, combine converted content into a single file, and convert text, files, and file lists sequentially in a single use. Below are some examples of how to use md2bb.
+
+[/spoiler2]
+
+
+You can combine converted text or file content into a single file. Also you can convert text and files a single usage. 
 
 [spoiler2=CLI examples]
 [code]
@@ -461,4 +502,4 @@ To convert individual elements to different files, use separate commands:
 md2bb 'readme.md' 'add text' -save 'forum.md'
 md2bb 'license.md' 'add copyright' -save 'lic.md'
 [/code]
-[/spoiler]
+[/spoiler2]
