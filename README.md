@@ -31,8 +31,10 @@ The converter supports basic syntax, complex blocks, and tables. For example, th
 | Links                                       |                                                              |
 | :------------------------------------------ | :----------------------------------------------------------- |
 | [Short name]\(link)                         | $\texttt{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
-| ![Image name]\(link)                        | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
+| ![Image name]\(link)                        | $\texttt{\color{#fb7237}[url]\color{White}link\color{#fb7237}[/url]}$ |
+
 <a name="html-tags"></a>
+
 | Html tags                                                    |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#0d529d}\<sub>\color{White}Subscript\color{#0d529d}\</sub>}$ | $\texttt{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
@@ -45,12 +47,15 @@ Tags `<details>` on GitHub are similar to spoilers: they turn into collapsed tex
 
 Unknown tags are converted to headers. All converted spoilers and unknown tags will have an additional line break for readability.
 <a name="spoilers-comments"></a>
+
 | Spoilers and comments                                        |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#5e5e5e}\<!-- spoiler -->\color{White} Text that should be hidden \color{#5e5e5e}\<!-- /spoiler -->}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
-| $\texttt{\color{#5e5e5e}\<!-- alternate -->\color{White} Text that mustn't be converted  \color{#5e5e5e}\<!-- /alternate -->}$ | Text that mustn't be converted                               |
+| $\texttt{\color{#5e5e5e}\<!-- alternate -->\color{White} Text that shouldn't be converted  \color{#5e5e5e}\<!-- /alternate -->}$ | Text that shouldn't be converted                               |
 | $\texttt{\color{#5e5e5e}\<!--\color{White} Text that should be removed \color{#5e5e5e}\-->}$ |                                                              |
+
 <a name="line-breaks"></a>
+
 | Line breaks                                    |                                            |
 | :--------------------------------------------- | :----------------------------------------- |
 | $\texttt{\color{#0d529d}\<br>  \</br>  \<br/>  }$ | <br>                                       |
@@ -71,7 +76,9 @@ To reduce the demonsration, some tags are on the single line.
 | :------------------------------- | :----------------------------------------------------------- |
 | $\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute\color{#fa4738}py$<br>$\texttt{print(\color{#48ee44}"hello!"}$)<br>$\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$ | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}print(\color{#48ee44}"hello!"}$)<br>$\texttt{\color{#fb7237}[/code]}$ |
 | $\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$<br>$\texttt{MsgBox(\color{#48ee44}"hello!"}$)<br>$\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$ | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}MsgBox(\color{#48ee44}"hello!"}$)<br>$\texttt{\color{#fb7237}[/code]}$ |
+
 <a name="quotes"></a>
+
 | Block quotes                                                 |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#48a5d7}>}$ A quote looks like a block<br> $\texttt{\color{#48a5d7}>}$ of text | $\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{White}A quote looks like a block}$<br>$\texttt{\color{White}of text}$<br>$\texttt{\color{#48a5d7}[/quote]}$ |
@@ -82,10 +89,12 @@ To reduce the demonsration, some tags are on the single line.
 | $\texttt{\color{#48a5d7}> \color{#006868} 1.}$ Lists can have an infinite level of nesting <br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}1.}$ item1<br> $\texttt{\color{#48a5d7}>\hspace{2cm}\color{#006868}2.}$ item2<br> $\texttt{\color{#48a5d7}>\hspace{3cm}\color{#006868}3.}$ item3<br> $\texttt{\color{#48a5d7}> \color{#006868} -}$ And unordered lists can be nested too!<br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}-}$ Item<br> $\texttt{\color{#48a5d7}>\hspace{2cm}\color{#006868}-}$ deep item | $\texttt{\color{#48a5d7}\[quote]}$<br>$\texttt{\color{#11975a}\[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[*] }$ Lists can have an infinite level of nesting  $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item1 $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item2 $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item3 $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]\[/list]}$<br>$\texttt{}$<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ And unordered lists can be nested too! $\texttt{}$<br>$\texttt{\color{#11975a}\[list]\color{#006868}[\*] }$ Item $\texttt{}$<br>$\texttt{\color{#11975a}\[list]\color{#006868}[\*] }$ deep item $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$<br>$\texttt{}$<br>$\texttt{\color{White}Lists can be mixed}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item1 $\texttt{}$<br>$\texttt{\color{#11975a}\[list]\color{#006868}[\*] }$ item2 $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item3 $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$<br>$\texttt{\color{#fb7237}\color{#48a5d7}[/quote]}$ |
 | $\texttt{\color{#48a5d7}>}$ Lists can be mixed <br> $\texttt{\color{#48a5d7}> \color{#006868} 1.}$ item1<br> $\texttt{\color{#48a5d7}> \color{#006868} -}$ item2<br> $\texttt{\color{#48a5d7}> \color{#006868} 3.}$ item3<br> | $\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{White} Lists can be mixed}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item1 $\texttt{}$<br>$\texttt{\color{#11975a}\[list]\color{#006868}[\*] }$ item2 $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item3 $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$<br>$\texttt{\color{#48a5d7}[/quote]}$ |
 | $\texttt{\color{#48a5d7}>}$ $\texttt{\color{#006868} -}$ As you might guess,<br> $\texttt{\color{#48a5d7}>}$ $\texttt{\color{#006868} -}$ all of this applies to:<br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}1.}$ lists in quotes.<br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}2.}$ lists outside quotes.<br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}3.}$ lists with different levels of nesting.<br> $\texttt{\color{#48a5d7}> \color{#006868} -}$ As well as applied to ordered / unordered lists mixing. | $\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ As you might guess, $\texttt{}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ all of this applies to: $\texttt{}$<br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ lists in quotes. $\texttt{}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ lists outside quotes. $\texttt{}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ lists with different levels of nesting. $\texttt{}$<br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ As well as applied to ordered / unordered lists mixing. $\texttt{}$<br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#48a5d7}[/quote]}$ |
+
 <a name="lists"></a>
+
 | Lists                                                        |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| $\texttt{\color{#006868} -}$ The list can start with any number of tabs and spaces<br> $\texttt{\hspace{1cm}\color{#006868} -}$ Each subsequent item in the list must start with the same number of tabs and spaces!<br> $\texttt{\hspace{2cm}\color{#006868} -}$ Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). | $\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#006868}[\*] }$ The list can start with any number of tabs and spaces<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#006868}[\*] }$ Each subsequent item in the list must start with the same number of tabs and spaces! $\texttt{}$<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\color{#11975a}[/list]}$ |
+| $\texttt{\color{#006868} -}$ The list can start with any number of tabs and spaces<br> $\texttt{\hspace{1cm}\color{#006868} -}$ Each subsequent item in the list should start with the same number of tabs and spaces!<br> $\texttt{\hspace{2cm}\color{#006868} -}$ Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). | $\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#006868}[\*] }$ The list can start with any number of tabs and spaces<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#006868}[\*] }$ Each subsequent item in the list should start with the same number of tabs and spaces! $\texttt{}$<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\color{#11975a}[/list]}$ |
 | $\texttt{\color{#006868} 1.}$ Lists can have an infinite level of nesting<br> $\texttt{\hspace{1cm}\color{#006868}1.}$ item1<br> $\texttt{\hspace{2cm}\color{#006868}2.}$ item2<br> $\texttt{\hspace{3cm}\color{#006868}3.}$ item3<br> | $\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Lists can have an infinite level of nesting <br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item1 <br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item2 <br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item3 <br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\color{#11975a}[/list]}$ |
 | $\huge{\textsf{\color{#006868} *}}$ List items can have any prefix<br/> $\textsf{\hspace{1cm}\color{#006868}+}$ item <br/> $\huge{\textsf{\hspace{2cm}\color{#006868}-}}$ item | $\texttt{\color{#11975a}[list]}$<br/>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ List items can have any prefix <br/>$\texttt{\color{#11975a}[list]}$<br/> $\texttt{\color{#006868}[\*] }$ item  <br/> $\texttt{\color{#11975a}[list]}$<br/> $\texttt{\color{#006868}[\*] }$ item <br/>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$ |
 | $\texttt{\color{#006868} -}$ Lists can be mixed <br> $\texttt{\color{#006868}1.}$ item describes:<br> $\texttt{\hspace{1cm}\color{#006868}-}$ item1<br> $\texttt{\hspace{1cm}\color{#006868}-}$ item2<br> $\texttt{\color{#006868}2.}$ This item continues previous list started at 1. | $\texttt{\color{#11975a}\[list]\color{White}\color{#006868}[\*] }$ Lists can be mixed[/list] <br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item describes: <br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item1 <br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ item2 <br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ This item continues previous list started at 1. <br>$\texttt{\color{#11975a}[/list]}$ |
@@ -96,8 +105,9 @@ To reduce the demonsration, some tags are on the single line.
 | $\texttt{\color{#006868} -}$ Use line break characters $\texttt{\color{#0d529d}\\\\  \<\/br>   \<br\>}$ <br> $\texttt{\color{#48a5d7}>}$ This quote does not belong to the list. | $\texttt{\color{#11975a}\[list]\color{White}\color{#006868}[\*]\color{White} Use line break characters\color{#11975a}[/list]}$ <br><br>$\texttt{\color{#48a5d7}[quote]\color{White}This quote does not belong to the list.\color{#48a5d7}[/quote]}$ |
 
 ## GitHub links and references
+
 <a name="github-links"></a>
-Links and images can be relative to the repository root (it usually starts with `/`). You can specify the repository in the converter settings. All relative links will be appended into the repository URL. You can use all relative link operands, such as `./` or `../`. Relative link text must be on a single line.
+Links and images can be relative to the repository root (it usually starts with `/`). You can specify the repository in the converter settings. All relative links will be appended into the repository URL. You can use all relative link operands, such as `./` or `../`. Relative link text should be on a single line.
 
 The correctness of the converted link is not checked for performance reasons. Make sure that after adding the repository into the relative link, it is correct.
 
@@ -212,3 +222,4 @@ md2bb 'readme.md' 'add text' -save 'forum.md'
 md2bb 'license.md' 'add copyright' -save 'lic.md'
 
 ```
+
