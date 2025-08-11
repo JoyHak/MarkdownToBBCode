@@ -1,3 +1,26 @@
+When I was writing changelogs for my [url=https://github.com/JoyHak/QuickSwitch]QuickSwitch[/url] project, I needed to convert them from [url=https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax]Markdown[/url] markup language to [url=https://osu.ppy.sh/wiki/en/BBCode]BBcode[/url] markup language for posting on forums. 
+
+That is how this converter was developed. It was successfully tested on the [url=https://github.com/JoyHak/QuickSwitch/releases/tag/1.8]latest complex changelog[/url].
+
+Here's the list of key features:
+[list]
+[*] Full support for GitHub syntax (basic and advanced).
+[*] Recursive syntax conversion (lists containing lists, basic syntax containing basic syntax, etc.).
+[*] Support for any type of list (ordered, unordered, with any prefix and nesting level).
+[*] Attaching/detaching markdown list items from BBcode lists (ability to add or detach quotes and other items from the converted list).
+[*] Support for multi-level quotes with the ability to include lists, mentions, and other syntax.
+[*] Support for html tags and spoilers.
+[*] Delete comments, mark text that does not need to be converted.
+[*] Select a repository for converting Github issues, links, and commits.
+[*] Restore text to its pre-conversion state for editing.
+[*] Convert, copy, and clear with a single click.
+[*] Convert file and save result to the new / existing file.
+[*] Command line interface (CLI) for converting different files and combining their contents into a single file.
+[/list]
+
+The converter supports basic syntax, complex blocks, and tables. For example, the tables with examples below were converted from the [url=https://github.com/JoyHak/MarkdownToBBCode#markdown]readme file[/url].
+
+[spoiler2=Detailed examples]
 [size=150]Markdown[/size]
 
 [table]
@@ -5,7 +28,7 @@
 [tr][td] [color=#fca336]**[/color]Bold[color=#fca336]**[/color] [color=#fca336]__[/color]Bold[color=#fca336]__[/color]                              [/td][td] [color=#fca336][­b][/color]Bold[color=#fca336][­/b][/color]                     [/td][/tr]
 [tr][td] [color=#fca336]*[/color]Italic[color=#fca336]*[/color] [color=#fca336]_[/color]Italic[color=#fca336]_[/color]                                  [/td][td] [color=#fca336][­i][/color]Italic[color=#fca336][­/i][/color]                   [/td][/tr]
 [tr][td] [color=#fca336]~[/color]Strike[color=#fca336]~[/color] [color=#fca336]~~[/color]Strike[color=#fca336]~~[/color]                              [/td][td] [color=#fca336][­strike][/color]Strike[color=#fca336][­/strike][/color]         [/td][/tr]
-[tr][td] [color=#fca336]***[/color]Bold and italic[color=#fca336]***[/color] [color=#fca336]___[/color]Bold and italic[color=#fca336]___[/color] [/td][td] [color=#fca336][­b][/color][color=#fca336][­i][/color]Bold and italic[color=#fca336][­/b][/color][color=#fca336][­/i][/color]   [/td][/tr]
+[tr][td] [color=#fca336]***[/color]Bold and italic[color=#fca336]***[/color] [color=#fca336]___[/color]Bold and italic[color=#fca336]___[/color] [/td][td] [color=#fca336][­b][/color][color=#48a5d7][i][/color]Bold and italic[color=#48a5d7][i][/color][color=#fca336][­/b][/color]   [/td][/tr]
 [tr][td] [b][color=#fca336]`[/color][/b]Inline[b][color=#fca336]`[/color][/b]                                             [/td][td] [color=#fca336][­c][/color]Inline[color=#fca336][­/c][/color]                   [/td][/tr]
 [tr][td] [color=#fca336]#[/color] h1                                                  [/td][td] [color=#fca336][­size=200][/color]h1[color=#fca336][­/size][/color]             [/td][/tr]
 [tr][td] [color=#fca336]##[/color] h2                                                 [/td][td] [color=#fca336][­size=180][/color]h2[color=#fca336][­/size][/color]             [/td][/tr]
@@ -16,7 +39,7 @@
 [table]
 [tr][th] Links                                        [/th][th]                             [/th][/tr]
 [tr][td] [­Short name](link)                           [/td][td] [color=#fca336][­url=link][/color]Short name[color=#fca336][­/url][/color]  [/td][/tr]
-[tr][td] ![­Image name](link)                          [/td][td] [color=#fca336][­url=link][/color]Image name[color=#fca336][­/url][/color] [/td][/tr]
+[tr][td] ![­Image name](link)                          [/td][td] [color=#fca336][­url][/color]link[color=#fca336][­/url][/color] [/td][/tr]
 [/table]
 
 [table]
@@ -36,12 +59,16 @@ Hidden example
 Simple text                                 [/td][/tr]
 [/table]
 
+Tags [c]<details>[/c] on GitHub are similar to spoilers: they turn into collapsed text. The [c]<summary>[/c] tag replaces the spoiler title "details" with the specified title.
+
+Unknown tags are converted to headers. All converted spoilers and unknown tags will have an additional line break for readability.
+
 [table]
 [tr][th] Spoilers and comments                                                  [/th][th]                                                         [/th][/tr]
 [tr][td] [color=#5e5e5e]<!-- spoiler -->[/color] Text that should be hidden [color=#5e5e5e]<!-- /spoiler -->[/color]        [/td][td] [color=#fca336][­spoiler][/color]
 Text that should be hidden
 [color=#fca336][­/spoiler][/color] [/td][/tr]
-[tr][td] [color=#5e5e5e]<!-- alternate -->[/color] Text that mustn't be converted  [color=#5e5e5e]<!-- /alternate -->[/color] [/td][td] Text that mustn't be converted                          [/td][/tr]
+[tr][td] [color=#5e5e5e]<!-- alternate -->[/color] Text that shouldn't be converted  [color=#5e5e5e]<!-- /alternate -->[/color] [/td][td] Text that shouldn't be converted                          [/td][/tr]
 [tr][td] [color=#5e5e5e]<!--[color=#5e5e5e] Text that should be removed [color=#5e5e5e]-->[/color]                                  [/td][td]                                                         [/td][/tr]
 [/table]
 
@@ -59,6 +86,10 @@ NewLine [/td][td] Line with 2 trailing spaces
 
 NewLine [/td][/tr]
 [/table]
+
+Line breaks affect the final appearance of BBcode lists and quotes, but do not affect the appearance of tables: a Markdown table can contain line breaks and they will be captured by the BBcode table. A Markdown list or quote can contain line breaks, but they may not be included in the BBcode list or quote (see detailed examples below).
+
+Spaces between markup and words are optional, as well as spaces inside and outside tags and comments. It means that [color=#fca336]**[/color] Bold   [color=#fca336]**[/color] and [color=#fca336]**[/color]Bold[color=#fca336]**[/color] or [color=#5e5e5e]<!--  alternate    -->[/color] and [color=#5e5e5e]<!--alternate-->[/color] are treated the same.
 
 [size=150]Blocks[/size]
 
@@ -190,11 +221,11 @@ Lists can be mixed
 [table]
 [tr][th] Lists                                                        [/th][th]                                                              [/th][/tr]
 [tr][td] [color=#006868]-[/color] The list can start with any number of tabs and spaces
-  [color=#006868]- [/color]Each subsequent item in the list must start with the same number of tabs and spaces!
+  [color=#006868]- [/color]Each subsequent item in the list should start with the same number of tabs and spaces!
    [color=#006868]- [/color]Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). [/td][td] [color=#11975a][­list][/color]
 [color=#006868][­*][/color] The list can start with any number of tabs and spaces
 [color=#11975a][­list][/color]
-[color=#006868][­*][/color] Each subsequent item in the list must start with the same number of tabs and spaces!
+[color=#006868][­*][/color] Each subsequent item in the list should start with the same number of tabs and spaces!
 [color=#11975a][­list][/color]
 [color=#006868][­*][/color] Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces).
 [color=#11975a][­/list][/color][color=#11975a][­/list][/color][color=#11975a][­/list][/color] [/td][/tr]
@@ -294,14 +325,18 @@ dont' add space before the item / quote;
 
 [size=150]GitHub links and references[/size]
 
-You can specify the repository in the converter settings. All issues and commits in short form will be appended into the repository URL.
+Links and images can be relative to the repository root (it usually starts with [c]/[/c]). You can specify the repository in the converter settings. All relative links will be appended into the repository URL. You can use all relative link operands, such as [c]./[/c] or [c]../[/c]. Relative link text must be on a single line.
+
+The correctness of the converted link is not checked for performance reasons. Make sure that after adding the repository into the relative link, it is correct.
 
 [table]
-[tr][th] Mentions and images 
-(relative links is not supported)  [/th][th]                                                              [/th][/tr]
-[tr][td] [color=#86acf4]@[/color]JoyHak                                                      [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak[color=#fca336]][/color][color=#86acf4]@[/color]JoyHak[color=#fca336][­/url][/color]                 [/td][/tr]
+[tr][th] Mentions and images   [/th][th]                                                              [/th][/tr]
+[tr][td] [­Relative readme](./README.md)                           [/td][td] [color=#fca336][­url=https://github.com/JoyHak/QuickSwitch/README.md][/color]Relative readme[color=#fca336][­/url][/color]  [/td][/tr]
 [tr][td] [color=#86acf4]![[/color]­Image name[color=#86acf4]]([/color]https://myoctocat.com/assets/images/base-octocat.svg[color=#86acf4])[/color] [/td][td] [color=#fca336][­url][/color]https://myoctocat.com/assets/images/base-octocat.svg[color=#fca336][­/url][/color] [/td][/tr]
+[tr][td] [color=#86acf4]@[/color]JoyHak                                                      [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak[color=#fca336]][/color][color=#86acf4]@[/color]JoyHak[color=#fca336][­/url][/color]                 [/td][/tr]
 [/table]
+
+All issues and commits in short form will be appended into the repository URL. The converter cannot check whether [color=#86acf4]#[/color][color=#5961e6]64[/color] is a Pull Request (PR), discussion, or issue, so it always assumes that it is an issue.
 
 [table]
 [tr][th] Issues (PRs is not supported) [/th][th]                                                              [/th][/tr]
@@ -316,3 +351,114 @@ You can specify the repository in the converter settings. All issues and commits
 [tr][td] 896111015666c8fa7a8b390232a52e79356319c4                     [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4[color=#fca336]][/color][color=#5961e6]8961110[/color][color=#fca336][­/url][/color]     [/td][/tr]
 [tr][td] JoyHak[color=#86acf4]/[/color]QuickSwitch[color=#86acf4]@[/color]896111015666c8fa7a8b390232a52e79356319c4  [/td][td] [color=#fca336][­url=[/color]https://github.com/JoyHak/QuickSwitch/commit/896111015666c8fa7a8b390232a52e79356319c4[color=#fca336]][/color]JoyHak/QuickSwitch[color=#86acf4]@[/color][color=#5961e6]8961110[/color][color=#fca336][­/url][/color]     [/td][/tr]
 [/table]
+
+[/spoiler]
+
+The command line interface allows you to convert files and any text directly from the terminal. The result can be saved to a file or printed to the terminal and passed to any command using the `|` pipe operator.
+
+Usage: [c]md2bb (<file_name> | <text> | @listfile) [<parameters> <switches>][/c]
+
+[spoiler2=Parameters]
+[table]
+[tr][th] Parameters                   [/th][th]                                                              [/th][/tr]
+[tr][td] -save, -write                [/td][td] The name / path of the file where to write the result. The result will be appended at the end of the file if it already exists. [/td][/tr]
+[tr][td] -repo, -repository, -domain  [/td][td] Url to the repository for resolving relative links and references. [/td][/tr]
+[tr][td] -sep, -separator, -delimiter [/td][td] Separator for text parameters concatenation.                 [/td][/tr]
+[/table]
+[table]
+[tr][th] Switches   [/th][th]                                               [/th][/tr]
+[tr][td] -h, -help  [/td][td] Displays help message.                        [/td][/tr]
+[tr][td] -overwrite [/td][td] Overwrite the file where to write the result. [/td][/tr]
+[/table]
+
+Parameters order doesn't matter:
+[code]
+    md2bb -save 'forum.md' 'readme.md'
+    md2bb 'readme.md' -save 'forum.md'
+[/code]
+Parameters prefix can be [c]/ - --[/c].
+Parameter without prefix will be treated as file name / text / listfile to convert:
+[code]
+    md2bb 'readme.md' 'add text' '@listfile.md'
+    Reads and converts contents of 'readme.md', then converts 'add text', then reads and converts contents of 'listfile.md' line by line.
+[/code]
+[/spoiler]
+
+CLI md2bb allows you to convert text directly from the terminal, combine converted content into a single file, and convert text, files, and file lists sequentially in a single use. Below are some examples of how to use md2bb.
+
+[spoiler2=CLI examples]
+[code]
+    md2bb -save 'forum.md' 'readme.md'
+    md2bb 'readme.md' -save 'forum.md'
+[/code]
+Text can be combined:
+[code]
+    md2bb 'readme.md' 'add text' 'another text' 'license.md' -sep ' '
+    md2bb 'sentence' 'will be' 'splitted' -save 'forum.md'
+[/code]
+
+The value of [c]-repo[/c] is stored on the disk, so it can be passed once. After that its value will be used for each [c]md2bb[/c] usage:
+[code]
+    md2bb -repo 'https://github.com/JoyHak/MarkdownToBBCode' -> 'Repository has been saved'
+    md2bb 'issue #1' -> issue [url=https://github.com/JoyHak/MarkdownToBBCode/issues/1]#1[/url]
+[/code]
+
+Parameters prefix can be [c]/ - --[/c].
+Parameter without prefix will be treated as file name / text / listfile to convert:
+
+[code]
+    md2bb 'readme.md' 'add text' '@listfile.md'
+    Reads and converts contents of 'readme.md', then converts 'add text', then reads and converts contents of 'listfile.md' line by line.
+[/code]
+[c]@listfile[/c] can be [c]@filename.ext[/c] or [c]@path[/c] and it can contain anything. It will be readed and each line will be converted as the text. If line contains file name / path, it's contents will be converted (if it exists).  Also it can be used to convert individual lines, combine them into one text and separate using symbol passed via [c]-sep[/c] .
+
+You can pass the [c]|[/c] symbol as a text to force the separation of parts of the text from each other:
+[code]
+    md2bb 'readme.md|@listfile.md'
+    Reads and converts 'readme.md' file, then reads and converts 'listfile.md' line by line.
+    
+    md2bb 'sentence|will be|splitted'
+    Convert 'sentence' 'will be' 'splitted' separately.
+[/code]
+Pass [c]-sep[/c] symbol to concatenate different parts:
+[code]
+    md2bb 'sentence|will be|splitted'     -sep '_' -> 'sentence_will be_splitted'
+    md2bb 'sentence' 'will be' 'splitted' -sep '_' -> 'sentence_will be_splitted'
+
+    md2bb 'readme.md' 'add text' -sep '_' -save 'forum.md'
+    Concatenates converted contents of 'readme.md' with 'add text' using '_' symbol and appends it to the 'forum.md'.
+[/code]
+You can pass multi-line text and [c]-sep[/c] value:
+[code]
+    md2bb ' > Multi-line            ->  [quote]Multi-line
+    > text'                             text[/quote]
+    
+    md2bb '*New*' '*line*' -sep '   ->  [i]New[/i]
+    +'                                  [i]+line[/i]
+[/code]
+You can also pass any line break tags to get several lines of the text:
+[/code]
+    md2bb '_New_<br>_line_'         ->  [i]New[/i]
+                                        [i]line[/i]
+   
+    md2bb 'New<br/>line' -sep '+'   ->  [i]New[/i]
+                                        [i]line[/i]
+    Ignores '-sep' because text is treated as single part.
+[/code]
+The [c]-save[/c]  parameter appends the converted text at the end of existing file, removing all leading and trailing spaces, tabs, and blank lines. This allows you to create complex conversion chains:
+[code]
+md2bb 'readme.md' 'add text' '@listfile.md' 'add another text' '@lines.md' -save 'forum.md'
+[/code]
+If you want to recreate the file, use [c]-overwrite[/c] switch:
+[code]
+md2bb 'readme.md' -save 'readme.md'
+Appends converted contents of 'readme.md' at the end of this file.
+md2bb 'readme.md' -save 'readme.md' -overwrite
+Deletes 'readme.md' and appends converted content to the new 'readme.md'
+[/code]
+To convert individual elements to different files, use separate commands:
+[code]
+md2bb 'readme.md' 'add text' -save 'forum.md'
+md2bb 'license.md' 'add copyright' -save 'lic.md'
+[/code]
+[/spoiler]
