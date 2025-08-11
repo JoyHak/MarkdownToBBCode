@@ -1,4 +1,8 @@
-This converter allows you to convert text written in [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) markup language to [BBcode](https://osu.ppy.sh/wiki/en/BBCode) markup language (commonly used on forums). List of key features:
+When I was writing changelogs for my [QuickSwitch](https://github.com/JoyHak/QuickSwitch) project, I needed to convert them from [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) markup language to [BBcode](https://osu.ppy.sh/wiki/en/BBCode) markup language for posting on forums. 
+
+That is how this converter was developed. It was successfully tested on the [latest complex changelog](https://github.com/JoyHak/QuickSwitch/releases/tag/1.8).
+
+Here's the list of key features:
 - Full support for GitHub markdown syntax ([basic](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) and [advanced](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections)).
 - Support for [html tags](#html-tags) and [spoilers](#spoilers-comments).
 - Delete [comments](#spoilers-comments), mark text that does not need to be converted.
@@ -222,4 +226,5 @@ md2bb 'readme.md' 'add text' -save 'forum.md'
 md2bb 'license.md' 'add copyright' -save 'lic.md'
 
 ```
+
 
