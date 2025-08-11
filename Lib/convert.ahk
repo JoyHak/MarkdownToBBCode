@@ -64,7 +64,7 @@ ParseHtml(block) {
 		['(?<!\\)<ins>',                    '[u]'],
 		['(?<!\\)</ins>',                   '[/u]'],
         ['(?<!\\)<details>\s*<summary>(.+)</summary>',  '[spoiler2=$1]`n'],
-		['(?<!\\)\s*<details>\s*',          '`n[spoiler]`n'],
+		['(?<!\\)\s*<details[^\>]*>\s*',    '`n[spoiler]`n'],
 		['(?<!\\)\s*<\/details>\s*',        '`n[/spoiler]`n'],
         ['(?<!\\)<\/\w+>',                  ''],
         ['(?<!\\)<(\w+)>',                  '[size=110]$1[/size]'],
