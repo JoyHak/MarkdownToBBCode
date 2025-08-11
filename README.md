@@ -1,15 +1,16 @@
-This converter allows you to convert text written in Markdown markup language to BBcode markup language (commonly used on forums). List of key features:
-- Full support for GitHub syntax (basic and advanced).
-- Recursive syntax conversion (lists containing lists, basic syntax containing basic syntax, etc.).
-- Support for any type of list (ordered, unordered, with any prefix and nesting level).
-- Attaching/detaching markdown list items from BBcode lists (ability to add or detach quotes and other items from the converted list).
-- Support for multi-level quotes with the ability to include lists, mentions, and other syntax.
-- Support for html tags and spoilers.
-- Delete comments, mark text that does not need to be converted.
-- Select a repository for converting Github issues, links, and commits.
+This converter allows you to convert text written in [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) markup language to [BBcode](https://osu.ppy.sh/wiki/en/BBCode) markup language (commonly used on forums). List of key features:
+- Full support for GitHub markdown syntax ([basic](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) and [advanced](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections)).
+- Support for [html tags](#html-tags) and [spoilers](#spoilers-comments).
+- Delete [comments](#spoilers-comments), mark text that does not need to be converted.
+- Recursive [block elements](https://github.com/JoyHak/MarkdownToBBCode#blocks) conversion (lists containing lists, basic syntax containing basic syntax, etc).
+- Support for any type of [list](#lists) (ordered, unordered, with any prefix and nesting level).
+- Attaching / detaching markdown list items from BBcode lists (ability to add or detach quotes and other items from the converted list).
+- Support for multi-level [quotes](#quotes) with the ability to include lists, mentions, and other syntax.
+- Support for [Github issues](#github-links), commits and relative to the selected repository root links.
 - Restore text to its pre-conversion state for editing.
 - Convert, copy, and clear with a single click.
 - Convert file and save result to the new / existing file.
+- [Command line interface](https://github.com/JoyHak/MarkdownToBBCode#сommand-line) (CLI) for converting different files and combining their contents into a single file.
 
 ## Markdown
 
@@ -31,7 +32,7 @@ The converter supports basic syntax, complex blocks, and tables. For example, th
 | :------------------------------------------ | :----------------------------------------------------------- |
 | [Short name]\(link)                         | $\texttt{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
 | ![Image name]\(link)                        | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
-
+<a name="html-tags"></a>
 | Html tags                                                    |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#0d529d}\<sub>\color{White}Subscript\color{#0d529d}\</sub>}$ | $\texttt{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
@@ -40,16 +41,16 @@ The converter supports basic syntax, complex blocks, and tables. For example, th
 | $\texttt{\color{#0d529d}\<details>\color{#108c9a}}$<br>$\texttt{\color{#108c9a}\<summary>\color{White}Examples\color{#108c9a}\</summary>}$<br>$\texttt{\color{White}Hidden example}$<br>$\texttt{\color{#0d529d}\</details>}$ | $\texttt{\color{#0d529d}[spoiler2=Examples]}$<br>$\texttt{\color{White}Hidden example}$<br>$\texttt{\color{#0d529d}[/spoiler]}$ |
 | $\texttt{\color{#0d529d}\<unknown>\color{White}Simple text\color{#0d529d}\</unknown>}$ | $\texttt{\color{#fb7237}[size=110]\color{White}unknown\color{#fb7237}[/size]}$<br>Simple text |
 
-Tags `<details>` on GitHub are similar to spoilers: they turn into collapsed text. Tags <details> on GitHub are similar to spoilers: they turn into collapsed text. The `<summary>` tag replaces the spoiler title "details" with the specified title.
+Tags `<details>` on GitHub are similar to spoilers: they turn into collapsed text. The `<summary>` tag replaces the spoiler title "details" with the specified title.
 
 Unknown tags are converted to headers. All converted spoilers and unknown tags will have an additional line break for readability.
-
+<a name="spoilers-comments"></a>
 | Spoilers and comments                                        |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#5e5e5e}\<!-- spoiler -->\color{White} Text that should be hidden \color{#5e5e5e}\<!-- /spoiler -->}$ | $\texttt{\color{#fb7237}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#fb7237}[/spoiler]}$ |
 | $\texttt{\color{#5e5e5e}\<!-- alternate -->\color{White} Text that mustn't be converted  \color{#5e5e5e}\<!-- /alternate -->}$ | Text that mustn't be converted                               |
 | $\texttt{\color{#5e5e5e}\<!--\color{White} Text that should be removed \color{#5e5e5e}\-->}$ |                                                              |
-
+<a name="line-breaks"></a>
 | Line breaks                                    |                                            |
 | :--------------------------------------------- | :----------------------------------------- |
 | $\texttt{\color{#0d529d}\<br>  \</br>  \<br/>  }$ | <br>                                       |
@@ -62,15 +63,15 @@ Spaces between markup and words are optional, as well as spaces inside and outsi
 
 ## Blocks
 
-The blocks below are converted into opening and closing BBcode tags, broken into several lines for readability *(otherwise everything will turn into a horrible mess)*. However, lines, spaces, and tabs between tags do not affect the final result.
+The blocks below are converted into opening and closing BBcode tags, split into several lines for readability *(otherwise everything will turn into a horrible mess)*. Empty lines, spaces, and tabs between tags do not affect the rendered BBcode.
 
-To reduce the demonsration, some tags are on the same line as the text.
+To reduce the demonsration, some tags are on the single line.
 
 | Code                             |                                                              |
 | :------------------------------- | :----------------------------------------------------------- |
 | $\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute\color{#fa4738}py$<br>$\texttt{print(\color{#48ee44}"hello!"}$)<br>$\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$ | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}print(\color{#48ee44}"hello!"}$)<br>$\texttt{\color{#fb7237}[/code]}$ |
 | $\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$<br>$\texttt{MsgBox(\color{#48ee44}"hello!"}$)<br>$\color{#fb7237}\textasciiacute\textasciiacute\textasciiacute$ | $\texttt{\color{#fb7237}[code]}$<br>$\texttt{\color{White}MsgBox(\color{#48ee44}"hello!"}$)<br>$\texttt{\color{#fb7237}[/code]}$ |
-
+<a name="quotes"></a>
 | Block quotes                                                 |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#48a5d7}>}$ A quote looks like a block<br> $\texttt{\color{#48a5d7}>}$ of text | $\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{White}A quote looks like a block}$<br>$\texttt{\color{White}of text}$<br>$\texttt{\color{#48a5d7}[/quote]}$ |
@@ -81,7 +82,7 @@ To reduce the demonsration, some tags are on the same line as the text.
 | $\texttt{\color{#48a5d7}> \color{#006868} 1.}$ Lists can have an infinite level of nesting <br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}1.}$ item1<br> $\texttt{\color{#48a5d7}>\hspace{2cm}\color{#006868}2.}$ item2<br> $\texttt{\color{#48a5d7}>\hspace{3cm}\color{#006868}3.}$ item3<br> $\texttt{\color{#48a5d7}> \color{#006868} -}$ And unordered lists can be nested too!<br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}-}$ Item<br> $\texttt{\color{#48a5d7}>\hspace{2cm}\color{#006868}-}$ deep item | $\texttt{\color{#48a5d7}\[quote]}$<br>$\texttt{\color{#11975a}\[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[*] }$ Lists can have an infinite level of nesting  $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item1 $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item2 $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item3 $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]\[/list]}$<br>$\texttt{}$<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ And unordered lists can be nested too! $\texttt{}$<br>$\texttt{\color{#11975a}\[list]\color{#006868}[\*] }$ Item $\texttt{}$<br>$\texttt{\color{#11975a}\[list]\color{#006868}[\*] }$ deep item $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$<br>$\texttt{}$<br>$\texttt{\color{White}Lists can be mixed}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item1 $\texttt{}$<br>$\texttt{\color{#11975a}\[list]\color{#006868}[\*] }$ item2 $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item3 $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$<br>$\texttt{\color{#fb7237}\color{#48a5d7}[/quote]}$ |
 | $\texttt{\color{#48a5d7}>}$ Lists can be mixed <br> $\texttt{\color{#48a5d7}> \color{#006868} 1.}$ item1<br> $\texttt{\color{#48a5d7}> \color{#006868} -}$ item2<br> $\texttt{\color{#48a5d7}> \color{#006868} 3.}$ item3<br> | $\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{White} Lists can be mixed}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item1 $\texttt{}$<br>$\texttt{\color{#11975a}\[list]\color{#006868}[\*] }$ item2 $\texttt{}$<br>$\texttt{\color{#11975a}\[list=1]\color{#006868}[\*] }$ item3 $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\[/list]}$<br>$\texttt{\color{#48a5d7}[/quote]}$ |
 | $\texttt{\color{#48a5d7}>}$ $\texttt{\color{#006868} -}$ As you might guess,<br> $\texttt{\color{#48a5d7}>}$ $\texttt{\color{#006868} -}$ all of this applies to:<br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}1.}$ lists in quotes.<br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}2.}$ lists outside quotes.<br> $\texttt{\color{#48a5d7}>\hspace{1cm}\color{#006868}3.}$ lists with different levels of nesting.<br> $\texttt{\color{#48a5d7}> \color{#006868} -}$ As well as applied to ordered / unordered lists mixing. | $\texttt{\color{#48a5d7}[quote]}$<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ As you might guess, $\texttt{}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ all of this applies to: $\texttt{}$<br>$\texttt{\color{#11975a}[list=1]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ lists in quotes. $\texttt{}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ lists outside quotes. $\texttt{}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ lists with different levels of nesting. $\texttt{}$<br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ As well as applied to ordered / unordered lists mixing. $\texttt{}$<br>$\texttt{\color{#11975a}[/list]}$<br>$\texttt{\color{#48a5d7}[/quote]}$ |
-
+<a name="lists"></a>
 | Lists                                                        |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#006868} -}$ The list can start with any number of tabs and spaces<br> $\texttt{\hspace{1cm}\color{#006868} -}$ Each subsequent item in the list must start with the same number of tabs and spaces!<br> $\texttt{\hspace{2cm}\color{#006868} -}$ Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). | $\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#006868}[\*] }$ The list can start with any number of tabs and spaces<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#006868}[\*] }$ Each subsequent item in the list must start with the same number of tabs and spaces! $\texttt{}$<br>$\texttt{\color{#11975a}[list]}$<br>$\texttt{\color{#fb7237}\color{#006868}[\*] }$ Nesting levels are taken into account in both spaces and tabs (converted to 8 spaces). $\texttt{}$<br>$\texttt{\color{#11975a}\[/list]\[/list]\color{#11975a}[/list]}$ |
@@ -95,14 +96,14 @@ To reduce the demonsration, some tags are on the same line as the text.
 | $\texttt{\color{#006868} -}$ Use line break characters $\texttt{\color{#0d529d}\\\\  \<\/br>   \<br\>}$ <br> $\texttt{\color{#48a5d7}>}$ This quote does not belong to the list. | $\texttt{\color{#11975a}\[list]\color{White}\color{#006868}[\*]\color{White} Use line break characters\color{#11975a}[/list]}$ <br><br>$\texttt{\color{#48a5d7}[quote]\color{White}This quote does not belong to the list.\color{#48a5d7}[/quote]}$ |
 
 ## GitHub links and references
-
+<a name="github-links"></a>
 Links and images can be relative to the repository root (it usually starts with `/`). You can specify the repository in the converter settings. All relative links will be appended into the repository URL. You can use all relative link operands, such as `./` or `../`. Relative link text must be on a single line.
 
 The correctness of the converted link is not checked for performance reasons. Make sure that after adding the repository into the relative link, it is correct.
 
 | Relative links                                    |                                                              |
 | :------------------------------------------       | :----------------------------------------------------------- |
-| [Relative readme]\(./README.md)                   | $\texttt{\color{#fb7237}[url=https://redirect.github.com/JoyHak/QuickSwitch/README.md]\color{White}Relative readme\color{#fb7237}[/url]}$ |
+| [Relative readme]\(./README.md)                   | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak/QuickSwitch/README.md $\texttt{\color{#fb7237}]\color{White}Relative readme\color{#fb7237}[/url]}$ |
 | $\texttt{\color{#7ab3dc}![\color{White}Image name\color{#7ab3dc}]\(}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#7ab3dc}\)}$ | $\texttt{\color{#fb7237}[url]}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#fb7237}[/url]}$ |
 | $\texttt{\color{#7ab3dc}@\color{White}JoyHak}$    | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
 
@@ -137,35 +138,31 @@ Usage: `md2bb (<file_name> | <text> | @listfile) [<parameters> <switches>]`
 | -overwrite | Overwrite the file where to write the result. |
 
 Parameters order doesn't matter:
-
-```js
+```shell
     md2bb -save 'forum.md' 'readme.md'
     md2bb 'readme.md' -save 'forum.md'
 ```
 Text can be combined:
-```js
+```shell
     md2bb 'readme.md' 'add text' 'another text' 'license.md' -sep ' '
     md2bb 'sentence' 'will be' 'splitted' -save 'forum.md'
 ```
-
-The value of `-repo` is stored on the disk, so it can be passed once. After that its value will be used for each `md2bb` usage:
-```js
+The value of `-repo` is stored on the disk, so it can be passed once. After that [its value will be used](#github-links) for each `md2bb` usage:
+```shell
     md2bb -repo 'https://github.com/JoyHak/MarkdownToBBCode' -> 'Repository has been saved'
     md2bb 'issue #1' -> issue [url=https://github.com/JoyHak/MarkdownToBBCode/issues/1]#1[/url]
 ```
-
 Parameters prefix can be `/ - --`.
 Parameter without prefix will be treated as file name / text / listfile to convert:
 
-```js
+```shell
     md2bb 'readme.md' 'add text' '@listfile.md'
     Reads and converts contents of 'readme.md', then converts 'add text', then reads and converts contents of 'listfile.md' line by line.
 ```
-
-`@listfile` can be `@filename.ext` or `@path` and it can contain anything. It will be readed and each line will be converted as the text. If line contains file name / path, it's contents will be converted (if it exists).  Also it can be used to convert individual lines, combine them into one text and separate using symbol passed via `-sep` .
+`@listfile` can be `@filename.ext` or `@path` and it can contain anything. It will be readed and each line will be converted as the text. If line contains file name / path, it's contents will be converted (if it exists). Also it can be used to convert individual lines, combine them into one text and separate using symbol passed via `-sep` .
 
 You can pass the `|` symbol as a text to force the separation of parts of the text from each other:
-```js
+```shell
     md2bb 'readme.md|@listfile.md'
     Reads and converts 'readme.md' file, then reads and converts 'listfile.md' line by line.
     
@@ -173,7 +170,7 @@ You can pass the `|` symbol as a text to force the separation of parts of the te
     Convert 'sentence' 'will be' 'splitted' separately.
 ```
 Pass `-sep` symbol to concatenate different parts:
-```js
+```shell
     md2bb 'sentence|will be|splitted'     -sep '_' -> 'sentence_will be_splitted'
     md2bb 'sentence' 'will be' 'splitted' -sep '_' -> 'sentence_will be_splitted'
 
@@ -181,15 +178,15 @@ Pass `-sep` symbol to concatenate different parts:
     Concatenates converted contents of 'readme.md' with 'add text' using '_' symbol and appends it to the 'forum.md'.
 ```
 You can pass multi-line text and `-sep` value:
-```js
+```shell
     md2bb ' > Multi-line            ->  [quote]Multi-line
     > text'                             text[/quote]
     
     md2bb '*New*' '*line*' -sep '   ->  [i]New[/i]
     +'                                  [i]+line[/i]
 ```
-You can also pass any line break tags to get several lines of the text:
-```javascript
+You can also pass any [line break tags](#line-breaks) to get several lines of the text:
+```shell
     md2bb '_New_<br>_line_'         ->  [i]New[/i]
                                         [i]line[/i]
    
@@ -197,25 +194,21 @@ You can also pass any line break tags to get several lines of the text:
                                         [i]line[/i]
     Ignores '-sep' because text is treated as single part.
 ```
-
 The `-save`  parameter appends the converted text at the end of existing file, removing all leading and trailing spaces, tabs, and blank lines. This allows you to create complex conversion chains:
 
-```js
+```shell
 md2bb 'readme.md' 'add text' '@listfile.md' 'add another text' '@lines.md' -save 'forum.md'
 ```
-
 If you want to recreate the file, use `-overwrite` switch:
-
-```js
+```shell
 md2bb 'readme.md' -save 'readme.md'
 Appends converted contents of 'readme.md' at the end of this file.
 md2bb 'readme.md' -save 'readme.md' -overwrite
 Deletes 'readme.md' and appends converted content to the new 'readme.md'
 ```
-
- To convert individual elements to different files, use separate commands:
-
-```js
+To convert individual elements to different files, use separate commands:
+```shell
 md2bb 'readme.md' 'add text' -save 'forum.md'
 md2bb 'license.md' 'add copyright' -save 'lic.md'
+
 ```
