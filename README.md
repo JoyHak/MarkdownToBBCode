@@ -16,7 +16,7 @@ Here's the list of key features:
 - Convert file and save result to the new / existing file.
 - [Command line interface](https://github.com/JoyHak/MarkdownToBBCode#сommand-line) (CLI) for converting different files and combining their contents into a single file.
 
-It uses the [Maple Mono](https://github.com/subframe7536/maple-font) font for GUI elements.
+It uses the [Maple Mono](https://github.com/subframe7536/maple-font) font for GUI elements. **If something is not working for you, please [let me know](https://github.com/JoyHak/MarkdownToBBCode/issues/new?template=bug-report.yaml)**. If you think that app can be improved, [write to me](https://github.com/JoyHak/MarkdownToBBCode/issues/new?template=feature-request.yaml).
 
 ## Markdown
 
@@ -259,6 +259,7 @@ md2bb 'readme.md' 'add text' -save 'forum.md'
 md2bb 'license.md' 'add copyright' -save 'lic.md'
 
 ```
+
 
 
 
