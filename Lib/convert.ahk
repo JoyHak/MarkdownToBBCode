@@ -138,9 +138,7 @@ ParseTables(block) {
 		header := StrReplace(header, '|', '[/th][th]')   ; Columns delimiters
 
         rows   := Trim(table[2], ' `t`r`n')
-        MsgBox rows
         rows   := RegExReplace(rows, 'm)^\|(.*?)\|?$', '[tr][td]$1[/td][/tr]')
-        MsgBox rows
         rows   := StrReplace(rows,   '|', '[/td][td]')   ; Columns delimiters
 
         ctx.Replacement := '[table]`n' header '`n' rows '`n[/table]'
