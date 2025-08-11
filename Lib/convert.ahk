@@ -33,7 +33,7 @@ Convert(post, repo) {
     blocks.Add(&post, 'alternate',  'sx)<!-- \s* alternate \s* -->(.+)<!-- \s* /alternate \s* -->',         '{1}')
     blocks.Add(&post, 'code',       's)[ \t]*``````.*?\s(.+?)\s[ \t]*``````',                               '[code]{1}`n[/code]')
     blocks.Add(&post, 'image',      'sx) ! \[.*?\]  \( [ \t]* (.+?) [ \t]* \)',                             '[url]{1}[/url]')
-    blocks.Add(&post, 'link',       'sx) \[  ( [^\[\]]{2,}? )  \]  \( [ \t]* (.+?) [ \t]* \)',              '[url={2}]{1}[/url]')
+    blocks.Add(&post, 'link',       'sx) \[  ( [^\[\]]{2,}? )  \]  \( [ \\\/\.\t]* (.+?) [ \t]* \)',        '[url={2}]{1}[/url]')
     blocks.Add(&post, 'pathIssue',  'x) (\S+ [\w\d]\/\S+ [\w\d]) \# (\d+)',                                 '[url=' domain '/{1}/issues/{2}]{1}#{2}[/url]')
     blocks.Add(&post, 'GHissue',    'x) [ \t] \b GH- (\d+)',                                                '[url=' repo '/issues/{1}]GH-{1}[/url]')
     blocks.Add(&post, 'issue',      'x) (?<!^|\#) \# (\d+)',                                                '[url=' repo '/issues/{1}]#{1}[/url]')
