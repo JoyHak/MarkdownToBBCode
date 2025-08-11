@@ -96,18 +96,17 @@ To reduce the demonsration, some tags are on the same line as the text.
 
 ## GitHub links and references
 
-| Relative links                                    |                                                              |
-| :------------------------------------------       | :----------------------------------------------------------- |
-| [Relative readme]\(./README.md)                   | $\texttt{\color{#fb7237}[url=https://redirect.github.com/JoyHak/QuickSwitch/README.md]\color{White}Relative readme\color{#fb7237}[/url]}$ |
-| ![Image name]\(link)                              | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
-| $\texttt{\color{#7ab3dc}![\color{White}Image name\color{#7ab3dc}]\(}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#7ab3dc}\)}$ | $\texttt{\color{#fb7237}[url]}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#fb7237}[/url]}$ |
-| $\texttt{\color{#7ab3dc}@\color{White}JoyHak}$    | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
-
-Links and images can be relative to the repository root (it usually starts with `/`). You can use all relative link operands, such as `./` or `../`. Relative link text must be on a single line.
+Links and images can be relative to the repository root (it usually starts with `/`). You can specify the repository in the converter settings. All relative links will be appended into the repository URL. You can use all relative link operands, such as `./` or `../`. Relative link text must be on a single line.
 
 The correctness of the converted link is not checked for performance reasons. Make sure that after adding the repository into the relative link, it is correct.
 
-You can specify the repository in the converter settings. All issues and commits in short form will be appended into the repository URL.
+| Relative links                                    |                                                              |
+| :------------------------------------------       | :----------------------------------------------------------- |
+| [Relative readme]\(./README.md)                   | $\texttt{\color{#fb7237}[url=https://redirect.github.com/JoyHak/QuickSwitch/README.md]\color{White}Relative readme\color{#fb7237}[/url]}$ |
+| $\texttt{\color{#7ab3dc}![\color{White}Image name\color{#7ab3dc}]\(}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#7ab3dc}\)}$ | $\texttt{\color{#fb7237}[url]}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#fb7237}[/url]}$ |
+| $\texttt{\color{#7ab3dc}@\color{White}JoyHak}$    | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
+
+All issues and commits in short form will be appended into the repository URL. The converter cannot check whether `#64` is a Pull Request (PR), discussion, or issue, so it always assumes that it is an issue.
 
 | Issues (PRs is not supported)                                |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
