@@ -32,8 +32,6 @@ The converter supports basic syntax, complex blocks, and tables. For example, th
 | [Short name]\(link)                         | $\texttt{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
 | ![Image name]\(link)                        | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
 
-Links and images may be relative to the repository (which can be changed). The correctness of the converted link is not checked for performance reasons. Make sure that after adding the repository into the relative link, it is correct.
-
 | Html tags                                                    |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#0d529d}\<sub>\color{White}Subscript\color{#0d529d}\</sub>}$ | $\texttt{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
@@ -98,12 +96,18 @@ To reduce the demonsration, some tags are on the same line as the text.
 
 ## GitHub links and references
 
-You can specify the repository in the converter settings. All issues and commits in short form will be appended into the repository URL.
-
-| Mentions and images <br />(relative links is not supported)  |                                                              |
-| :----------------------------------------------------------- | :----------------------------------------------------------- |
-| $\texttt{\color{#7ab3dc}@\color{White}JoyHak}$               | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
+| Relative links                                    |                                                              |
+| :------------------------------------------       | :----------------------------------------------------------- |
+| [Relative readme]\(./README.md)                   | $\texttt{\color{#fb7237}[url=https://redirect.github.com/JoyHak/QuickSwitch/README.md]\color{White}Relative readme\color{#fb7237}[/url]}$ |
+| ![Image name]\(link)                              | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
 | $\texttt{\color{#7ab3dc}![\color{White}Image name\color{#7ab3dc}]\(}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#7ab3dc}\)}$ | $\texttt{\color{#fb7237}[url]}$ https://myoctocat.com/assets/images/base-octocat.svg $\texttt{\color{#fb7237}[/url]}$ |
+| $\texttt{\color{#7ab3dc}@\color{White}JoyHak}$    | $\texttt{\color{#fb7237}[url=}$ https://redirect.github.com/JoyHak $\texttt{\color{#fb7237}]\color{#7ab3dc}@\color{White}JoyHak\color{#fb7237}[/url]}$ |
+
+Links and images can be relative to the repository root (it usually starts with `/`). You can use all relative link operands, such as `./` or `../`. Relative link text must be on a single line.
+
+The correctness of the converted link is not checked for performance reasons. Make sure that after adding the repository into the relative link, it is correct.
+
+You can specify the repository in the converter settings. All issues and commits in short form will be appended into the repository URL.
 
 | Issues (PRs is not supported)                                |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
