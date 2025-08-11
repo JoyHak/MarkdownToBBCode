@@ -4,7 +4,6 @@
 #ErrorStdOut
 #Warn All, StdOut
 
-
 StdOutHelp() {
     StdOut
     (
@@ -68,7 +67,6 @@ StdOutHelp() {
     )
 }
 
-
 A_Args.Repo  := lastRepo
 A_Args.Sep   := '`n'
 A_Args.Post  := ''
@@ -81,8 +79,9 @@ ExitApp Output(ParsePost(A_Args.Post))
 
 ParseCommandLine() {
     if !A_Args.length
-        ExitApp StdErr('Parameter error: ' A_ScriptName ' requires at least one parameter')
-
+        ExitApp StdErr('Parameter error: md2bb requires at least one parameter.')
+    
+    unknownArgs := ''
     while A_Args.length {
         NextArgValue() {
             if !A_Args.Length
@@ -110,10 +109,12 @@ ParseCommandLine() {
             case 'overwrite':
                 A_Args.Overwrite := true
             default:
-                StdErr('Parameter error: Unknown parameter "' arg '".')
+                unknownArgs .= '"' arg '" '                
         }
-
     }
+    
+    if unknownArgs
+        ExitApp StdErr('Parameter error: Unknown parameters ' unknownArgs)
     
     A_Args.Post := LTrim(A_Args.Post, '|')
 }
