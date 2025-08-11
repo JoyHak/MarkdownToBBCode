@@ -32,20 +32,20 @@ Convert(post, repo) {
     blocks := MarkdownBlocks()
     blocks.Add(&post, 'alternate',  'sx)<!-- \s* alternate \s* -->(.+)<!-- \s* /alternate \s* -->',         '{1}')
     blocks.Add(&post, 'code',       's)[ \t]*``````.*?\s(.+?)\s[ \t]*``````',                               '[code]{1}`n[/code]')
-    blocks.Add(&post, 'image',      'sx) ! \[.*?\]  \( [ \t]* (.+?) [ \t]* \)',                             '[url]{1}[/url]')
-    blocks.Add(&post, 'link',       'sx) \[  ( [^\[\]]{2,}? )  \]  \( [ \\\/\.\t]* (.+?) [ \t]* \)',        '[url={2}]{1}[/url]')
+    blocks.Add(&post, 'image',      'sx)!\[   [^\]]*   \] \( [ \\\/\.\t]* (.+?) [ \t]* \)',                 '[url]{1}[/url]')
+    blocks.Add(&post, 'link',       'sx) \[ ( [^\]]* ) \] \( [ \\\/\.\t]* (.+?) [ \t]* \)',                 '[url={2}]{1}[/url]')
     blocks.Add(&post, 'pathIssue',  'x) (\S+ [\w\d]\/\S+ [\w\d]) \# (\d+)',                                 '[url=' domain '/{1}/issues/{2}]{1}#{2}[/url]')
     blocks.Add(&post, 'GHissue',    'x) [ \t] \b GH- (\d+)',                                                '[url=' repo '/issues/{1}]GH-{1}[/url]')
     blocks.Add(&post, 'issue',      'x) (?<!^|\#) \# (\d+)',                                                '[url=' repo '/issues/{1}]#{1}[/url]')
     blocks.Add(&post, 'pathCommit', 'x) (\S+ [\w\d] (\/ \S+ [\w\d])?) @ ( ([a-f0-9]{7}) [a-f0-9]{33} ) \b', '[url=' domain '/{1}/commit/{3}]{1}@{4}[/url]')
     blocks.Add(&post, 'mention',    'x)            @ (\S+  [\w\d])',                                        '[url=' domain '/{1}]@{1}[/url]')
     blocks.Add(&post, 'commit',     '(([a-f0-9]{7})[a-f0-9]{33})\b',                                        '[url=' repo '/commit/{1}]{2}[/url]')
-    
+
     post := ParseTables(post)
     ; Replace markdown line breaks
     post := RegExReplace(post, '<\/?br[ \t]*\/?>', '`n')
 	post := RegExReplace(post, 'm)(\\| {2})$', '`n')
-    
+
     ; Parse each block
     post := ParseHtml(post)
     post := ParseLists(post)
@@ -110,12 +110,11 @@ ParseMarkdown(block) {
 ParseUrls(block, repository) {
     context := unset
     static isUrl := '(?:http[s]?:\/\/.)(?:www\.)?[-a-zA-Z0-9@%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)'
-    static urls  := 'sx) \[  [^\[\]]{2,}?  \]  \( [ \t]* (.+?) [ \t]* \)'
+    static urls  := 'sx) \[ [^\]]* \] \( [ \\\/\.\t]* (.+?) [ \t]* \)'
 
     ; Convert each relative url to absolute
     for url, ctx in RegExMatchAll(&block, urls) {
 		context := ctx
-
         if (url[1] ~= isUrl)
             ctx.Replacement := url[0]
         else
@@ -134,16 +133,16 @@ ParseTables(block) {
 
     for table, ctx in RegExMatchAll(&block, tables) {
         context := ctx
-        
+
 		header := '[tr][th]' table[1] '[/th][/tr]'
-		header := StrReplace(header, '|', '[/th][th]')   ; Columns delimiters 
-                                                                                           
-        rows   := Trim(table[2], ' `t`r`n')   
+		header := StrReplace(header, '|', '[/th][th]')   ; Columns delimiters
+
+        rows   := Trim(table[2], ' `t`r`n')
         MsgBox rows
-        rows   := RegExReplace(rows, 'm)^\|(.*?)\|?$', '[tr][td]$1[/td][/tr]') 
+        rows   := RegExReplace(rows, 'm)^\|(.*?)\|?$', '[tr][td]$1[/td][/tr]')
         MsgBox rows
         rows   := StrReplace(rows,   '|', '[/td][td]')   ; Columns delimiters
-        
+
         ctx.Replacement := '[table]`n' header '`n' rows '`n[/table]'
 	}
 
