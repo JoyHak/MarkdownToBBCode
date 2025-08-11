@@ -151,7 +151,7 @@ Then open the profile:
 ```shell
 notepad $PROFILE
 ```
-If you're using [Cmder](https://github.com/cmderdev/cmder) from @cmderdev or [Conemu](https://github.com/ConEmu/ConEmu), open `%CMDER_ROOT%\config\user_profile.ps1`. 
+If you're using [Cmder](https://github.com/cmderdev/cmder) or [Conemu](https://github.com/ConEmu/ConEmu), open `%CMDER_ROOT%\config\user_profile.ps1`. 
 Add the following command:
 ```shell
 Register-AutocompleteCommand -Commands 'md2bb'
@@ -257,6 +257,7 @@ md2bb 'readme.md' 'add text' -save 'forum.md'
 md2bb 'license.md' 'add copyright' -save 'lic.md'
 
 ```
+
 
 
 
