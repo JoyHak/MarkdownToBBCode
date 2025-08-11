@@ -24,11 +24,8 @@ Convert(post, repo) {
 
     SplitPath repo,,,,, &domain
 
-    ; Replace unicode and markdown line breaks with ahk line breaks
+    ; Replace unicode line breaks
 	post := RegExReplace(post, '`a)\R', '`n')
-	post := RegExReplace(post, '<\/?br[ \t]*\/?>', '`n')
-	post := RegExReplace(post, 'm)(\\| {2})$', '`n')
-
     post := ParseUrls(post, repo)
 
     ; Hide individual blocks from the text and process them separately
@@ -43,7 +40,12 @@ Convert(post, repo) {
     blocks.Add(&post, 'pathCommit', 'x) (\S+ [\w\d] (\/ \S+ [\w\d])?) @ ( ([a-f0-9]{7}) [a-f0-9]{33} ) \b', '[url=' domain '/{1}/commit/{3}]{1}@{4}[/url]')
     blocks.Add(&post, 'mention',    'x)            @ (\S+  [\w\d])',                                        '[url=' domain '/{1}]@{1}[/url]')
     blocks.Add(&post, 'commit',     '(([a-f0-9]{7})[a-f0-9]{33})\b',                                        '[url=' repo '/commit/{1}]{2}[/url]')
-
+    
+    post := ParseTables(post)
+    ; Replace markdown line breaks
+    post := RegExReplace(post, '<\/?br[ \t]*\/?>', '`n')
+	post := RegExReplace(post, 'm)(\\| {2})$', '`n')
+    
     ; Parse each block
     post := ParseHtml(post)
     post := ParseLists(post)
@@ -119,6 +121,31 @@ ParseUrls(block, repository) {
         else
             ctx.Replacement := StrReplace(url[0], url[1], repository '/' url[1])
     }
+
+    if IsSet(context)
+        block := context.Haystack
+
+    return block
+}
+
+ParseTables(block) {
+    context  := unset
+    static tables := 'x) ^ \| (.*?) \|? \r?\n \| \s* [:-]+ .+ ((?: \r? \n (?=\|) .+ )+)'
+
+    for table, ctx in RegExMatchAll(&block, tables) {
+        context := ctx
+        
+		header := '[tr][th]' table[1] '[/th][/tr]'
+		header := StrReplace(header, '|', '[/th][th]')   ; Columns delimiters 
+                                                                                           
+        rows   := Trim(table[2], ' `t`r`n')   
+        MsgBox rows
+        rows   := RegExReplace(rows, 'm)^\|(.*?)\|?$', '[tr][td]$1[/td][/tr]') 
+        MsgBox rows
+        rows   := StrReplace(rows,   '|', '[/td][td]')   ; Columns delimiters
+        
+        ctx.Replacement := '[table]`n' header '`n' rows '`n[/table]'
+	}
 
     if IsSet(context)
         block := context.Haystack
