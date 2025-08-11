@@ -139,6 +139,37 @@ All issues and commits in short form will be appended into the repository URL. T
 
 The command interface allows you to convert files and any text directly from the terminal. The result can be saved to a file or printed to the terminal and passed to any command using the `|` pipe operator.
 
+You can use auto-completion for CLI directly in [Powershell 5.1](https://github.com/PowerShell/powershell/releases) and above. This requires an auto-completion module, such as [PSReadLine](https://learn.microsoft.com/en-us/powershell/module/psreadline/about/about_psreadline?view=powershell-7.5) and [Register-AutocompleteCommand](https://github.com/marcio1002/AutocompleteCommand).
+
+<details><summary>Auto-completion setup</summary>
+
+Add the path to the directory containing `md2bb.exe` to the path environment variable:
+```shell
+setx PATH "$env:path;\the\directory\to\add" -m
+```
+Then open the profile:
+```shell
+notepad $PROFILE
+```
+If you're using [Cmder](https://github.com/cmderdev/cmder) from @cmderdev or [Conemu](https://github.com/ConEmu/ConEmu), open `%CMDER_ROOT%\config\user_profile.ps1`. 
+Add the following command:
+```shell
+Register-AutocompleteCommand -Commands 'md2bb'
+
+# Set auto-complete list view
+$options = @{
+    PredictionSource    = 'HistoryAndPlugin'
+    PredictionViewStyle = 'ListView'
+}
+Set-PSReadLineOption @options
+
+# Assign an auto-complete key, such as `Tab`
+Set-PSReadLineKeyHandler -Chord 'Tab' -Function 'MenuComplete'
+```
+Restart your PC.  Now, after entering md2bb and pressing `Tab`, you will see a list of available parameters and their descriptions. When entering arguments, such as `-repo`, you can press `Tab` again to read its description. Press `Tab` again to have autocomplete type the parameter for you.
+
+</details>
+
 Usage: `md2bb (<file_name> | <text> | @listfile) [<parameters> <switches>]`
 | Parameters                   |                                                              |
 | :--------------------------- | :----------------------------------------------------------- |
@@ -226,5 +257,6 @@ md2bb 'readme.md' 'add text' -save 'forum.md'
 md2bb 'license.md' 'add copyright' -save 'lic.md'
 
 ```
+
 
 
