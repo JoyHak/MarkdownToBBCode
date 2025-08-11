@@ -32,6 +32,8 @@ The converter supports basic syntax, complex blocks, and tables. For example, th
 | [Short name]\(link)                         | $\texttt{\color{#fb7237}[url=link]\color{White}Short name\color{#fb7237}[/url]}$ |
 | ![Image name]\(link)                        | $\texttt{\color{#fb7237}[url=link]\color{White}Image name\color{#fb7237}[/url]}$ |
 
+Links and images may be relative to the repository (which can be changed). The correctness of the converted link is not checked for performance reasons. Make sure that after adding the repository into the relative link, it is correct.
+
 | Html tags                                                    |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | $\texttt{\color{#0d529d}\<sub>\color{White}Subscript\color{#0d529d}\</sub>}$ | $\texttt{\color{#fb7237}[size=85]\color{White}Subscript\color{#fb7237}[/size]}$ |
@@ -39,6 +41,10 @@ The converter supports basic syntax, complex blocks, and tables. For example, th
 | $\texttt{\color{#0d529d}\<details>\color{White} Text that should be hidden \color{#0d529d}\</details>}$ | $\texttt{\color{#0d529d}[spoiler]}$<br>$\texttt{\color{White}Text that should be hidden}$<br>$\texttt{\color{#0d529d}[/spoiler]}$ |
 | $\texttt{\color{#0d529d}\<details>\color{#108c9a}}$<br>$\texttt{\color{#108c9a}\<summary>\color{White}Examples\color{#108c9a}\</summary>}$<br>$\texttt{\color{White}Hidden example}$<br>$\texttt{\color{#0d529d}\</details>}$ | $\texttt{\color{#0d529d}[spoiler2=Examples]}$<br>$\texttt{\color{White}Hidden example}$<br>$\texttt{\color{#0d529d}[/spoiler]}$ |
 | $\texttt{\color{#0d529d}\<unknown>\color{White}Simple text\color{#0d529d}\</unknown>}$ | $\texttt{\color{#fb7237}[size=110]\color{White}unknown\color{#fb7237}[/size]}$<br>Simple text |
+
+Tags `<details>` on GitHub are similar to spoilers: they turn into collapsed text. Tags <details> on GitHub are similar to spoilers: they turn into collapsed text. The `<summary>` tag replaces the spoiler title "details" with the specified title.
+
+Unknown tags are converted to headers. All converted spoilers and unknown tags will have an additional line break for readability.
 
 | Spoilers and comments                                        |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -54,7 +60,7 @@ The converter supports basic syntax, complex blocks, and tables. For example, th
 
 Line breaks affect the final appearance of BBcode lists and quotes, but do not affect the appearance of tables: a Markdown table can contain line breaks and they will be captured by the BBcode table. A Markdown list or quote can contain line breaks, but they may not be included in the BBcode list or quote (see detailed examples below).
 
-Spaces between markup and words, spaces inside and outside tags and comments are optional, e.g. `** Bold   **`  and `**Bold**` or `<!-- alternate     -->` and `<!--alternate-->` are treated the same.
+Spaces between markup and words are optional, as well as spaces inside and outside tags and comments. It means that `** Bold   **`  and `**Bold**` or `<!-- alternate     -->` and `<!--alternate-->` are treated the same.
 
 ## Blocks
 
